@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChampionSelect : MonoBehaviour
 {
@@ -15,25 +12,36 @@ public class ChampionSelect : MonoBehaviour
    void Update()
    {
       if (Input.GetKeyDown(KeyCode.RightArrow)) SelectRight();
-      if (Input.GetKeyDown(KeyCode.LeftArrow)) return;
+      if (Input.GetKeyDown(KeyCode.LeftArrow)) SelectLeft();
+      if (Input.GetKeyDown(KeyCode.Space)) LoadGame();
       for (int i = 0; i < selectedTarots.Length; i++)
       {
-         selectedTarots[i].transform.position = Vector3.Lerp(selectedTarots[i].transform.position, positions[i].position, swapHaste);
+         selectedTarots[i].transform.position = Vector3.Lerp(selectedTarots[i].transform.position, positions[i].position, swapHaste * Time.deltaTime);
       }
    }
-   void SelectRight()
+   public void SelectRight()
    {
-      //Destroy last
-      Destroy(selectedTarots[^1]);
-      
-      //move all upward
-      for (int i = 0; i < selectedTarots.Length; i++)
+      Destroy(selectedTarots[^1]);                        //Destroy last
+      for (int i = selectedTarots.Length - 1; i > 0; i--) //move all upward
       {
-         selectedTarots[i++] = selectedTarots[i];
+         selectedTarots[i] = selectedTarots[i - 1];
       }
-      
-      //spawn first
-      selectedTarots[0] = Instantiate(tarots[0]);
+      selected          = (selected - 1 + tarots.Length) % tarots.Length; //decrement the selected index
+      selectedTarots[0] = Instantiate(tarots[selected], positions[0].position, quaternion.identity);                  //spawn first
    }
 
+   public void SelectLeft()
+   {
+      Destroy(selectedTarots[0]);                         // Destroy first
+      for (int i = 0; i < selectedTarots.Length - 1; i++) // Move all downward
+      {
+         selectedTarots[i] = selectedTarots[i + 1];
+      }
+      selected           = (selected + 1) % tarots.Length; //increment the selected index
+      selectedTarots[^1] = Instantiate(tarots[selected], positions[^1].position, quaternion.identity);  // Spawn last
+   }
+   public void LoadGame()
+   {
+      SceneManager.LoadScene("Game");
+   }
 }
