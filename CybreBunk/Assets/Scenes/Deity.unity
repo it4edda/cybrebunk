@@ -6027,6 +6027,8 @@ MonoBehaviour:
   - {fileID: 1762099234}
   tarots:
   - {fileID: -2253911629886400664, guid: 9d2c6ac8f5df1b744b4b34e4f5c295f0, type: 3}
+  - {fileID: -2253911629886400664, guid: 362c61ce317d1d542956ed58e0693272, type: 3}
+  - {fileID: -2253911629886400664, guid: 7f79805e335925a4daab217351fcbca3, type: 3}
   selectedTarots:
   - {fileID: 334141471}
   - {fileID: 268025715}

@@ -40,8 +40,6 @@ public class ChampionSelect : MonoBehaviour
       selected           = (selected + 1) % tarots.Length; //increment the selected index
       selectedTarots[^1] = Instantiate(tarots[selected], positions[^1].position, quaternion.identity);  // Spawn last
    }
-   public void LoadGame()
-   {
-      SceneManager.LoadScene("Game");
-   }
+   public void LoadGame() => SceneManager.LoadScene("Game");
+   
 }
