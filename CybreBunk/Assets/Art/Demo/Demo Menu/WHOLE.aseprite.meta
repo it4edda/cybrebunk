@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bf0a811d4bc8b974ca17a7643dba0ceb
+guid: 00b320f5a0ebeb447a6c724242adbe99
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Man Menu
+  - name: WHOLE
     originalName: 
-    pivot: {x: 0.5115385, y: 0}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 260
-      height: 137
-    spriteID: f5c0440dba672b84d9847f6ebe15c5e7
+      width: 384
+      height: 216
+    spriteID: dc8a072cdbdaead4d8e3cf6ba33f3dbc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -271661291
-    name: Man Menu
+    guid: -1896746023
+    name: WHOLE
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Man Menu
+    - name: WHOLE
       frameIndex: 0
       cellRect:
-        x: 59
+        x: 0
         y: 0
-        width: 260
-        height: 137
-      spriteId: f5c0440dba672b84d9847f6ebe15c5e7
+        width: 384
+        height: 216
+      spriteId: dc8a072cdbdaead4d8e3cf6ba33f3dbc
     linkedCells: []
     parentIndex: -1
   platformSettings: []

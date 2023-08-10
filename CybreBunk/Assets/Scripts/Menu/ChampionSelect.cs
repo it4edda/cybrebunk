@@ -11,8 +11,8 @@ public class ChampionSelect : MonoBehaviour
    [SerializeField] float        swapHaste = 2;
    void Update()
    {
-      if (Input.GetKeyDown(KeyCode.RightArrow)) SelectRight();
-      if (Input.GetKeyDown(KeyCode.LeftArrow)) SelectLeft();
+      if (Input.GetKeyDown(KeyCode.LeftArrow)) SelectRight();
+      if (Input.GetKeyDown(KeyCode.RightArrow)) SelectLeft();
       if (Input.GetKeyDown(KeyCode.Space)) LoadGame();
       for (int i = 0; i < selectedTarots.Length; i++)
       {

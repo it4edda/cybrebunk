@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7df7846c3a3a793428042eabf9b151aa
+guid: 0e830e13f9865384287ac5d24a8916d0
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: WHOLE
+  - name: Menu Guy
     originalName: 
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5036765, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 384
-      height: 216
-    spriteID: c1189c926dc86dd42a91cfc24b389dea
+      width: 272
+      height: 143
+    spriteID: 09c144c338fce9d44992b6afecbca5b5
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1896746023
-    name: WHOLE
+    guid: -354964798
+    name: Menu Guy
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: WHOLE
+    - name: Menu Guy
       frameIndex: 0
       cellRect:
-        x: 0
+        x: 55
         y: 0
-        width: 384
-        height: 216
-      spriteId: c1189c926dc86dd42a91cfc24b389dea
+        width: 272
+        height: 143
+      spriteId: 09c144c338fce9d44992b6afecbca5b5
     linkedCells: []
     parentIndex: -1
   platformSettings: []
