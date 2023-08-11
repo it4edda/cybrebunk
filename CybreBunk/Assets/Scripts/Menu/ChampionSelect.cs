@@ -1,4 +1,6 @@
+using System;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +11,14 @@ public class ChampionSelect : MonoBehaviour
    [SerializeField] GameObject[] selectedTarots;
    [SerializeField] int          selected  = 0;
    [SerializeField] float        swapHaste = 2;
+   void Start()
+   {
+      for (int i = 0; i < selectedTarots.Length; i++)
+      {
+         int index = (selected + i) % tarots.Length;
+         selectedTarots[i] = Instantiate(tarots[index]);
+      }
+   }
    void Update()
    {
       if (Input.GetKeyDown(KeyCode.LeftArrow)) SelectRight();

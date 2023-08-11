@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyBehaviour : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] bool         isBig = false;
     [SerializeField] GameObject[] smallBlood;
     [SerializeField] GameObject[] bigBlood;
+    [SerializeField] float        movementSpeed;
+    Transform                     target;
     // Start is called before the first frame update
     void Start()
     {
+        target = FindObjectOfType<PlayerMovement>().transform;
         //todo find player and move towards him ( basic movement for father script)
         //todo be able to take damage and die
     }
@@ -22,16 +26,25 @@ public class EnemyBehaviour : MonoBehaviour
     {
         
     }
-    void TakeDamage()
-    {
-        
-    }
     void FixedUpdate()
     {
         Movement();
     }
+    public void TakeDamage()
+    {
+        health--;
+
+        if (health <= 0)
+            Die();
+    }
+    void Die()
+    {
+        Instantiate(smallBlood[Random.Range(0, smallBlood.Length)]);
+        Destroy(gameObject);
+    }
     protected virtual void Movement()
     {
-        
+        Vector3 movement = Vector3.Normalize(target.position - transform.position);
+        transform.position += movement * (movementSpeed * Time.deltaTime);
     }
 }
