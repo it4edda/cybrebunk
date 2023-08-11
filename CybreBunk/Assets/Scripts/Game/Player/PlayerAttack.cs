@@ -34,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void Aim()
     {
+        if (midSlash) return;
         Vector3 dir   = Input.mousePosition - Camera.main.WorldToScreenPoint(weaponGraphics.position);
         float   angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         weaponGraphics.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);

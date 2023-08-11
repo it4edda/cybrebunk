@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -30,16 +31,16 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Movement();
     }
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        health--;
+        health -= damage;
 
         if (health <= 0)
             Die();
     }
     void Die()
     {
-        Instantiate(smallBlood[Random.Range(0, smallBlood.Length)]);
+        Instantiate(smallBlood[Random.Range(0, smallBlood.Length)], transform.position, quaternion.identity );
         Destroy(gameObject);
     }
     protected virtual void Movement()
