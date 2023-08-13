@@ -1,37 +1,75 @@
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SpaceUIElementsEvenly : MonoBehaviour
+public class UserInterfaceHealth : MonoBehaviour
 {
-    public RectTransform[] elementsToSpace;
-    public RectTransform   startPoint;
-    public RectTransform   endPoint;
+    [SerializeField] RectTransform prefabToInstantiate;
+    [SerializeField] RectTransform startPoint;
+    [SerializeField] RectTransform endPoint;
+    int                            maxHealth = 5; // Maximum health value
 
-    void Start()
+    readonly List<RectTransform> instantiatedElements = new();
+
+    void UpdateUI()
     {
-        SpaceUIElements();
-    }
-    void SpaceUIElements()
-    {
-        int numElements = elementsToSpace.Length;
+        int numElements = instantiatedElements.Count;
+
         if (numElements == 0)
         {
             Debug.LogWarning("No elements to space.");
             return;
         }
 
-        float totalDistance        = Mathf.Abs(endPoint.anchoredPosition.x - startPoint.anchoredPosition.x);
+        float spacingFactor    = maxHealth - 1;
+        float spacingIncrement = Mathf.Abs(startPoint.anchoredPosition.x - endPoint.anchoredPosition.x) / spacingFactor;
 
-        for (int i = 0; i < numElements; i++)
+        for (var i = 0; i < numElements; i++)
         {
-            float t    = i / (float)(numElements - 1);
-            float newX = Mathf.Lerp(startPoint.anchoredPosition.x, endPoint.anchoredPosition.x, t);
-            elementsToSpace[i].anchoredPosition = new Vector3(newX, elementsToSpace[i].anchoredPosition.y, -i);
+            float newX = startPoint.anchoredPosition.x + spacingIncrement * i;
+
+            instantiatedElements[i].anchoredPosition =
+                new Vector3(newX, instantiatedElements[i].anchoredPosition.y, -i);
         }
     }
 
-    void OnDrawGizmosSelected()
+    public void ModifyHealth(int changeAmount) //ONLY VISUALS
     {
-        Gizmos.DrawLine(startPoint.anchoredPosition, endPoint.anchoredPosition);
+        if (changeAmount < 0) // Reducing health
+        {
+            if (instantiatedElements.Count <= 0) return;
+
+            for (int i = 0; i < math.abs(changeAmount); i++)
+            {
+                if (instantiatedElements.Count <= 0) return;
+                Destroy(instantiatedElements[^1].gameObject);
+                instantiatedElements.RemoveAt(instantiatedElements.Count - 1);
+            }
+            UpdateUI();
+        }
+        else if (changeAmount > 0) // Increasing health
+        {
+            if (instantiatedElements.Count + changeAmount <= maxHealth)
+            {
+                for (var i = 0; i < changeAmount; i++)
+                {
+                    RectTransform newElement = Instantiate(prefabToInstantiate, transform);
+                    instantiatedElements.Add(newElement);
+                }
+
+                UpdateUI();
+            }
+            else
+            {
+                Debug.LogWarning("Cannot exceed maximum health.");
+            }
+        }
+    }
+    public void SetMaxHealth(int newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        ModifyHealth(maxHealth);
+
+        UpdateUI();
     }
 }

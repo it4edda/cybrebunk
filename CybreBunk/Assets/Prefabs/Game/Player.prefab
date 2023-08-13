@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8740983386382612959}
   - component: {fileID: 2617274385151889471}
   - component: {fileID: 646474366712725370}
+  - component: {fileID: 501430016814600311}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -36,7 +37,7 @@ Transform:
   - {fileID: 6391201609882003576}
   - {fileID: 1065259305812519490}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3939007054386239391
 MonoBehaviour:
@@ -81,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5196cdd8e9218d94bada33ddc9e032f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1
+  startingHealth: 5
   startingDamage: 1
 --- !u!50 &2617274385151889471
 Rigidbody2D:
@@ -155,6 +156,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.07, y: 0.07}
   m_EdgeRadius: 0
+--- !u!114 &501430016814600311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481988184173262912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44875a1fc1d88f54c8013c30f1a3b601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 9.35
+  spawnRadius: 2.13
+  tempEnemySingular: {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
 --- !u!1 &2265975816347370398
 GameObject:
   m_ObjectHideFlags: 0

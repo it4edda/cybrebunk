@@ -14,33 +14,43 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject[] bigBlood;
     [SerializeField] float        movementSpeed;
     Transform                     target;
-    // Start is called before the first frame update
+    bool                          isStunned = false;
     void Start()
     {
         target = FindObjectOfType<PlayerMovement>().transform;
-        //todo find player and move towards him ( basic movement for father script)
-        //todo be able to take damage and die
     }
-
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        
+        //todo contact damage
+        if (other.CompareTag("Player"))
+        {
+            //add a trigger collider 
+            //deal damage
+            //other.GetComponent<PlayerStats>()
+        }
     }
     void FixedUpdate()
     {
+        if (!target) return;
         Movement();
     }
     public void TakeDamage(int damage)
     {
+        //do knockback
         health -= damage;
 
         if (health <= 0)
             Die();
     }
-    void Die()
+    IEnumerator Knockback()
     {
-        Instantiate(smallBlood[Random.Range(0, smallBlood.Length)], transform.position, quaternion.identity );
+        isStunned = true;
+        yield return new WaitForSeconds(1);
+        isStunned = false;
+    }
+    protected virtual void Die()
+    {
+        Instantiate(isBig ? bigBlood[Random.Range(0, bigBlood.Length)] : smallBlood[Random.Range(0, smallBlood.Length)] , transform.position, quaternion.identity );
         Destroy(gameObject);
     }
     protected virtual void Movement()
