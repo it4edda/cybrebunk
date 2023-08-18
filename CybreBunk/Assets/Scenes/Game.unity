@@ -2195,6 +2195,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 451ab41276e280d4db4fbb8e55fd8c99, type: 3}
+      propertyPath: m_SortingOrder
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 451ab41276e280d4db4fbb8e55fd8c99, type: 3}
       propertyPath: m_SortingLayerID
       value: 1097679349
       objectReference: {fileID: 0}
@@ -2514,6 +2518,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3901097629434268975, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7534821546701278299, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: triggerSpeed
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
