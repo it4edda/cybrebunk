@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c97c2a34b3b64134087c6f4cf7bc2663
+guid: 33aa800651d1d4547b4f37124c4032f3
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,7 +119,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: swrod tarot
+  - name: locked tarot
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -130,7 +130,7 @@ ScriptedImporter:
       y: 4
       width: 50
       height: 100
-    spriteID: 2be8794215c835946b88802d8aefc6cf
+    spriteID: b6c7bf65878d5aa4dbaf905a5c974396
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 447950269
-    name: swrod tarot
+    guid: -1390021788
+    name: locked tarot
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: swrod tarot
+    - name: locked tarot
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
         width: 50
         height: 100
-      spriteId: 2be8794215c835946b88802d8aefc6cf
+      spriteId: b6c7bf65878d5aa4dbaf905a5c974396
     linkedCells: []
     parentIndex: -1
   platformSettings: []

@@ -23,18 +23,22 @@ public class PlayerCamera : MonoBehaviour
         float startSpeed  = speed;
         isShaking =  true;
         speed     *= 10;
+
+        Vector3 originalFollowVector = followVector;
+
         while (elapsedTime < duration)
         {
-            float xOffset = /*followVector.x +*/ Random.Range(-0.5f, 0.5f) * magnitude;
-            float yOffset = /*followVector.y +*/ Random.Range(-0.5f, 0.5f) * magnitude;
-            Debug.Log(xOffset);
-            followVector += new Vector3(xOffset,           yOffset,           0);
-            elapsedTime  += Time.deltaTime;
+            float xOffset = Random.Range(-0.5f, 0.5f) * magnitude;
+            float yOffset = Random.Range(-0.5f, 0.5f) * magnitude;
+
+            followVector = originalFollowVector + new Vector3(xOffset, yOffset, 0);
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-        yield return new WaitForSeconds(duration);
+        followVector = originalFollowVector;
         isShaking = false;
-        speed        = startSpeed;
-        yield return null;
+        speed     = startSpeed;
     }
     void OnDrawGizmos()
     {
