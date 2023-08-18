@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tarotCard: {fileID: -2253911629886400664, guid: 91899b40b83d7be468fac546ce6cd5eb, type: 3}
   tarotDescription: Strength
+  swordStart: 0
+  startingHealth: 5
