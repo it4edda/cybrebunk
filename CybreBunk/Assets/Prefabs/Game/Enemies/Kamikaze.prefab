@@ -101,7 +101,7 @@ MonoBehaviour:
   - {fileID: 6119379356871097387, guid: d6913b06535da1b4ca7893b869a29437, type: 3}
   - {fileID: 5755959647317791914, guid: dbc9a7b917e07aa468601f8bffa2d9e2, type: 3}
   bigBlood: []
-  movementSpeed: 1
+  movementSpeed: 23
   explosion: {fileID: 4396125702283910185, guid: 79620939a82b1b24287264f8154b6518, type: 3}
 --- !u!50 &1920717013137705936
 Rigidbody2D:

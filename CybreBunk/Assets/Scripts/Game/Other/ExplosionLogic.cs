@@ -20,12 +20,11 @@ public class ExplosionLogic : MonoBehaviour
                 if (playerStats != null)
                 {
                     playerStats.Health = -damage;
-                    Debug.Log("Hit player");
                 }
             }
             else if (hitCollider.CompareTag("Enemy"))
             {
-                // Deal damage to enemy
+                hitCollider.GetComponent<EnemyBehaviour>().TakeDamage(1);
             }
         }
 

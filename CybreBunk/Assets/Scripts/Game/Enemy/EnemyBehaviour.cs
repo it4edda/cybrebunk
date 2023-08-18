@@ -14,9 +14,11 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject[] bigBlood;
     [SerializeField] float        movementSpeed;
     Transform                     target;
+    Rigidbody2D                   rb;
     bool                          isStunned = false;
     void Start()
     {
+        rb     = GetComponent<Rigidbody2D>();
         target = FindObjectOfType<PlayerMovement>().transform;
     }
     void OnTriggerEnter(Collider other)
@@ -56,6 +58,8 @@ public class EnemyBehaviour : MonoBehaviour
     protected virtual void Movement()
     {
         Vector3 movement = Vector3.Normalize(target.position - transform.position);
-        transform.position += movement * (movementSpeed * Time.deltaTime);
-    }
+        //transform.position += movement * (movementSpeed * Time.deltaTime);
+        // rb.AddForce(movement * movementSpeed);
+        rb.velocity = movement * (movementSpeed * Time.deltaTime);
+    }   
 }

@@ -15,11 +15,7 @@ public class UserInterfaceHealth : MonoBehaviour
     {
         int numElements = instantiatedElements.Count;
 
-        if (numElements == 0)
-        {
-            Debug.LogWarning("No elements to space.");
-            return;
-        }
+        if (numElements == 0) { return; }
 
         float spacingFactor    = maxHealth - 1;
         float spacingIncrement = Mathf.Abs(startPoint.anchoredPosition.x - endPoint.anchoredPosition.x) / spacingFactor;
@@ -34,6 +30,44 @@ public class UserInterfaceHealth : MonoBehaviour
     }
 
     public void ModifyHealth(int changeAmount) //ONLY VISUALS
+    {
+        switch (changeAmount)
+        {
+            // Reducing health
+            case < 0 when instantiatedElements.Count <= 0:
+                return;
+
+            case < 0:
+            {
+                for (int i = 0; i < math.abs(changeAmount); i++)
+                {
+                    if (instantiatedElements.Count <= 0) return;
+                    Destroy(instantiatedElements[^1].gameObject);
+                    instantiatedElements.RemoveAt(instantiatedElements.Count - 1);
+                }
+                UpdateUI();
+                break;
+            }
+
+            // Increasing health
+            case > 0:
+            {
+                if (instantiatedElements.Count + changeAmount <= maxHealth)
+                {
+                    for (var i = 0; i < changeAmount; i++)
+                    {
+                        RectTransform newElement = Instantiate(prefabToInstantiate, transform);
+                        instantiatedElements.Add(newElement);
+                    }
+
+                    UpdateUI();
+                }
+
+                break;
+            }
+        }
+    }
+    /*public void ModifyHealth(int changeAmount) //ONLY VISUALS
     {
         if (changeAmount < 0) // Reducing health
         {
@@ -59,12 +93,8 @@ public class UserInterfaceHealth : MonoBehaviour
 
                 UpdateUI();
             }
-            else
-            {
-                Debug.LogWarning("Cannot exceed maximum health.");
-            }
         }
-    }
+    }*/
     public void SetMaxHealth(int newMaxHealth)
     {
         maxHealth = newMaxHealth;

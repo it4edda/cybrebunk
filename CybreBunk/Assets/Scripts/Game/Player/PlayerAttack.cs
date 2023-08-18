@@ -1,20 +1,30 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [Header("Weight"), SerializeField]
-     float triggerSpeed;
-    [SerializeField] bool hasSword;
-
-    [Header("Graphics"), SerializeField]
-     Transform weaponGraphics;
+    [Header("General")]
+    [SerializeField] bool      hasSword;
+    [SerializeField] Transform weaponGraphics;
+    
+    [Header("Gun")]
+    [SerializeField] float triggerSpeed;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject gunGraphics;
+    
+    [Header("Sword")]
     [SerializeField] Animator slasher;
-    bool                      midSlash;
+    [SerializeField] GameObject swordGraphics;
+    
+    bool                        midAttack;
+
+    Camera cam;
     void Start()
     {
         slasher.gameObject.SetActive(false);
+        cam = Camera.main;
+        gunGraphics.SetActive(!hasSword);
+        swordGraphics.SetActive(hasSword);
     }
     void Update()
     {
@@ -25,33 +35,44 @@ public class PlayerAttack : MonoBehaviour
         {
             if (!hasSword)
             {
-                Shoot();
+                if (!midAttack) StartCoroutine(Shoot());
                 return;
             }
 
-            if (!midSlash) StartCoroutine(Slash());
+            if (!midAttack) StartCoroutine(Slash());
         }
     }
     void Aim()
     {
-        if (midSlash) return;
-        Vector3 dir   = Input.mousePosition - Camera.main.WorldToScreenPoint(weaponGraphics.position);
+        if (midAttack) return;
+        Vector3 dir   = Input.mousePosition - cam.WorldToScreenPoint(weaponGraphics.position);
         float   angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         weaponGraphics.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
-    IEnumerator Slash() //DO BOXCOLLISION TO FIND ENEMY IN RANGE
+    public void SwapWeapon() //ONLY FOR MID RUN DEBUGGING REASONS
     {
-        midSlash = true;
+        hasSword = !hasSword;
+        Start();
+    }
+    IEnumerator Slash()
+    {
+        midAttack = true;
         slasher.gameObject.SetActive(true);
         Vector3 a = weaponGraphics.localScale;
         weaponGraphics.localScale = new Vector3(a.x, a.y * -1, a.z);
         yield return new WaitForSeconds(slasher.GetCurrentAnimatorStateInfo(0).length);
         slasher.gameObject.SetActive(false);
-        midSlash = false;
+        midAttack = false;
     }
-    void Shoot()
+    IEnumerator Shoot()
     {
-        //PANG PANG 
+        midAttack = true;
+        Instantiate(bulletPrefab, transform.position, weaponGraphics.localRotation);
+        yield return new WaitForSeconds(triggerSpeed);
+        midAttack = false;
+        // instantiate bullet 
+        //aim bullet
+        //return
     }
 
     //TODO Rotate weapon at mouse, shoot at mouse, deal damage
