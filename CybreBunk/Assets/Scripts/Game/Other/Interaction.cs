@@ -9,7 +9,7 @@ public class Interaction : MonoBehaviour
     [SerializeField] protected bool canInteract;
     [SerializeField] Animator       interactIcon;
     Transform                       target;
-    void Start()
+    protected virtual void Start()
     {
         target = FindObjectOfType<PlayerMovement>().transform;
     }
@@ -35,7 +35,6 @@ public class Interaction : MonoBehaviour
     protected virtual void InteractionActive()
     {
         canInteract = false;
-        Debug.Log("space");
     }
     void OnDrawGizmosSelected()
     {

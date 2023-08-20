@@ -19,7 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
     bool                          isStunned = false;
     void Start()
     {
-        bloodParent = FindObjectOfType<SatanicC>().transform;
+        bloodParent = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
         rb          = GetComponent<Rigidbody2D>();
         target      = FindObjectOfType<PlayerMovement>().transform;
     }

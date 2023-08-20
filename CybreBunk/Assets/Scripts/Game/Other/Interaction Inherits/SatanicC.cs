@@ -1,11 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SatanicC : Interaction
 {
-    
     [SerializeField] ParticleSystem particles;
+    [SerializeField] ParticleSystem bloodTrail;
+    Transform                       bloodParent;
+    protected override void Start()
+    {
+        base.Start();
+        bloodParent = transform.Find("BloodParent");
+    }
     protected override void InteractionPassive()
     {
         if (particles.isEmitting != canInteract)
@@ -21,9 +29,14 @@ public class SatanicC : Interaction
     }
     void Suction()
     {
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = bloodParent.childCount; i > 0; i--)
         {
-             //transform.GetChild(i).transform.position
+             var a = bloodParent.GetChild(i - 1).gameObject;
+             Instantiate(bloodTrail, a.transform.position , quaternion.identity);
+             Destroy(a);
         }
+        //Debug.Log(bloodParent.childCount);
     }
+    public void ResetSatan() => canInteract = true;
+    
 }
