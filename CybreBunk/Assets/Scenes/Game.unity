@@ -3282,42 +3282,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outWeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
-      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outWeight
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2670520750983143225, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
       propertyPath: m_RootOrder
       value: 10
