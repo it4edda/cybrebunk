@@ -13,13 +13,15 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject[] smallBlood;
     [SerializeField] GameObject[] bigBlood;
     [SerializeField] float        movementSpeed;
+    Transform                    bloodParent;
     Transform                     target;
     Rigidbody2D                   rb;
     bool                          isStunned = false;
     void Start()
     {
-        rb     = GetComponent<Rigidbody2D>();
-        target = FindObjectOfType<PlayerMovement>().transform;
+        bloodParent = FindObjectOfType<SatanicC>().transform;
+        rb          = GetComponent<Rigidbody2D>();
+        target      = FindObjectOfType<PlayerMovement>().transform;
     }
     void OnTriggerEnter(Collider other)
     {
@@ -52,7 +54,8 @@ public class EnemyBehaviour : MonoBehaviour
     }
     protected virtual void Die()
     {
-        Instantiate(isBig ? bigBlood[Random.Range(0, bigBlood.Length)] : smallBlood[Random.Range(0, smallBlood.Length)] , transform.position, quaternion.identity );
+        var a = Instantiate(isBig ? bigBlood[Random.Range(0, bigBlood.Length)] : smallBlood[Random.Range(0, smallBlood.Length)] , transform.position, quaternion.identity );
+        a.transform.parent = bloodParent;
         Destroy(gameObject);
     }
     protected virtual void Movement()
