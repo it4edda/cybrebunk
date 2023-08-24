@@ -21,10 +21,24 @@ public class PlayerAttack : MonoBehaviour
     Camera cam;
     void Start()
     {
+        InheritTarotData();
+        
+                
         slasher.gameObject.SetActive(false);
-        cam = Camera.main;
         gunGraphics.SetActive(!hasSword);
         swordGraphics.SetActive(hasSword);
+        
+        cam = Camera.main;
+        
+    }
+    void InheritTarotData()
+    {
+        hasSword = PlayerManager.selectedCard.swordStart;
+
+    }
+    void StartupGraphics()
+    {
+        
     }
     void Update()
     {

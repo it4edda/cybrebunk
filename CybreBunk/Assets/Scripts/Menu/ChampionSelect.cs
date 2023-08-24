@@ -20,7 +20,7 @@ public class ChampionSelect : MonoBehaviour
         for (var i = 0; i < selectedTarots.Length; i++)
         {
             int index = (selected + i) % tarots.Length;
-            selectedTarots[i] = Instantiate((tarots[index] as TarotData)?.tarotCard);
+            selectedTarots[i] = Instantiate((tarots[index] as TarotData)?.CurrentCard);
         }
 
         UpdateTarotDescriptionText();
@@ -44,7 +44,7 @@ public class ChampionSelect : MonoBehaviour
             selectedTarots[i] = selectedTarots[i - 1];
         }
         selected          = (selected - 1 + tarots.Length) % tarots.Length;                                                      //decrement the selected index
-        selectedTarots[0] = Instantiate((tarots[selected] as TarotData)?.tarotCard, positions[0].position, quaternion.identity); //spawn first
+        selectedTarots[0] = Instantiate((tarots[selected] as TarotData)?.CurrentCard, positions[0].position, quaternion.identity); //spawn first
         
         UpdateTarotDescriptionText();
     }
@@ -57,13 +57,13 @@ public class ChampionSelect : MonoBehaviour
             selectedTarots[i] = selectedTarots[i + 1];
         }
         selected           = (selected + 1) % tarots.Length;                                                                       //increment the selected index
-        selectedTarots[^1] = Instantiate((tarots[selected] as TarotData)?.tarotCard, positions[^1].position, quaternion.identity); // Spawn last
+        selectedTarots[^1] = Instantiate((tarots[selected] as TarotData)?.CurrentCard, positions[^1].position, quaternion.identity); // Spawn last
         
         UpdateTarotDescriptionText();
     }
     void UpdateTarotDescriptionText()
     {
-        string tarotDescription = (tarots[selected] as TarotData)?.tarotDescription;
+        string tarotDescription = (tarots[selected] as TarotData)?.CurrentDescription;
         descriptionText.text = tarotDescription;
     }
     public void LoadGame() => SceneManager.LoadScene("Game");

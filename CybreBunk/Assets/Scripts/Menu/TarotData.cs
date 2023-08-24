@@ -1,14 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class TarotData : ScriptableObject
 {
+    [Header("General")]
+    [SerializeField] public bool isPlayable;
+    
+    
     [Header("Menu")]
-    [SerializeField] public GameObject tarotCard = default;
-    [SerializeField] public string tarotDescription;
-
+    [SerializeField]        GameObject tarotCard = default;
+    [SerializeField]        GameObject lockedCard;
+    [SerializeField]        string     tarotDescription;
+    public                  GameObject CurrentCard        => isPlayable ? tarotCard : lockedCard;
+    public                  string     CurrentDescription => isPlayable ? tarotDescription : "Locked";
+    
+    
     [Header("Game")]
-    [SerializeField] bool swordStart;
+    [SerializeField] public bool swordStart;
     [SerializeField] int startingHealth;
 }
