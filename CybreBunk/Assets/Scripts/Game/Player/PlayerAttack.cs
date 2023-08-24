@@ -21,24 +21,19 @@ public class PlayerAttack : MonoBehaviour
     Camera cam;
     void Start()
     {
-        InheritTarotData();
-        
-                
-        slasher.gameObject.SetActive(false);
-        gunGraphics.SetActive(!hasSword);
-        swordGraphics.SetActive(hasSword);
-        
         cam = Camera.main;
-        
+        InheritTarotData();
+        StartupGraphics();
     }
     void InheritTarotData()
     {
         hasSword = PlayerManager.selectedCard.swordStart;
-
     }
     void StartupGraphics()
     {
-        
+        slasher.gameObject.SetActive(false);
+        gunGraphics.SetActive(!hasSword);
+        swordGraphics.SetActive(hasSword);
     }
     void Update()
     {
@@ -84,10 +79,5 @@ public class PlayerAttack : MonoBehaviour
         Instantiate(bulletPrefab, transform.position, weaponGraphics.localRotation);
         yield return new WaitForSeconds(triggerSpeed);
         midAttack = false;
-        // instantiate bullet 
-        //aim bullet
-        //return
     }
-
-    //TODO Rotate weapon at mouse, shoot at mouse, deal damage
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class PlayerStats : MonoBehaviour
         uiHealth = FindObjectOfType<UserInterfaceHealth>();
         uiHealth.SetMaxHealth(startingHealth);
     }
+    
     int UpdateHealth(int value)
     {
         uiHealth.ModifyHealth(value);
@@ -42,6 +44,10 @@ public class PlayerStats : MonoBehaviour
     {
         //do dying stuff here
         Debug.Log("i have successfully died");
+        if (PlayerManager.selectedCard.debugTool) return health;
+        //SceneManager.LoadScene("Deity");
+        
+        //add animation
         return health;
     }
 

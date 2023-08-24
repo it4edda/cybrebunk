@@ -7,6 +7,7 @@ public class TarotData : ScriptableObject
 {
     [Header("General")]
     [SerializeField] public bool isPlayable;
+    [SerializeField] public bool debugTool = false;
     
     
     [Header("Menu")]
@@ -19,5 +20,6 @@ public class TarotData : ScriptableObject
     
     [Header("Game")]
     [SerializeField] public bool swordStart;
+    [SerializeField] public float msStart;
     [SerializeField] int startingHealth;
 }
