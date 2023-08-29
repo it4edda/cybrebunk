@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029f19b39c695c146badede51c348d39, type: 3}
   m_Name: Vinushka
   m_EditorClassIdentifier: 
-  isPlayable: 0
+  isPlayable: 1
+  debugTool: 0
   tarotCard: {fileID: -2253911629886400664, guid: 79c63a60342831e4ba53e61fa99158c3, type: 3}
   lockedCard: {fileID: -2253911629886400664, guid: 33aa800651d1d4547b4f37124c4032f3, type: 3}
   tarotDescription: Blade
   swordStart: 1
+  msStart: 0
   startingHealth: 5

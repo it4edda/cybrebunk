@@ -25,10 +25,7 @@ public class PlayerAttack : MonoBehaviour
         InheritTarotData();
         StartupGraphics();
     }
-    void InheritTarotData()
-    {
-        hasSword = PlayerManager.selectedCard.swordStart;
-    }
+    void InheritTarotData() { hasSword = PlayerManager.selectedCard != null && PlayerManager.selectedCard.swordStart; }
     void StartupGraphics()
     {
         slasher.gameObject.SetActive(false);

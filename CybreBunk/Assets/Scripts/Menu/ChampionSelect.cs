@@ -8,6 +8,7 @@ public class ChampionSelect : MonoBehaviour
 {
     [SerializeField] Transform[]        positions;
     [SerializeField] TMP_Text           descriptionText;
+    //[SerializeField] TarotData  //Why didnt i just do this?
     [SerializeField] ScriptableObject[] tarots;
     [SerializeField] GameObject[]       selectedTarots;
     [SerializeField] List<string>       leftInputKeys;
@@ -66,5 +67,12 @@ public class ChampionSelect : MonoBehaviour
         string tarotDescription = (tarots[selected] as TarotData)?.CurrentDescription;
         descriptionText.text = tarotDescription;
     }
-    public void LoadGame() => SceneManager.LoadScene("Game");
+    public void LoadGame()
+    {
+        var savedTarot = tarots[selected] as TarotData;
+        if (!savedTarot.isPlayable) return;
+        PlayerManager.selectedCard = savedTarot;
+        SceneManager.LoadScene("Game");
+    } 
+    
 }

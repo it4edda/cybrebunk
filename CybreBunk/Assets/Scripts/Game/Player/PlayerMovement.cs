@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform graphicalChild;
     float                      horizontalInput;
     float                      verticalInput;
+    
+    //START GET TAROT DATA MS 
     void Update()
     {
         horizontalInput           = Input.GetAxis("Horizontal");

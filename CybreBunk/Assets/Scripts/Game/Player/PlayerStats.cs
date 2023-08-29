@@ -30,6 +30,7 @@ public class PlayerStats : MonoBehaviour
     }
     void Start()
     {
+        Debug.Log(PlayerManager.selectedCard);
         uiHealth = FindObjectOfType<UserInterfaceHealth>();
         uiHealth.SetMaxHealth(startingHealth);
     }
