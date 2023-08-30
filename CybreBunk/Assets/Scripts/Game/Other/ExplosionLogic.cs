@@ -10,12 +10,16 @@ public class ExplosionLogic : MonoBehaviour
     void Start() => StartCoroutine(Deed());
     IEnumerator Deed()
     {
+        //TODO Something is fucking up with this, stand still in melee and it works well, otherwise its sheit
+        bool         playerHit = false;
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, range);
 
         foreach (Collider2D hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Player"))
+            if (hitCollider.CompareTag("Player") && !playerHit)
             {
+                //TODO Debug.Log("haha times hit player");
+                playerHit = true;
                 var playerStats = hitCollider.GetComponent<PlayerStats>();
                 if (playerStats != null)
                 {
@@ -24,7 +28,7 @@ public class ExplosionLogic : MonoBehaviour
             }
             else if (hitCollider.CompareTag("Enemy"))
             {
-                hitCollider.GetComponent<EnemyBehaviour>().TakeDamage(1);
+                hitCollider.GetComponent<EnemyBehaviour>()?.TakeDamage(1, transform.position);
             }
         }
 

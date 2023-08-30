@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bullet Variant (Enemy)
       objectReference: {fileID: 0}
+    - target: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740550763813138569, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7465352679791726193, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       propertyPath: m_RootOrder
       value: 0

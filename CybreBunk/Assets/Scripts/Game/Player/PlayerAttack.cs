@@ -16,7 +16,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Animator slasher;
     [SerializeField] GameObject swordGraphics;
     
-    bool                        midAttack;
+    bool midAttack;
+
+    public bool CanAttack { get; set; } = true;
 
     Camera cam;
     void Start()
@@ -36,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
     {
         Aim();
 
+        if (!CanAttack) return;
         // ReSharper disable once InvertIf
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -58,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
     public void SwapWeapon() //ONLY FOR MID RUN DEBUGGING REASONS
     {
         hasSword = !hasSword;
-        Start();
+        StartupGraphics();
     }
     IEnumerator Slash()
     {

@@ -13,7 +13,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject[] smallBlood;
     [SerializeField] GameObject[] bigBlood;
     [SerializeField] float        movementSpeed;
-    Transform                    bloodParent;
+    [SerializeField] float        knockbackStrength = 5f;
+    Transform                     bloodParent;
     Transform                     target;
     Rigidbody2D                   rb;
     bool                          isStunned = false;
@@ -35,20 +36,23 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!target) return;
+        if (!target || isStunned) return;
         Movement();
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector2 dir)
     {
         //do knockback
+        StartCoroutine(Knockback(dir));
         health -= damage;
 
         if (health <= 0)
             Die();
     }
-    IEnumerator Knockback()
+    IEnumerator Knockback(Vector2 dir)
     {
         isStunned = true;
+        Vector2 direction =  (Vector2)transform.position - dir;
+        rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
         isStunned = false;
     }

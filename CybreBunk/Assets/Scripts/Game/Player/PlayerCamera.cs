@@ -16,7 +16,7 @@ public class PlayerCamera : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, followVector, speed * Time.deltaTime);
         //add mouse position thing for better vision
     }
-    public void CameraShake(float duration) => StartCoroutine(Cam(duration, 1));
+    public void CameraShake(float duration) => StartCoroutine(Cam(duration, 0.3f));
     public void CameraShake(float duration, float magnitude) => StartCoroutine(Cam(duration, magnitude)); IEnumerator Cam(float duration, float magnitude)
     {
         float elapsedTime = 0f;

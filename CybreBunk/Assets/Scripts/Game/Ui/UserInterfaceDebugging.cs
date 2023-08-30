@@ -10,6 +10,6 @@ public class UserInterfaceDebugging : MonoBehaviour
     {
         Debug.Log(PlayerManager.selectedCard);
         foreach (GameObject t in debuggingElements) 
-        { t.SetActive(PlayerManager.selectedCard && PlayerManager.selectedCard.debugTool); }
+        { t.SetActive(PlayerManager.selectedCard == null || PlayerManager.selectedCard.debugTool); }
     }
 }

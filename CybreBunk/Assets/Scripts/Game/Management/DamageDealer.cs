@@ -16,7 +16,7 @@ public class DamageDealer : MonoBehaviour
         switch (isAllied)
         {
             case true when other.CompareTag("Enemy"):
-                other.GetComponent<EnemyBehaviour>().TakeDamage(damage);
+                other.GetComponent<EnemyBehaviour>().TakeDamage(damage, transform.position);
                 if (oneHitLife) Destroy(gameObject);
                 break;
 

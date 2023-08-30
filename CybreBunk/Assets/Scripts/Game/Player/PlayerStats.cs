@@ -1,17 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
     //attack speed, movement speed, 
-    [SerializeField] int startingHealth;
-    [SerializeField] int startingDamage;
-    int                  health;
-    int                  damage;
-    UserInterfaceHealth  uiHealth;
+    [SerializeField] int            startingHealth;
+    [SerializeField] int            startingDamage;
+    [SerializeField] ParticleSystem damageParticles;
+    bool                            isDead = false;
+    int                             health;
+    int                             damage;
+    UserInterfaceHealth             uiHealth;
+    PlayerMovement                  movement;
+    PlayerAttack                    attack;
+    PlayerCamera                    cam;
     public int Health
     {
         get => health;
@@ -30,26 +36,34 @@ public class PlayerStats : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(PlayerManager.selectedCard);
+        cam      = FindObjectOfType<PlayerCamera>();
+        movement = GetComponent<PlayerMovement>();
+        attack   = GetComponent<PlayerAttack>();
         uiHealth = FindObjectOfType<UserInterfaceHealth>();
         uiHealth.SetMaxHealth(startingHealth);
     }
     
     int UpdateHealth(int value)
     {
+        if (isDead) return health;
+        damageParticles.Play();
+        cam.CameraShake(0.3f);
         uiHealth.ModifyHealth(value);
         if (health + value <= 0) Death();
         return health += value;
     }
-    int Death()
+    void Death()
     {
-        //do dying stuff here
+        isDead = true;
         Debug.Log("i have successfully died");
-        if (PlayerManager.selectedCard.debugTool) return health;
-        //SceneManager.LoadScene("Deity");
+        // if (PlayerManager.selectedCard.debugTool) return health;
         
-        //add animation
-        return health;
+        
+        movement.CanMove     = false;
+        attack.CanAttack     = false;
+        //damageParticles.Play(); find way to loop
+        
+        //add animation and wait for it
+        //SceneManager.LoadScene("Deity");
     }
-
 }
