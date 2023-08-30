@@ -2,19 +2,16 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float     vms = 5f;
-    [SerializeField] float     hms = 5f;
+    [SerializeField] Vector2   moveSpeed;
     [SerializeField] Transform graphicalChild;
-    float                      horizontalInput;
-    float                      verticalInput;
+    Vector2                    moveInput;
     
     //START GET TAROT DATA MS 
     void Update()
     {
-        horizontalInput           = Input.GetAxis("Horizontal");
-        verticalInput             = Input.GetAxis("Vertical");
+        moveInput       = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        if (horizontalInput != 0) graphicalChild.localScale = (horizontalInput < 0 ? Vector3.left : Vector3.right) + Vector3.up;
+        if (moveInput.x != 0) graphicalChild.localScale = (moveInput.x < 0 ? Vector3.left : Vector3.right) + Vector3.up;
     }
-    void FixedUpdate() { transform.position += new Vector3(horizontalInput * hms * Time.deltaTime, verticalInput * vms * Time.deltaTime); }
+    void FixedUpdate() { transform.position += new Vector3(moveInput.x * moveSpeed.x * Time.deltaTime, moveInput.y * moveSpeed.y * Time.deltaTime); }
 }
