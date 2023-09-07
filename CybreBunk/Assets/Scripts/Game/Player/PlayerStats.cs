@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] int            startingHealth;
     [SerializeField] int            startingDamage;
     [SerializeField] ParticleSystem damageParticles;
+    //[SerializeField] ItemInven      itemInven;
     bool                            isDead = false;
     int                             health;
     int                             damage;
@@ -67,3 +68,14 @@ public class PlayerStats : MonoBehaviour
         //SceneManager.LoadScene("Deity");
     }
 }
+/// <summary>
+/// Basically the inventory of the player. All the items the player picks up gets placed in this struct.
+/// </summary>
+// [Serializable]
+// public struct ItemInven //delve more into this
+// {
+//     public AttackItemData[]       attackItemData;
+//     public MovementItemData[]     movementItemData;
+//     public SpecialItemData[]      specialItemData;
+//     public AmalgamationItemData[] amalgamationItemData;
+// }

@@ -16,10 +16,9 @@ public class TarotData : ScriptableObject
     [SerializeField]        string     tarotDescription;
     public                  GameObject CurrentCard        => isPlayable ? tarotCard : lockedCard;
     public                  string     CurrentDescription => isPlayable ? tarotDescription : "Locked";
-    
-    
-    [Header("Game")]
-    [SerializeField] public bool swordStart;
+
+    [Header("Game"), SerializeField]
+     public bool swordStart;
     [SerializeField] public float msStart;
-    [SerializeField] int startingHealth;
+    [SerializeField]        int   startingHealth;
 }

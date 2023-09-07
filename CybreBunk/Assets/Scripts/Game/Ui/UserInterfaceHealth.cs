@@ -97,8 +97,9 @@ public class UserInterfaceHealth : MonoBehaviour
     }*/
     public void SetMaxHealth(int newMaxHealth)
     {
+        //int i = newMaxHealth - maxHealth;
         maxHealth = newMaxHealth;
-        ModifyHealth(maxHealth);
+        ModifyHealth(maxHealth);          //i);
 
         UpdateUI();
     }
