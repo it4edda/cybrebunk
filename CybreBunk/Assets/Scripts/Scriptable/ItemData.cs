@@ -32,7 +32,7 @@ public class ItemData : ScriptableObject
 
     void OnDisable()
     {
-        DamageDealer.OnHitEvent += SetEffect;
+        DamageDealer.OnHitEvent -= SetEffect;
     }
 #endregion
     
