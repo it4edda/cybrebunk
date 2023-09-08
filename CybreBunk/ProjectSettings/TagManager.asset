@@ -51,3 +51,6 @@ TagManager:
   - name: Weapons
     uniqueID: 809678369
     locked: 0
+  - name: WorldSpaceUi
+    uniqueID: 3597051471
+    locked: 0

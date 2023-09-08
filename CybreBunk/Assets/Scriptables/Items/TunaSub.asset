@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9787c0c273222d64fa12c0af750580a6, type: 3}
   m_Name: TunaSub
   m_EditorClassIdentifier: 
-  itemName: 
-  itemDescription: 
+  itemName: Tuna Sub
+  itemDescription: Read it backwads
   itemIcon: {fileID: 0}
-  movementSpeedIncrease: 0
-  attackSpeedIncrease: 0
-  damageIncrease: 0
+  movementExclusive:
+    movementSpeedIncrease: 0
+  attackExclusive:
+    attackSpeedIncrease: 0
+    damageIncrease: 0

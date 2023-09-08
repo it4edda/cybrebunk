@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemLogic : MonoBehaviour
+public class ItemLogic : Interaction
 {
+    [Header("Item Exclusive")]
     [SerializeField] ItemData itemData;
-    void OnTriggerEnter2D(Collider2D other)
+
+    protected override void InteractionActive()
     {
-        itemData.SetEffect();
+        itemData.SetEffect(gameObject);
+        base.InteractionActive();
         Destroy(gameObject);
+        
     }
     //needs a popup on screen
     //ex: "YOU FOUND PILLS"

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9787c0c273222d64fa12c0af750580a6, type: 3}
-  m_Name: FlatShoe
+  m_Name: HearingAids
   m_EditorClassIdentifier: 
-  itemName: Flat Shoe
-  itemDescription: Jonte.
+  itemName: Hearing Aids
+  itemDescription: Does nothing (go debt)
   itemIcon: {fileID: 0}
   movementExclusive:
     movementSpeedIncrease: 0
