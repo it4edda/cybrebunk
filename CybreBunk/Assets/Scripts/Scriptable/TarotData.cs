@@ -11,12 +11,16 @@ public class TarotData : ScriptableObject
     
     
     [Header("Menu")]
-    [SerializeField] public GameObject tarotCard = default;
-    [SerializeField]        GameObject lockedCard;
+    //[SerializeField] public GameObject tarotCard = default;
+    //[SerializeField]        GameObject lockedCard;
     [SerializeField]        string     tarotDescription;
-    public                  GameObject CurrentCard        => isPlayable ? tarotCard : lockedCard;
-    public                  string     CurrentDescription => isPlayable ? tarotDescription : "Locked";
+    public string     CurrentDescription => isPlayable ? tarotDescription : "Locked";
 
+    [Header("Menu Sprites")]
+    [SerializeField] Sprite unlockedCard;
+    [SerializeField] Sprite     lockedCard;
+    public           Sprite CurrentCard => isPlayable ? unlockedCard : lockedCard;
+     
     [Header("Game"), SerializeField]
      public bool swordStart;
     [SerializeField] public float msStart;

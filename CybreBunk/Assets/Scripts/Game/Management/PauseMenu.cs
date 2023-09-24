@@ -1,22 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] Canvas     canvas;
     [SerializeField] GameObject currentTarot;
-    Sprite                      currentChamp;
-    float                       timeScaleAtStart = 1;
+    float      timeScaleAtStart = 1;
     void Start()
     {
         DiosBestFriend(false);
-        currentChamp.GetComponent<Image>().sprite = PlayerManager.selectedCard?.tarotCard.GetComponentInChildren<Sprite>();
-        
-        //timeScaleAtStart = Time.timeScale;
+
+        currentTarot.GetComponent<Image>().sprite = PlayerManager.selectedCard.CurrentCard;
     }
     public void DiosBestFriend(bool freeze)
     {
@@ -30,5 +27,9 @@ public class PauseMenu : MonoBehaviour
         set => IsPaused = value;
     }
 
-    public void LoadMenu() => SceneManager.LoadScene("Deity");
+    public void LoadMenu()
+    {
+        Time.timeScale = timeScaleAtStart;
+        SceneManager.LoadScene("Deity");
+    }
 }
