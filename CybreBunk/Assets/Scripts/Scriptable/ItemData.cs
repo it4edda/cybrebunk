@@ -11,31 +11,12 @@ public class ItemData : ScriptableObject
     public string itemDescription;
     public Sprite itemIcon;
 
-    [SerializeField] MovementExclusive movementExclusive;
-    [SerializeField] AttackExclusive attackExclusive;
+    public MovementExclusive movementExclusive;
+    public AttackExclusive attackExclusive;
     
     PlayerStats stats;
 #endregion
-     
-#region Functions
-    void Awake() => stats = FindObjectOfType<PlayerStats>();
-    public void SetEffect(GameObject a)
-    {
-        //stats.movement += movementSpeedIncrease;
-        
-        stats.Damage += attackExclusive.damageIncrease;
-        //attack speed
-        
-        //subscribe to unity event
-        Debug.Log("Did Card Effect");
-    }
 
-    void OnDisable()
-    {
-        DamageDealer.OnHitEvent -= SetEffect;
-    }
-#endregion
-    
 #region Structs 
     //could be placed outside of class if needed
     [Serializable]

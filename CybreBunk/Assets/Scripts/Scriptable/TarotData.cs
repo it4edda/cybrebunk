@@ -11,7 +11,7 @@ public class TarotData : ScriptableObject
     
     
     [Header("Menu")]
-    [SerializeField]        GameObject tarotCard = default;
+    [SerializeField] public GameObject tarotCard = default;
     [SerializeField]        GameObject lockedCard;
     [SerializeField]        string     tarotDescription;
     public                  GameObject CurrentCard        => isPlayable ? tarotCard : lockedCard;
