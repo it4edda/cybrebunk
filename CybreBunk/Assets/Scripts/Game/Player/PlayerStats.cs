@@ -12,13 +12,14 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] int            startingDamage;
     [SerializeField] ParticleSystem damageParticles;
     //[SerializeField] ItemInven      itemInven;
-    bool                            isDead = false;
-    int                             health;
-    int                             damage;
-    UserInterfaceHealth             uiHealth;
-    PlayerMovement                  movement;
-    PlayerAttack                    attack;
-    PlayerCamera                    cam;
+    bool                isDead = false;
+    bool                canDie = true;
+    int                 health;
+    int                 damage;
+    UserInterfaceHealth uiHealth;
+    PlayerMovement      movement;
+    PlayerAttack        attack;
+    PlayerCamera        cam;
     public int Health
     {
         get => health;
@@ -55,6 +56,7 @@ public class PlayerStats : MonoBehaviour
     }
     void Death()
     {
+        if (!canDie) return;
         isDead = true;
         Debug.Log("i have successfully died");
         // if (PlayerManager.selectedCard.debugTool) return health;
@@ -66,6 +68,11 @@ public class PlayerStats : MonoBehaviour
         
         //add animation and wait for it
         //SceneManager.LoadScene("Deity");
+    }
+    public void GodMode()
+    {
+        canDie = !canDie; 
+        Debug.Log("GOD MODE =" + !canDie);
     }
 }
 /// <summary>

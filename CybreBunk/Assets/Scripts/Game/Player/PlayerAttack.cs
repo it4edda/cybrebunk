@@ -16,11 +16,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Animator slasher;
     [SerializeField] GameObject swordGraphics;
     
-    bool midAttack;
-
-    public bool CanAttack { get; set; } = true;
-
-    Camera cam;
+    bool        midAttack = false;
+    Camera      cam;
+    bool        canAttack = true;
+    
+    public bool CanAttack { get => canAttack; set => canAttack = value; }
     void Start()
     {
         cam = Camera.main;
@@ -34,22 +34,15 @@ public class PlayerAttack : MonoBehaviour
         gunGraphics.SetActive(!hasSword);
         swordGraphics.SetActive(hasSword);
     }
-    void Update()
+    void LateUpdate()
     {
         Aim();
-
+    }
+    public void Attack()
+    {
         if (!CanAttack) return;
-        // ReSharper disable once InvertIf
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            if (!hasSword)
-            {
-                if (!midAttack) StartCoroutine(Shoot());
-                return;
-            }
-
-            if (!midAttack) StartCoroutine(Slash());
-        }
+        if (midAttack) return;
+        StartCoroutine(!hasSword ? Shoot() : Slash());
     }
     void Aim()
     {
