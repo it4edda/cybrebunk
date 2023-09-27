@@ -1,41 +1,54 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemySpawning : MonoBehaviour
 {
-    [SerializeField] float      timer;
-    [SerializeField] float      spawnRadius;
-    [SerializeField] GameObject tempEnemySingular;
-
+    [SerializeField] EnemyWave[] waves;
+    [SerializeField] float       timer;
+    [SerializeField] float       spawnRadius;
+    int                          waveNumber = 0;
+    int                          enemiesAlive;
+    bool                         firstWaveSpawned = false;
     void Start()
     {
         StartCoroutine(Spawn());
     }
-
+    void Update()
+    {
+        if (enemiesAlive <= 0 && firstWaveSpawned) StartCoroutine(Spawn());
+    }
     IEnumerator Spawn()
     {
-        yield return new WaitForSeconds(timer);
-
-        // Calculate a random angle in radians
+        if (waveNumber >= waves.Length) yield break;
         float randomAngle = Random.Range(0f, 2f * Mathf.PI);
 
-        // Calculate random position outside the spawn radius
-        Vector3 spawnPosition = transform.position + new Vector3(
-                                                                 Mathf.Cos(randomAngle) * spawnRadius,
-                                                                 Mathf.Sin(randomAngle) * spawnRadius,
-                                                                 0f
-                                                                );
-
-        // Spawn enemy at the calculated position
-        Instantiate(tempEnemySingular, spawnPosition, Quaternion.identity);
-
-        StartCoroutine(Spawn());
+        Vector3 spawnPosition = transform.position + new Vector3(Mathf.Cos(randomAngle) * spawnRadius, 
+                                                                 Mathf.Sin(randomAngle) * spawnRadius, 0f);
+        
+        foreach (var i in waves[waveNumber].Contestants)
+        {
+            Instantiate(i, spawnPosition + new Vector3(RandomValue(),RandomValue(),RandomValue()), quaternion.identity);
+        }
+        enemiesAlive += waves[waveNumber].Contestants.Length;
+        waveNumber++;
+        yield return new WaitForSeconds(timer);
+        firstWaveSpawned = true;
+        //if all enemies are dead => return;
+        if (enemiesAlive > 0) StartCoroutine(Spawn());
     }
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(transform.position, spawnRadius);
     }
+    
+    //add motherwaves, spawn in waves of enemies in waves, (first 5, then 6, then 10)
+    //add waves, if wave is killed => spawn new wave. If player takes too long, spawn in next wave.
+    public void DecreaseEnemyAliveNumber() => enemiesAlive--;
+    float  RandomValue()              => Random.Range(-3, 3) * 0.05f;
+    [Serializable] struct EnemyWave { public GameObject[] Contestants; }
 }
+

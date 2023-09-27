@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    Vector2                    moveInput;
     PauseMenu                  pauseMenu;
     PlayerAttack               playerAttack;
     void Start()
@@ -19,6 +18,7 @@ public class PlayerInput : MonoBehaviour
         
         if (pauseMenu.IsPaused) return;
         if (Input.GetKey(KeyCode.Mouse0)) playerAttack.Attack();
+        //movement input is checked in "PlayerMovement"
         //interact action is checked in "Interaction"'s active function
     }
 }

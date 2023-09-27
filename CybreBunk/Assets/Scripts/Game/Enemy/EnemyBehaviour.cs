@@ -18,11 +18,13 @@ public class EnemyBehaviour : MonoBehaviour
     Transform                     target;
     Rigidbody2D                   rb;
     bool                          isStunned = false;
+    EnemySpawning                 enemySpawning;
     void Start()
     {
-        bloodParent = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
-        rb          = GetComponent<Rigidbody2D>();
-        target      = FindObjectOfType<PlayerMovement>().transform;
+        enemySpawning = FindObjectOfType<EnemySpawning>();
+        bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
+        rb            = GetComponent<Rigidbody2D>();
+        target        = FindObjectOfType<PlayerMovement>().transform;
     }
     void OnTriggerEnter(Collider other)
     {
@@ -60,6 +62,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         var a = Instantiate(isBig ? bigBlood[Random.Range(0, bigBlood.Length)] : smallBlood[Random.Range(0, smallBlood.Length)] , transform.position, quaternion.identity );
         a.transform.parent = bloodParent;
+        enemySpawning.DecreaseEnemyAliveNumber();
         Destroy(gameObject);
     }
     protected virtual void Movement()
