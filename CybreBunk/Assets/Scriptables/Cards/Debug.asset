@@ -15,7 +15,7 @@ MonoBehaviour:
   isPlayable: 1
   debugTool: 1
   tarotDescription: Debug
-  unlockedCard: {fileID: -1823736457046092771, guid: fcbddab8595a93d409e93adadca95ad6, type: 3}
+  unlockedCard: {fileID: 21300000, guid: f84cae6d59a778e44b3c4e0b27bf5a90, type: 3}
   lockedCard: {fileID: 21300000, guid: 7df8e09a76e33e04883bfbf36f8a9c31, type: 3}
   swordStart: 0
   msStart: 0
