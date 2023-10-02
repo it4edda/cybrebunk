@@ -16,12 +16,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        
-        if (moveInput.x != 0) graphicalChild.localScale = (moveInput.x < 0 ? Vector3.left : Vector3.right) + Vector3.up;
-    }
-    void FixedUpdate()
-    {
         if (!canMove) return;
         transform.position += new Vector3(moveInput.x * moveSpeed.x * Time.deltaTime, moveInput.y * moveSpeed.y * Time.deltaTime);
+        if (moveInput.x != 0) graphicalChild.localScale = (moveInput.x < 0 ? Vector3.left : Vector3.right) + Vector3.up;
     }
 }

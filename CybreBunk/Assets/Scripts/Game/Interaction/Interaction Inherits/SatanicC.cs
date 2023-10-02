@@ -8,6 +8,7 @@ public class SatanicC : Interaction
 {
     [SerializeField] ParticleSystem particles;
     [SerializeField] ParticleSystem bloodTrail;
+    [SerializeField] Animator       bloodGround;
     Transform                       bloodParent;
     protected override void Start()
     {
@@ -25,6 +26,7 @@ public class SatanicC : Interaction
     protected override void InteractionActive()
     {
         Suction();
+        bloodGround.gameObject.SetActive(true);
         base.InteractionActive();
     }
     void Suction()

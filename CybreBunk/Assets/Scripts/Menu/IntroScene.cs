@@ -6,7 +6,8 @@ public class IntroScene : MonoBehaviour
 {
     [SerializeField] string   sceneToLoad;
     [SerializeField] Animator animator;
-    bool                      canContinue = false;
+    [SerializeField] bool     doAnimatorStuff = true;
+    bool                      canContinue     = false;
     void                      Start() { StartCoroutine(Wait()); }
     void Update()
     {
@@ -19,8 +20,9 @@ public class IntroScene : MonoBehaviour
     }
     IEnumerator Transition()
     {
+        if (doAnimatorStuff)
         animator.gameObject.SetActive(true);
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(animator ? animator.GetCurrentAnimatorStateInfo(0).length : 1);
         SceneManager.LoadScene(sceneToLoad);
     }
 }

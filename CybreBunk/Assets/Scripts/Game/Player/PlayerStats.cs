@@ -8,10 +8,15 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
     //attack speed, movement speed, 
+    [Header("Values")]
     [SerializeField] int            startingHealth;
     [SerializeField] int            startingDamage;
+    
+    [Header("Particles")]
     [SerializeField] ParticleSystem damageParticles;
+    [SerializeField] ParticleSystem deathParticles;
     //[SerializeField] ItemInven      itemInven;
+    
     bool                isDead = false;
     bool                canDie = true;
     int                 health;
@@ -44,7 +49,6 @@ public class PlayerStats : MonoBehaviour
         uiHealth = FindObjectOfType<UserInterfaceHealth>();
         uiHealth.SetMaxHealth(startingHealth);
     }
-    
     int UpdateHealth(int value)
     {
         if (isDead) return health;
@@ -56,25 +60,27 @@ public class PlayerStats : MonoBehaviour
     }
     void Death()
     {
-        if (!canDie) return;
-        isDead = true;
-        Debug.Log("i have successfully died");
-        // if (PlayerManager.selectedCard.debugTool) return health;
-        
-        
-        movement.CanMove     = false;
-        attack.CanAttack     = false;
-        //damageParticles.Play(); find way to loop
-        
-        //add animation and wait for it
-        //SceneManager.LoadScene("Deity");
+        if (canDie) StartCoroutine(DeathAction());
+        Debug.Log("death triggered");
     }
-    public void GodMode()
+    IEnumerator DeathAction()
+    {
+        isDead           = true;
+        movement.CanMove = false;
+        attack.CanAttack = false;
+        deathParticles.Play();
+        yield return new WaitForSeconds(deathParticles.main.duration + 0.5f);
+        SceneManager.LoadScene("Death");
+    }
+    public void GodMode() //use for debugging (most of the time)
     {
         canDie = !canDie; 
         Debug.Log("GOD MODE =" + !canDie);
     }
 }
+
+
+
 /// <summary>
 /// Basically the inventory of the player. All the items the player picks up gets placed in this struct.
 /// </summary>
