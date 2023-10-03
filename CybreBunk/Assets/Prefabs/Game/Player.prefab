@@ -9,11 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3901097629434268975}
-<<<<<<< Updated upstream
   - component: {fileID: 6534916195127062065}
-=======
-  - component: {fileID: 2780596536982239344}
->>>>>>> Stashed changes
   - component: {fileID: 3939007054386239391}
   - component: {fileID: 7534821546701278299}
   - component: {fileID: 8740983386382612959}
@@ -45,11 +41,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
 --- !u!114 &6534916195127062065
-=======
---- !u!114 &2780596536982239344
->>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
