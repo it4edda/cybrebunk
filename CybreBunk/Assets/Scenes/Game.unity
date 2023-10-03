@@ -1797,6 +1797,11 @@ RectTransform:
   m_AnchoredPosition: {x: -0.59498596, y: 0.5}
   m_SizeDelta: {x: -11.190033, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!198 &818393871 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7688747411607735926, guid: 6edc0a0fefe904945b39e8d32029d5be, type: 3}
+  m_PrefabInstance: {fileID: 8741019630415225351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &875068707
 GameObject:
   m_ObjectHideFlags: 0
@@ -19574,6 +19579,10 @@ PrefabInstance:
       propertyPath: canInteract
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1947360016399013809, guid: 6edc0a0fefe904945b39e8d32029d5be, type: 3}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 818393871}
     - target: {fileID: 4882411221394178036, guid: 6edc0a0fefe904945b39e8d32029d5be, type: 3}
       propertyPath: m_Name
       value: Item
