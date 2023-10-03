@@ -1,16 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemLogic : Interaction
 {
-    [Header("Item Exclusive")]
-    [SerializeField] ItemData itemData;
-    PlayerStats stats;
-    
+    [Header("Item Exclusive"), SerializeField]
+     ItemData itemData;
+    [SerializeField] ParticleSystem particleSystem;
+    PlayerStats                     stats;
 
+    protected override void InteractionPassive()
+    {
+        //THIS SHIT DONT WORK
+        if (inRange && particleSystem.isPlaying == false) particleSystem.Play();
+        else particleSystem.Stop();
+    }
     protected override void InteractionActive()
     {
         SetEffect(gameObject);
@@ -23,14 +25,11 @@ public class ItemLogic : Interaction
         stats        =  FindObjectOfType<PlayerStats>();
         stats.Damage += itemData.attackExclusive.damageIncrease;
         //attack speed
-        
+
         //subscribe to unity event
         Debug.Log("Did Card Effect");
     }
-    void OnDisable()
-    {
-        DamageDealer.OnHitEvent -= SetEffect;
-    }
+    void OnDisable() { DamageDealer.OnHitEvent -= SetEffect; }
     //needs a popup on screen
     //ex: "YOU FOUND PILLS"
 }
