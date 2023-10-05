@@ -58,6 +58,8 @@ MonoBehaviour:
   bigBlood:
   - {fileID: 5496696725684128403, guid: 01a4c89fefd37ae4e8c9b95fab84b422, type: 3}
   movementSpeed: 25
+  knockbackStrength: 5
+  enemyGaugePrice: 1
 --- !u!50 &4586640358034472866
 Rigidbody2D:
   serializedVersion: 4

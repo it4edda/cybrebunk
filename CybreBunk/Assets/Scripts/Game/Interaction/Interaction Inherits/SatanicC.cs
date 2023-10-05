@@ -10,10 +10,12 @@ public class SatanicC : Interaction
     [SerializeField] ParticleSystem bloodTrail;
     [SerializeField] Animator       bloodGround;
     Transform                       bloodParent;
+    UserInterfaceGauge              gauge;
     protected override void Start()
     {
         base.Start();
         bloodParent = transform.Find("BloodParent");
+        gauge       = FindObjectOfType<UserInterfaceGauge>();
     }
     protected override void InteractionPassive()
     {
@@ -27,6 +29,7 @@ public class SatanicC : Interaction
     {
         Suction();
         bloodGround.gameObject.SetActive(true);
+        gauge.UpdateGaugeSlider(-gauge.MaxValue);
         base.InteractionActive();
     }
     void Suction()
@@ -40,5 +43,4 @@ public class SatanicC : Interaction
         //Debug.Log(bloodParent.childCount);
     }
     public void ResetSatan() => canInteract = true;
-    
 }

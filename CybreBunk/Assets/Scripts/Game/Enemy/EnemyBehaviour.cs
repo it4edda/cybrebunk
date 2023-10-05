@@ -14,17 +14,20 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject[] bigBlood;
     [SerializeField] float        movementSpeed;
     [SerializeField] float        knockbackStrength = 5f;
+    [SerializeField] int          enemyGaugePrice;
     Transform                     bloodParent;
     Transform                     target;
     Rigidbody2D                   rb;
     bool                          isStunned = false;
     EnemySpawning                 enemySpawning;
+    UserInterfaceGauge            gauge;
     void Start()
     {
         enemySpawning = FindObjectOfType<EnemySpawning>();
         bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
         rb            = GetComponent<Rigidbody2D>();
         target        = FindObjectOfType<PlayerMovement>().transform;
+        gauge         = FindObjectOfType<UserInterfaceGauge>();
     }
     void OnTriggerEnter(Collider other)
     {
@@ -63,6 +66,7 @@ public class EnemyBehaviour : MonoBehaviour
         var a = Instantiate(isBig ? bigBlood[Random.Range(0, bigBlood.Length)] : smallBlood[Random.Range(0, smallBlood.Length)] , transform.position, quaternion.identity );
         a.transform.parent = bloodParent;
         enemySpawning.DecreaseEnemyAliveNumber();
+        gauge.UpdateGaugeSlider(enemyGaugePrice);
         Destroy(gameObject);
     }
     protected virtual void Movement()

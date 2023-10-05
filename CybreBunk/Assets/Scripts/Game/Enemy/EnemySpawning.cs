@@ -10,6 +10,7 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField] EnemyWave[] waves;
     [SerializeField] float       timer;
     [SerializeField] float       spawnRadius;
+    [SerializeField] Transform   player;
     int                          waveNumber = 0;
     int                          enemiesAlive;
     bool                         firstWaveSpawned = false;
@@ -26,7 +27,7 @@ public class EnemySpawning : MonoBehaviour
         if (waveNumber >= waves.Length) yield break;
         float randomAngle = Random.Range(0f, 2f * Mathf.PI);
 
-        Vector3 spawnPosition = transform.position + new Vector3(Mathf.Cos(randomAngle) * spawnRadius, 
+        Vector3 spawnPosition = player.position + new Vector3(Mathf.Cos(randomAngle) * spawnRadius, 
                                                                  Mathf.Sin(randomAngle) * spawnRadius, 0f);
         
         foreach (var i in waves[waveNumber].Contestants)
@@ -42,7 +43,7 @@ public class EnemySpawning : MonoBehaviour
     }
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(transform.position, spawnRadius);
+        Gizmos.DrawWireSphere(player.position, spawnRadius);
     }
     
     //add motherwaves, spawn in waves of enemies in waves, (first 5, then 6, then 10)
