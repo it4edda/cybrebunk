@@ -71,7 +71,6 @@ public class PlayerAttack : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-        Debug.Log(triggerSpeed);
         midAttack = true;
         Instantiate(bulletPrefab, transform.position, weaponGraphics.localRotation);
         yield return new WaitForSeconds(triggerSpeed);

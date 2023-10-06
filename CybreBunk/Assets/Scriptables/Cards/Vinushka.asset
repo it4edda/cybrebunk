@@ -19,6 +19,8 @@ MonoBehaviour:
   lockedCard: {fileID: 21300000, guid: 7df8e09a76e33e04883bfbf36f8a9c31, type: 3}
   swordStart: 1
   startingAttackSpeed: 0
-  startingDamage: 0
+  bulletSpeed: 0
+  bulletLifetime: 0
+  startingDamage: 1
   startingMovementSpeed: 0
-  startingHealth: 10
+  startingHealth: 8

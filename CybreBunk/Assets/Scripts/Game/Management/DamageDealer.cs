@@ -11,13 +11,14 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] float damageMultiplier;
     int                    damage;
     public static event Action<GameObject> OnHitEvent; //make a static class possibly
-    public virtual void Start()
+    protected virtual void Start()
     {
         PlayerManager.FindTarotCard();
-        
-        
-        damage = Mathf.RoundToInt(FindObjectOfType<PlayerStats>().Damage * damageMultiplier);
-        damage = damage >= 0 ? damage : 1;
+
+
+        damage = Mathf.RoundToInt(FindObjectOfType<PlayerStats>().Damage); //* damageMultiplier);
+        damage = damage <= 0 ? 1 : Mathf.Abs(damage);
+        Debug.Log(damage);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,8 +26,8 @@ public class DamageDealer : MonoBehaviour
         {
             case true when other.CompareTag("Enemy"):
                 other.GetComponent<EnemyBehaviour>().TakeDamage(damage, transform.position);
-                if (oneHitLife) Destroy(gameObject);
                 OnHitEvent?.Invoke(other.gameObject);
+                if (oneHitLife) Destroy(gameObject);
                 break;
 
             case false when other.CompareTag("Player"):

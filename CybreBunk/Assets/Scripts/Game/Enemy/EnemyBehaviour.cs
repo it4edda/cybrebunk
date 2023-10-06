@@ -9,19 +9,23 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [Header("Mortality fields")]
     [SerializeField] int health;
-    [SerializeField] bool         isBig = false;
+    [SerializeField] bool         isBig;
     [SerializeField] GameObject[] smallBlood;
     [SerializeField] GameObject[] bigBlood;
-    [SerializeField] float        movementSpeed;
-    [SerializeField] float        knockbackStrength = 5f;
-    [SerializeField] int          enemyGaugePrice;
-    Transform                     bloodParent;
-    Transform                     target;
-    Rigidbody2D                   rb;
-    bool                          isStunned = false;
-    EnemySpawning                 enemySpawning;
-    UserInterfaceGauge            gauge;
-    void Start()
+    
+    [Header("Other")]
+    [SerializeField] float movementSpeed;
+    [SerializeField] float knockbackStrength = 5f;
+    [SerializeField] int   enemyGaugePrice;
+    [SerializeField] float attackRange;
+    Transform              bloodParent;
+    protected Transform    target;
+    Rigidbody2D            rb;
+    bool                   isStunned;
+    EnemySpawning          enemySpawning;
+    UserInterfaceGauge     gauge;
+    protected bool         midAttack;
+    protected virtual void Start()
     {
         enemySpawning = FindObjectOfType<EnemySpawning>();
         bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
@@ -43,6 +47,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (!target || isStunned) return;
         Movement();
+
+        if (InRange() && !midAttack)
+        Attack();
     }
     public void TakeDamage(int damage, Vector2 dir)
     {
@@ -75,5 +82,16 @@ public class EnemyBehaviour : MonoBehaviour
         //transform.position += movement * (movementSpeed * Time.deltaTime);
         // rb.AddForce(movement * movementSpeed);
         rb.velocity = movement * (movementSpeed * Time.deltaTime);
-    }   
+    }
+    protected virtual void Attack() 
+    {
+        //FILL THIS WITH SOMETHING
+        Debug.Log(gameObject.name + " is attacking!");
+    }
+    protected bool InRange()              => Vector2.Distance(target.position, transform.position) < attackRange;
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
 }

@@ -8,7 +8,7 @@ public class BulletLogic : DamageDealer
 {
     [SerializeField] float speed;
     [SerializeField] float timeToLive;
-    void Start()
+    protected override void Start()
     {
         timeToLive = PlayerManager.selectedCard.bulletLifetime;
         speed      = PlayerManager.selectedCard.bulletSpeed;
