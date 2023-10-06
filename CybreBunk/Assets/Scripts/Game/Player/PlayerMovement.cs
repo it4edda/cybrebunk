@@ -20,4 +20,11 @@ public class PlayerMovement : MonoBehaviour
         transform.position += new Vector3(moveInput.x * moveSpeed.x * Time.deltaTime, moveInput.y * moveSpeed.y * Time.deltaTime);
         if (moveInput.x != 0) graphicalChild.localScale = (moveInput.x < 0 ? Vector3.left : Vector3.right) + Vector3.up;
     }
+
+    public Vector2 MoveSpeed
+    {
+        get => moveInput; 
+        set => moveInput = value;
+    }
+
 }

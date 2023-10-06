@@ -32,6 +32,7 @@ public class UserInterfaceGauge : MonoBehaviour
     {
         currentValue += value;
         slider.value = currentValue <= maxValue ? currentValue + value : MaxGaugeTrigger();
+        //ADD RED VIGNETTE?
     }
     int MaxGaugeTrigger()
     {
@@ -39,5 +40,5 @@ public class UserInterfaceGauge : MonoBehaviour
         satanicC.ResetSatan();
         return maxValue;
     }
-    public int MaxValue { get => maxValue; }
+    public int MaxValue => maxValue;
 }

@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
     //attack speed, movement speed, 
-    [Header("Values")]
+    [Header("alues")]
     [SerializeField] int            startingHealth;
     [SerializeField] int            startingDamage;
     
@@ -25,6 +26,21 @@ public class PlayerStats : MonoBehaviour
     PlayerMovement      movement;
     PlayerAttack        attack;
     PlayerCamera        cam;
+    void Start()
+    {
+        cam      = FindObjectOfType<PlayerCamera>();
+        movement = GetComponent<PlayerMovement>();
+        attack   = GetComponent<PlayerAttack>();
+        
+        ImportStats();
+        
+        health = startingHealth;
+        damage = startingDamage;
+        
+        uiHealth = FindObjectOfType<UserInterfaceHealth>();
+        uiHealth.SetMaxHealth(startingHealth);
+    }
+#region Practical HealthRelated
     public int Health
     {
         get => health;
@@ -35,19 +51,6 @@ public class PlayerStats : MonoBehaviour
     {
         get => damage;
         set => damage = damage <= 0 ? damage = 1 : damage += value;
-    }
-    void Awake()
-    {
-        health = startingHealth;
-        damage = startingDamage;
-    }
-    void Start()
-    {
-        cam      = FindObjectOfType<PlayerCamera>();
-        movement = GetComponent<PlayerMovement>();
-        attack   = GetComponent<PlayerAttack>();
-        uiHealth = FindObjectOfType<UserInterfaceHealth>();
-        uiHealth.SetMaxHealth(startingHealth);
     }
     int UpdateHealth(int value)
     {
@@ -77,6 +80,20 @@ public class PlayerStats : MonoBehaviour
         canDie = !canDie; 
         Debug.Log("GOD MODE =" + !canDie);
     }
+#endregion
+#region Inport stats
+    void ImportStats()
+    {
+        TarotData data = PlayerManager.selectedCard;
+        
+        //damage is set in damagedealer script
+        attack.AttackSpeed = data.startingAttackSpeed;
+        
+        movement.MoveSpeed = new Vector2(data.startingMovementSpeed, data.startingMovementSpeed);
+        
+        startingHealth = data.debugTool ? 30 : data.startingHealth;
+    }
+#endregion
 }
 
 

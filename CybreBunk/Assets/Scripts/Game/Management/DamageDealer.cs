@@ -11,7 +11,14 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] float damageMultiplier;
     int                    damage;
     public static event Action<GameObject> OnHitEvent; //make a static class possibly
-    public virtual void Start() { damage = Mathf.RoundToInt(FindObjectOfType<PlayerStats>().Damage * damageMultiplier); }
+    public virtual void Start()
+    {
+        PlayerManager.FindTarotCard();
+        
+        
+        damage = Mathf.RoundToInt(FindObjectOfType<PlayerStats>().Damage * damageMultiplier);
+        damage = damage >= 0 ? damage : 1;
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         switch (isAllied)
@@ -31,6 +38,5 @@ public class DamageDealer : MonoBehaviour
     static void OnOnHitEvent(GameObject obj)
     {
         OnHitEvent?.Invoke(obj); 
-        
     }
 }

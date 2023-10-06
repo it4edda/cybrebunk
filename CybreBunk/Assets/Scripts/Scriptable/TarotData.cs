@@ -23,6 +23,10 @@ public class TarotData : ScriptableObject
      
     [Header("Game"), SerializeField]
      public bool swordStart;
-    [SerializeField] public float msStart;
-    [SerializeField]        int   startingHealth;
+    [SerializeField] public float startingAttackSpeed   = 0.2f;
+    [SerializeField] public float bulletSpeed           = 0.69f;
+    [SerializeField] public float bulletLifetime        = 1;
+    [SerializeField] public int   startingDamage        = 1;
+    [SerializeField] public float startingMovementSpeed = 1.5f;
+    [SerializeField] public int   startingHealth        = 5;
 }

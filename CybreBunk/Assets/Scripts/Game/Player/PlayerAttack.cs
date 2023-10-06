@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerAttack : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] bool      hasSword;
     [SerializeField] Transform weaponGraphics;
+    
+    [Header("General Values")]
     
     [Header("Gun")]
     [SerializeField] float triggerSpeed;
@@ -68,9 +71,21 @@ public class PlayerAttack : MonoBehaviour
     }
     IEnumerator Shoot()
     {
+        Debug.Log(triggerSpeed);
         midAttack = true;
         Instantiate(bulletPrefab, transform.position, weaponGraphics.localRotation);
         yield return new WaitForSeconds(triggerSpeed);
         midAttack = false;
     }
+    public bool HasSword
+    {
+        get => hasSword;
+        set => hasSword = value;
+    }
+    public float AttackSpeed
+    {
+        get => triggerSpeed;
+        set => triggerSpeed = value;
+    }
+    
 }
