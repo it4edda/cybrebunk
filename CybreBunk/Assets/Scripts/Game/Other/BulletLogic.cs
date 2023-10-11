@@ -12,6 +12,7 @@ public class BulletLogic : DamageDealer
     {
         timeToLive = PlayerManager.selectedCard.bulletLifetime;
         speed      = PlayerManager.selectedCard.bulletSpeed;
+        base.Start();
     }
     void Update()
     {

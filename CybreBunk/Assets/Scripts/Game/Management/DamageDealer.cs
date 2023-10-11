@@ -13,12 +13,8 @@ public class DamageDealer : MonoBehaviour
     public static event Action<GameObject> OnHitEvent; //make a static class possibly
     protected virtual void Start()
     {
-        PlayerManager.FindTarotCard();
-
-
         damage = Mathf.RoundToInt(FindObjectOfType<PlayerStats>().Damage); //* damageMultiplier);
         damage = damage <= 0 ? 1 : Mathf.Abs(damage);
-        Debug.Log(damage);
     }
     void OnTriggerEnter2D(Collider2D other)
     {

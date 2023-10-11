@@ -4,14 +4,14 @@ public class ItemLogic : Interaction
 {
     [Header("Item Exclusive"), SerializeField]
      ItemData itemData;
-    [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] ParticleSystem particle;
     PlayerStats                     stats;
 
     protected override void InteractionPassive()
     {
         //THIS SHIT DONT WORK
-        if (inRange && particleSystem.isPlaying == false) particleSystem.Play();
-        else particleSystem.Stop();
+        if (inRange && particle.isPlaying == false) particle.Play();
+        else particle.Stop();
     }
     protected override void InteractionActive()
     {

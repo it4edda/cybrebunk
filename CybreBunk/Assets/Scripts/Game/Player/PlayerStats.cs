@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
     //attack speed, movement speed, 
-    [Header("alues")]
+    [Header("values")]
     [SerializeField] int            startingHealth;
     [SerializeField] int            startingDamage;
     

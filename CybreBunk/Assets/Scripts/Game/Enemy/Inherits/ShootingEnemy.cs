@@ -13,6 +13,7 @@ public class ShootingEnemy : EnemyBehaviour
     protected override void Attack() => StartCoroutine(Shoot()); 
     IEnumerator Shoot()
     {
+        Debug.Log("SHOOTING");
         midAttack = true;
         Instantiate(bulletPrefab, transform.position, quaternion.LookRotation(target.position, transform.up));
         yield return new WaitForSeconds(attackSpeed);

@@ -10,7 +10,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] float     speed;
     Vector3                    followVector;
     bool                       isShaking = false;
-    void FixedUpdate()
+    void LateUpdate()
     {
         if (!isShaking) followVector = new Vector3(target.position.x, target.position.y, -10);
         transform.position = Vector3.Lerp(transform.position, followVector, speed * Time.deltaTime);

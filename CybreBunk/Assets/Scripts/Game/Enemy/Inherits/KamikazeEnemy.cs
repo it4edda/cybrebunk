@@ -9,7 +9,7 @@ public class KamikazeEnemy : EnemyBehaviour
     [SerializeField] GameObject explosion;
     protected override void Die()
     {
-        Instantiate(explosion, transform.position, quaternion.identity); //give this random rotation?
+        Instantiate(explosion, transform.position, quaternion.identity);
         base.Die();
     }
 }

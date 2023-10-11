@@ -18,13 +18,16 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float knockbackStrength = 5f;
     [SerializeField] int   enemyGaugePrice;
     [SerializeField] float attackRange;
-    Transform              bloodParent;
-    protected Transform    target;
-    Rigidbody2D            rb;
-    bool                   isStunned;
-    EnemySpawning          enemySpawning;
-    UserInterfaceGauge     gauge;
-    protected bool         midAttack;
+    
+    protected bool      midAttack;
+    bool                isStunned;
+    
+    protected Transform target;
+    Transform           bloodParent;
+    Rigidbody2D         rb;
+    EnemySpawning       enemySpawning;
+    UserInterfaceGauge  gauge;
+    
     protected virtual void Start()
     {
         enemySpawning = FindObjectOfType<EnemySpawning>();
@@ -56,9 +59,8 @@ public class EnemyBehaviour : MonoBehaviour
         //do knockback
         StartCoroutine(Knockback(dir));
         health -= damage;
-
-        if (health <= 0)
-            Die();
+        if (health <= 0) Die();
+        //health |= (health <= 0);
     }
     IEnumerator Knockback(Vector2 dir)
     {

@@ -66,7 +66,7 @@ Transform:
   - {fileID: 7107395868438748191}
   - {fileID: 2760944964407702478}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1947360016399013809
 MonoBehaviour:
@@ -84,7 +84,7 @@ MonoBehaviour:
   canInteract: 1
   interactIcon: {fileID: 3143668725472990426}
   itemData: {fileID: 11400000, guid: 2459e902b03a3dd49b45f3cf73d64d96, type: 2}
-  particleSystem: {fileID: 7688747411607735926}
+  particle: {fileID: 7688747411607735926}
 --- !u!58 &1027755764050306311
 CircleCollider2D:
   m_ObjectHideFlags: 0
