@@ -1,8 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Drawing.Inspector.PropertyDrawers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,18 +6,19 @@ public class PlayerStats : MonoBehaviour
 {
     //attack speed, movement speed, 
     [Header("values")]
-    [SerializeField] int            startingHealth;
-    [SerializeField] int            startingDamage;
+    [SerializeField] int startingHealth;
+    [SerializeField] int startingDamage;
     
     [Header("Particles")]
     [SerializeField] ParticleSystem damageParticles;
     [SerializeField] ParticleSystem deathParticles;
     //[SerializeField] ItemInven      itemInven;
+
+    bool isDead;
+    bool canDie = true;
+    int  health;
+    int  damage;
     
-    bool                isDead = false;
-    bool                canDie = true;
-    int                 health;
-    int                 damage;
     UserInterfaceHealth uiHealth;
     PlayerMovement      movement;
     PlayerAttack        attack;
