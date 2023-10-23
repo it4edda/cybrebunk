@@ -51,6 +51,8 @@ public class ChampionSelect : MonoBehaviour
         //selectedTarots[0] = Instantiate((tarots[selected] as TarotData)?.CurrentCard, positions[0].position, quaternion.identity); //spawn first
 
         selectedTarots[0]                                       = Instantiate(new GameObject(), positions[0].position, quaternion.identity);
+        //alexgråt        //selectedTarots[0]                                       = new GameObject("tar", typeof(SpriteRenderer));
+        Debug.Log("Fix this duplicate game-object problem whatever");
         selectedTarots[0].AddComponent<SpriteRenderer>().sprite = (tarots[selected] as TarotData)?.CurrentCard;
         
         UpdateTarotDescriptionText();

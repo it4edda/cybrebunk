@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8740983386382612959}
   - component: {fileID: 2617274385151889471}
   - component: {fileID: 646474366712725370}
-  - component: {fileID: 501430016814600311}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -175,33 +174,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.07, y: 0.07}
   m_EdgeRadius: 0
---- !u!114 &501430016814600311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481988184173262912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44875a1fc1d88f54c8013c30f1a3b601, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waves:
-  - Contestants:
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-  - Contestants:
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 8528629343841285487, guid: 809aecd3a0274674284bf6fd68455a72, type: 3}
-  - Contestants:
-    - {fileID: 8528629343841285487, guid: 809aecd3a0274674284bf6fd68455a72, type: 3}
-    - {fileID: 8528629343841285487, guid: 809aecd3a0274674284bf6fd68455a72, type: 3}
-    - {fileID: 8528629343841285487, guid: 809aecd3a0274674284bf6fd68455a72, type: 3}
-  timer: 5
-  spawnRadius: 2.13
 --- !u!1 &574170071736889356
 GameObject:
   m_ObjectHideFlags: 0
