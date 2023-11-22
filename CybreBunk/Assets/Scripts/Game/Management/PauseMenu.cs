@@ -1,6 +1,7 @@
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,13 +10,19 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] Canvas     mainCanvas;
     [SerializeField] GameObject currentTarot;
     
-    [Header("Settings")]
     [SerializeField] Canvas settingsCanvas;
-    //[SerializeField] Slider distortionSlider;
+    [Header("Settings")]
+    
+    [SerializeField] Slider distortionSlider;
+    float distoritionValue = 0;
+    //0, normal, max
+    
     bool                    inSettingsMenu = false;
     
     float                       timeScaleAtStart = 1;
     bool                        isPaused;
+
+    Volume volume;
     void Start()
     {
         DiosBestFriend(false);
@@ -59,6 +66,6 @@ public class PauseMenu : MonoBehaviour
     }
     void SetSettings()
     {
-        
+//        distortionSlider.value = volume.
     }
 }
