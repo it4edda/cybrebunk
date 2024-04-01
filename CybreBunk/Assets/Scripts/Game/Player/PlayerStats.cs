@@ -8,7 +8,6 @@ public class PlayerStats : MonoBehaviour
     //attack speed, movement speed, 
     [Header("values")]
     [SerializeField] int maxHealth;
-    [SerializeField] int startingDamage;
     [SerializeField] float movementSpeed;
     
     [Header("Particles")]
@@ -34,8 +33,6 @@ public class PlayerStats : MonoBehaviour
         ImportStats();
         
         health = maxHealth;
-        damage = startingDamage;
-        
         uiHealth = FindObjectOfType<UserInterfaceHealth>();
         uiHealth.SetMaxHealth(maxHealth);
     }
@@ -104,8 +101,9 @@ public class PlayerStats : MonoBehaviour
     void ImportStats()
     {
         TarotData data = PlayerManager.selectedCard;
-        
-        attack.AttackSpeed = data.startingAttackSpeed; //
+
+        Damage             = data.startingDamage;
+        attack.AttackSpeed = data.startingAttackSpeed; //NOT UPDATED TO DAILY STANDARD
         
         UpdateMovement(data.startingMovementSpeed);
         
