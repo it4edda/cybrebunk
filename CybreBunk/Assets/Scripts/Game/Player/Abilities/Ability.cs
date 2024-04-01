@@ -44,6 +44,19 @@ public class Ability : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+    void OnCollisionEnter(Collision other)
+    {
+        if (darkArtsVariables.isActive)
+        {
+            if (other.transform.CompareTag("Enemy"))
+            {
+                AddToDarkArtsRenderer(other.transform);
+                other.gameObject.GetComponent<EnemyBehaviour>().IsStunned = true;
+            }
+            
+        }
+        //DO STUFF HERE, SHOULD WORK
+    }
 
 #region Vinushka
 #region  Variables
@@ -55,6 +68,7 @@ public class Ability : MonoBehaviour
     
     [Serializable] struct DarkArtsVariables
     {
+        public bool           isActive;
         public BaseVariables  baseVariables;
         public float          timeActive;
         public float          movementBoost; //ADDITIVE
@@ -70,6 +84,7 @@ public class Ability : MonoBehaviour
 #endregion
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
     {
+        darkArtsVariables.isActive = true;
         Debug.Log("HAHA DID DARK ARTS");
         
         playerMovement.MoveSpeed += Vector2.one * darkArtsVariables.movementBoost;
@@ -78,28 +93,25 @@ public class Ability : MonoBehaviour
         darkArtsVariables.activeParticles.Play();
         //on collision ; stun enemies, stun projectiles
 
-        yield return new WaitForSeconds(1); //make variable for time
+        yield return new WaitForSeconds(darkArtsVariables.timeActive);
         
-        playerMovement.MoveSpeed -= Vector2.one * darkArtsVariables.movementBoost;
-        //after delay ; release and damage enemies, delete projectiles
-        //become normal color (racist)
+        playerMovement.MoveSpeed            -= Vector2.one * darkArtsVariables.movementBoost;
 
         yield return new WaitForSeconds(1);
+        //after delay ; release and damage enemies, delete projectiles
+        //become normal color (racist)
+        
+        
         darkArtsVariables.activeParticles.Stop();
 
         //LINE RENDERER
+        darkArtsVariables.isActive = false;
     }
 
-    void AddToRenderer(bool active)
+    void AddToDarkArtsRenderer(Transform transform)
     {
-        if (active)
-        {
-            //darkArtsVariables.lineRenderer.SetPositions(++);
-        }
-        else
-        {
-            
-        }
+        darkArtsVariables.lineRenderer.positionCount++;
+        darkArtsVariables.lineRenderer.SetPosition(darkArtsVariables.lineRenderer.positionCount -1, transform.position);
         
     }
     

@@ -27,7 +27,12 @@ public class EnemyBehaviour : MonoBehaviour
     Rigidbody2D         rb;
     EnemySpawning       enemySpawning;
     UserInterfaceGauge  gauge;
-    
+
+    public bool IsStunned
+    {
+        get => isStunned;
+        set => isStunned = value;
+    }
     protected virtual void Start()
     {
         enemySpawning = FindObjectOfType<EnemySpawning>();
