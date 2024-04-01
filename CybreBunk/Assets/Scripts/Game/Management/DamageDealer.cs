@@ -1,12 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField] bool                  isAllied;
+
+    public bool IsAllied
+    {
+        get => isAllied;
+        set => isAllied = value;
+    }
     [SerializeField] bool                  oneHitLife = false;
     [SerializeField] float                 damageMultiplier;
     int                                    damage;
@@ -20,7 +24,8 @@ public class DamageDealer : MonoBehaviour
     {
         switch (isAllied)
         {
-            case true when other.CompareTag("Enemy"):
+            case true:
+                if (!other.CompareTag("Enemy")) { return;}
                 other.GetComponent<EnemyBehaviour>().TakeDamage(damage, transform.position);
                 OnHitEvent?.Invoke(other.gameObject);
                 if (oneHitLife) Destroy(gameObject);
