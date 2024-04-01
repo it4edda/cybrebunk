@@ -44,6 +44,7 @@ public class PlayerInventory : MonoBehaviour
     
     public void DealingDamage(GameObject enemyBeingHit)
     {
+        Debug.Log("Dealing Damage");
         foreach (ItemData t in items)
         {
             t.OnDealDamage(stats);
