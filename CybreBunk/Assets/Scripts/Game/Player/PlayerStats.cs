@@ -9,7 +9,6 @@ public class PlayerStats : MonoBehaviour
     [Header("values")]
     [SerializeField] int maxHealth;
     [SerializeField] int startingDamage;
-    
     [SerializeField] float movementSpeed;
     
     [Header("Particles")]
@@ -89,7 +88,8 @@ public class PlayerStats : MonoBehaviour
     }
     float UpdateMovement(float value)
     {
-        movement.MoveSpeed = Vector2.one * math.abs(movementSpeed * value);
+        movementSpeed      = math.abs(movementSpeed * value);
+        movement.MoveSpeed = Vector2.one * movementSpeed;
         return value;
     }
 #endregion
