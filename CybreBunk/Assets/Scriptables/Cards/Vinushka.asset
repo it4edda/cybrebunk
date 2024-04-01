@@ -22,5 +22,5 @@ MonoBehaviour:
   bulletSpeed: 0
   bulletLifetime: 0
   startingDamage: 1
-  startingMovementSpeed: 0
+  startingMovementSpeed: 1
   startingHealth: 8
