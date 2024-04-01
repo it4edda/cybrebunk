@@ -5813,6 +5813,7 @@ MonoBehaviour:
   tarots:
   - {fileID: 11400000, guid: 72c707e1aca0310459c88a861883240d, type: 2}
   - {fileID: 11400000, guid: f49b87555d6887e498971036174941c8, type: 2}
+  - {fileID: 11400000, guid: 72c707e1aca0310459c88a861883240d, type: 2}
   - {fileID: 11400000, guid: 33f766d61f7bbe048aa8c216091f5385, type: 2}
   selectedTarots:
   - {fileID: 0}
@@ -5821,7 +5822,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2077821070}
   leftInputKeys:
   - a
   - left
