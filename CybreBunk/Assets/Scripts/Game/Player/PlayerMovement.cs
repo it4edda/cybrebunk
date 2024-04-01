@@ -1,15 +1,23 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Vector2   moveSpeed;
     [SerializeField] Transform graphicalChild;
-    [SerializeField] bool      canMove = true;
-    Vector2                    moveInput;
+    [SerializeField] bool canMove = true;
+    
+    Vector2               moveSpeed;
+    Vector2               moveInput;
+    PlayerStats           playerStats;
     public bool CanMove
     {
         get => canMove;
         set => canMove = value;
+    }
+    void Start()
+    {
+        playerStats = FindObjectOfType<PlayerStats>();
+        moveSpeed   = Vector2.one * playerStats.MovementSpeed;
     }
 
     //START GET TAROT DATA MS 
@@ -23,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 MoveSpeed
     {
-        get => moveInput; 
-        set => moveInput = value;
+        get => moveSpeed; 
+        set => moveSpeed = value;
     }
 
 }

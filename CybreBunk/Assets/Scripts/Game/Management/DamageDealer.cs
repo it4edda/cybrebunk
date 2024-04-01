@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
-    [SerializeField] bool  isAllied;
-    [SerializeField] bool  oneHitLife = false;
-    [SerializeField] float damageMultiplier;
-    int                    damage;
+    [SerializeField] bool                  isAllied;
+    [SerializeField] bool                  oneHitLife = false;
+    [SerializeField] float                 damageMultiplier;
+    int                                    damage;
     public static event Action<GameObject> OnHitEvent; //make a static class possibly
     protected virtual void Start()
     {

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,8 +7,10 @@ public class PlayerStats : MonoBehaviour
 {
     //attack speed, movement speed, 
     [Header("values")]
-    [SerializeField] int startingHealth;
+    [SerializeField] int maxHealth;
     [SerializeField] int startingDamage;
+    
+    [SerializeField] float movementSpeed;
     
     [Header("Particles")]
     [SerializeField] ParticleSystem damageParticles;
@@ -31,23 +34,23 @@ public class PlayerStats : MonoBehaviour
         
         ImportStats();
         
-        health = startingHealth;
+        health = maxHealth;
         damage = startingDamage;
         
         uiHealth = FindObjectOfType<UserInterfaceHealth>();
-        uiHealth.SetMaxHealth(startingHealth);
+        uiHealth.SetMaxHealth(maxHealth);
     }
 #region Practical HealthRelated
+    #region Health
+    public int MaxHealth
+    {
+        get => maxHealth;
+        set => maxHealth += value;
+    }
     public int Health
     {
         get => health;
-        set => health = //health <= 0              ? Death() :
-                        health >  startingHealth ? startingHealth            : UpdateHealth(value);
-    }
-    public int Damage
-    {
-        get => damage;
-        set => damage = damage <= 0 ? damage = 1 : damage += value;
+        set => health = health > maxHealth ? maxHealth : UpdateHealth(value);
     }
     int UpdateHealth(int value)
     {
@@ -72,6 +75,25 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(deathParticles.main.duration + 0.5f);
         SceneManager.LoadScene("Death");
     }
+    #endregion
+    public int Damage
+    {
+        get => damage;
+        set => damage = damage <= 0 ? damage = 1 : damage += value;
+    }
+#region MovementSpeed
+    public float MovementSpeed
+    {
+        get => movementSpeed;
+        set => movementSpeed += UpdateMovement(value);
+    }
+    float UpdateMovement(float value)
+    {
+        movement.MoveSpeed = Vector2.one * math.abs(movementSpeed * value);
+        return value;
+    }
+#endregion
+    
     public void GodMode() //use for debugging (most of the time)
     {
         canDie = !canDie; 
@@ -83,26 +105,11 @@ public class PlayerStats : MonoBehaviour
     {
         TarotData data = PlayerManager.selectedCard;
         
-        //damage is set in damagedealer script
-        attack.AttackSpeed = data.startingAttackSpeed;
+        attack.AttackSpeed = data.startingAttackSpeed; //
         
-        movement.MoveSpeed = new Vector2(data.startingMovementSpeed, data.startingMovementSpeed);
+        UpdateMovement(data.startingMovementSpeed);
         
-        startingHealth = data.debugTool ? 30 : data.startingHealth;
+        MaxHealth = data.debugTool ? 30 : data.startingHealth;
     }
 #endregion
 }
-
-
-
-/// <summary>
-/// Basically the inventory of the player. All the items the player picks up gets placed in this struct.
-/// </summary>
-// [Serializable]
-// public struct ItemInven //delve more into this
-// {
-//     public AttackItemData[]       attackItemData;
-//     public MovementItemData[]     movementItemData;
-//     public SpecialItemData[]      specialItemData;
-//     public AmalgamationItemData[] amalgamationItemData;
-// }
