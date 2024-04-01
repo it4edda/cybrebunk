@@ -5,12 +5,8 @@ using UnityEngine;
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField] bool                  isAllied;
-
-    public bool IsAllied
-    {
-        get => isAllied;
-        set => isAllied = value;
-    }
+    public bool IsAllied { get => isAllied; set => isAllied = value; }
+    
     [SerializeField] bool                  oneHitLife = false;
     [SerializeField] float                 damageMultiplier;
     int                                    damage;
@@ -31,7 +27,8 @@ public class DamageDealer : MonoBehaviour
                 if (oneHitLife) Destroy(gameObject);
                 break;
 
-            case false when other.CompareTag("Player"):
+            case false:
+                if (!other.CompareTag("Player")) { return;}
                 other.GetComponent<PlayerStats>().Health--;
                 if (oneHitLife) Destroy(gameObject);
                 break;

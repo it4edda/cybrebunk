@@ -15,17 +15,12 @@ static class PlayerManager
 
 static class ItemManager
 {
-    [SerializeField] static ItemData[] items;
-    static ItemData[] Items
+    public static List<ItemData> allItems;
+
+    public static ItemData GetRandomItem()
     {
-        get => GetItems();
-        set => throw new System.NotImplementedException();
-    }
-    static ItemData[] GetItems()
-    {
-        return null;
-        //FIX THIS
-        //https://discussions.unity.com/t/how-can-i-find-all-instances-of-a-scriptable-object-in-the-project-editor/198002/3
-    }
+        ItemData chosenItem = allItems[Random.Range(0, allItems.Count)];
         
+        return chosenItem;
+    }
 }
