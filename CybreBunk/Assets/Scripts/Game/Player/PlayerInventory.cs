@@ -31,6 +31,7 @@ public class PlayerInventory : MonoBehaviour
     {
         newItem.OnPickup(stats);
         items.Add(newItem);
+        Debug.Log("Did effect" + newItem.itemName);
     }
 
     public void TakingDamage()
@@ -45,7 +46,7 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (ItemData t in items)
         {
-            t.OnTakeDamage(stats);
+            t.OnDealDamage(stats);
         }
     }
 }

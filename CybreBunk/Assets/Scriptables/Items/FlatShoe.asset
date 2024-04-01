@@ -22,4 +22,4 @@ MonoBehaviour:
       health: 0
       attackSpeedIncrease: 0
       damageIncrease: 0
-      movementSpeedIncrease: 10
+      movementSpeedIncrease: 0.2
