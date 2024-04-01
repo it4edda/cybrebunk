@@ -23,7 +23,7 @@ public class ItemLogic : Interaction
     {
         //stats.movement += movementSpeedIncrease;
         stats        =  FindObjectOfType<PlayerStats>();
-        stats.Damage += itemData.attackExclusive.damageIncrease;
+        PlayerInventory.instance.AddItem(itemData);
         //attack speed
 
         //subscribe to unity event

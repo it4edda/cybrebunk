@@ -15,8 +15,11 @@ MonoBehaviour:
   itemName: Carl's Tonenail
   itemDescription: yummy but unsanitary
   itemIcon: {fileID: 0}
-  movementExclusive:
-    movementSpeedIncrease: 1.18
-  attackExclusive:
-    attackSpeedIncrease: 0
-    damageIncrease: 0
+  itemEffects:
+  - activationConditions: 0
+    stats:
+      maxHealth: 0
+      health: 0
+      attackSpeedIncrease: 0
+      damageIncrease: 0
+      movementSpeedIncrease: 0
