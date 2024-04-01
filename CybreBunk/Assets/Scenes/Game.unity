@@ -12545,16 +12545,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adadd520577f08d4495e44262244fb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability1: 1
+  ability1: 0
   ability2: 0
   darkArtsVariables:
     isActive: 0
-    timeActive: 0
-    movementBoost: 0
-    lineRenderer: {fileID: 0}
+    timeActive: 2
+    movementBoost: 2
+    lineRenderer: {fileID: 1146795290}
     activeParticles: {fileID: 1343401747}
   aoeAttackVariables:
-    timeActive: 0
+    timeActive: 2
     damageCollider: {fileID: 0}
 --- !u!114 &3528347902443371549
 MonoBehaviour:

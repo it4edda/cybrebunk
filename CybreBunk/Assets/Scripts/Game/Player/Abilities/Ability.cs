@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class Ability : MonoBehaviour
@@ -8,8 +9,11 @@ public class Ability : MonoBehaviour
     public ChosenAbility ability1;
     public ChosenAbility ability2;
     PlayerMovement       playerMovement;
+    PlayerStats          playerStats;
     
     [Header("Dark Arts"), SerializeField] DarkArtsVariables  darkArtsVariables;
+    EnemyBehaviour[]                                         savedDarkArtsEnemies;
+    
     [Header("AoeAttack"), SerializeField] AoeAttackVariables aoeAttackVariables;
 
     public enum ChosenAbility
@@ -21,7 +25,8 @@ public class Ability : MonoBehaviour
 
     void Start()
     {
-        playerMovement                  = GetComponent<PlayerMovement>();
+        playerStats                                   = FindObjectOfType<PlayerStats>();
+        playerMovement                                = GetComponent<PlayerMovement>();
         darkArtsVariables.baseVariables.canUseAbility = true;
     }
 
@@ -44,16 +49,17 @@ public class Ability : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+    
     void OnCollisionEnter(Collision other)
     {
         if (darkArtsVariables.isActive)
         {
-            if (other.transform.CompareTag("Enemy"))
+            if (other.gameObject.GetComponent<DamageDealer>().IsAllied) Destroy(other.gameObject);
+            else if (other.transform.CompareTag("Enemy"))
             {
                 AddToDarkArtsRenderer(other.transform);
                 other.gameObject.GetComponent<EnemyBehaviour>().IsStunned = true;
             }
-            
         }
         //DO STUFF HERE, SHOULD WORK
     }
@@ -68,8 +74,9 @@ public class Ability : MonoBehaviour
     
     [Serializable] struct DarkArtsVariables
     {
+        public BaseVariables baseVariables;
+        
         public bool           isActive;
-        public BaseVariables  baseVariables;
         public float          timeActive;
         public float          movementBoost; //ADDITIVE
         public LineRenderer   lineRenderer;
@@ -78,6 +85,7 @@ public class Ability : MonoBehaviour
     [Serializable] struct AoeAttackVariables
     {
         public BaseVariables baseVariables;  
+        
         public float         timeActive;
         public Collider2D    damageCollider;
     }
@@ -89,9 +97,8 @@ public class Ability : MonoBehaviour
         
         playerMovement.MoveSpeed += Vector2.one * darkArtsVariables.movementBoost;
         
-        //become gray / particles
+        //become gray
         darkArtsVariables.activeParticles.Play();
-        //on collision ; stun enemies, stun projectiles
 
         yield return new WaitForSeconds(darkArtsVariables.timeActive);
         
@@ -99,13 +106,21 @@ public class Ability : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         //after delay ; release and damage enemies, delete projectiles
-        //become normal color (racist)
         
+        Debug.Log("DU JOBBADE HÄR SENAST WILLIAM LYCKA TILL HAHAHAHAHAHAHHAHAHA");
+        if(savedDarkArtsEnemies.Length > 0) foreach (var enemy in savedDarkArtsEnemies)
+        {
+            enemy.IsStunned = false;
+            enemy.TakeDamage(playerStats.Damage, enemy.transform.position);
+            yield return new WaitForSeconds(0.02f);
+        }
         
         darkArtsVariables.activeParticles.Stop();
 
         //LINE RENDERER
+        
         darkArtsVariables.isActive = false;
+        StartCoroutine(DamageViaDarkArtsRenderer());
     }
 
     void AddToDarkArtsRenderer(Transform transform)
@@ -113,6 +128,16 @@ public class Ability : MonoBehaviour
         darkArtsVariables.lineRenderer.positionCount++;
         darkArtsVariables.lineRenderer.SetPosition(darkArtsVariables.lineRenderer.positionCount -1, transform.position);
         
+    }
+    IEnumerator DamageViaDarkArtsRenderer()
+    {
+        Vector3[] points = new Vector3[darkArtsVariables.lineRenderer.positionCount];
+        //PLAY SOUND
+        foreach (var point in points)
+        {
+            points = points.Skip(0).ToArray();
+            yield return new WaitForSeconds(0.1f);
+        }
     }
     
     IEnumerator AoeAttack()
