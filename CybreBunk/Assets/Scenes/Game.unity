@@ -1167,6 +1167,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364416699}
   m_CullTransparentMesh: 1
+--- !u!1 &406468043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 481988184173262912, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+  m_PrefabInstance: {fileID: 3528347902443371520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &415563691 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
@@ -2051,52 +2056,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612554077}
   m_CullTransparentMesh: 1
---- !u!1 &637130457
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 637130459}
-  - component: {fileID: 637130458}
-  m_Layer: 0
-  m_Name: ability thing
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &637130458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637130457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adadd520577f08d4495e44262244fb95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ability1: 0
-  ability2: 0
---- !u!4 &637130459
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637130457}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27787095, y: -0.17365274, z: -0.00383956}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &639364728
 GameObject:
   m_ObjectHideFlags: 0
@@ -3019,6 +2978,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 520792397}
   currentTarot: {fileID: 1751656394}
   settingsCanvas: {fileID: 188660447}
+  distortionSlider: {fileID: 0}
 --- !u!4 &962596909
 Transform:
   m_ObjectHideFlags: 0
@@ -6809,7 +6769,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029357285}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
@@ -7539,14 +7499,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 481988184173262912, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3528347902443371548}
   m_SourcePrefab: {fileID: 100100000, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
 --- !u!114 &3528347902443371539 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8740983386382612959, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
   m_PrefabInstance: {fileID: 3528347902443371520}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 406468043}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5196cdd8e9218d94bada33ddc9e032f8, type: 3}
@@ -7557,12 +7520,26 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7534821546701278299, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
   m_PrefabInstance: {fileID: 3528347902443371520}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 406468043}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 519882c918f94a14b8079a8662827be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3528347902443371548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406468043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adadd520577f08d4495e44262244fb95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability1: 1
+  ability2: 0
 --- !u!4 &4401980073525780393
 Transform:
   m_ObjectHideFlags: 0
