@@ -1,11 +1,11 @@
-using System;
+
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ItemManager : MonoBehaviour
 {
-    #region Instance
+    /*#region Instance
     public static ItemManager instance;
 
     void Awake()
@@ -19,11 +19,11 @@ public class ItemManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    #endregion
+    #endregion*/
 
     public ItemPortrait itemPortrait;
     public List<ItemData> allItems;
-    public GameObject itemCanvas;
+    [SerializeField] GameObject itemCanvas;
 
     public Queue<ItemPortrait> itemPortraitQueue = new();
     PauseMenu pauseMenu;
@@ -37,8 +37,7 @@ public class ItemManager : MonoBehaviour
 
     public void SetItemSelect()
     {
-        pauseMenu.TimeFreeze(true);
-        itemCanvas.SetActive(true);
+        FreezeAndCanvas(true);
         while (itemPortraitQueue.Count <3)
         {
             ItemPortrait newPortrait = Instantiate(itemPortrait, itemCanvas.transform);
@@ -55,10 +54,17 @@ public class ItemManager : MonoBehaviour
 
     void HasChosenItem()
     {
-        pauseMenu.TimeFreeze(false);
-        itemCanvas.SetActive(false);
+        FreezeAndCanvas(false);
     }
-    
+
+    void FreezeAndCanvas(bool freeze)
+    {
+        if(!itemCanvas){Debug.Log("NO CANVAS AAGHAGHAHGAHGA"); return; }
+        
+        itemCanvas.SetActive(freeze);
+        pauseMenu.TimeFreeze(freeze);
+    }
+
     public ItemData GetRandomItem()
     {
         ItemData chosenItem = allItems[Random.Range(0, allItems.Count)];

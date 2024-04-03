@@ -4,7 +4,6 @@ using TMPro;
 
 public class ItemPortrait : MonoBehaviour
 {
-
     public static event Action ChosenItem;
     [SerializeField] SpriteRenderer itemSprite;
     [SerializeField] TextMeshProUGUI itemName;
@@ -14,7 +13,7 @@ public class ItemPortrait : MonoBehaviour
     public void SetUpItem()
     {
         ItemPortrait.ChosenItem += Sleep;
-        currentItem = ItemManager.instance.GetRandomItem();
+        currentItem = FindObjectOfType<ItemManager>().GetRandomItem();
         if (currentItem.itemIcon)
         {
             itemSprite.sprite = currentItem.itemIcon;
@@ -34,7 +33,7 @@ public class ItemPortrait : MonoBehaviour
     void Sleep()
     {
         ItemPortrait.ChosenItem -= Sleep;
-        ItemManager.instance.itemPortraitQueue.Enqueue(this);
+        FindObjectOfType<ItemManager>().itemPortraitQueue.Enqueue(this);
         gameObject.SetActive(false);
     }
 }
