@@ -13,7 +13,7 @@ public class ItemPortrait : MonoBehaviour
     public void SetUpItem()
     {
         ItemPortrait.ChosenItem += Sleep;
-        currentItem = FindObjectOfType<ItemManager>().GetRandomItem();
+        currentItem = ItemManager.instance.GetRandomItem();
         if (currentItem.itemIcon)
         {
             itemSprite.sprite = currentItem.itemIcon;
@@ -33,7 +33,7 @@ public class ItemPortrait : MonoBehaviour
     void Sleep()
     {
         ItemPortrait.ChosenItem -= Sleep;
-        FindObjectOfType<ItemManager>().itemPortraitQueue.Enqueue(this);
+        ItemManager.instance.itemPortraitQueue.Enqueue(this);
         gameObject.SetActive(false);
     }
 }

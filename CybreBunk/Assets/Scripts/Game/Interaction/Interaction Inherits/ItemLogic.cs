@@ -13,7 +13,7 @@ public class ItemLogic : Interaction
     }
     protected override void InteractionActive()
     {
-        FindObjectOfType<ItemManager>().SetItemSelect();
+        ItemManager.instance.SetItemSelect();
         base.InteractionActive();
         Destroy(gameObject);
     }

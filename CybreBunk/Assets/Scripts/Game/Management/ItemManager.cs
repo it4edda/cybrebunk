@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 public class ItemManager : MonoBehaviour
 {
-    /*#region Instance
+    #region Instance
     public static ItemManager instance;
 
     void Awake()
@@ -19,7 +19,7 @@ public class ItemManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    #endregion*/
+    #endregion
 
     public ItemPortrait itemPortrait;
     public List<ItemData> allItems;

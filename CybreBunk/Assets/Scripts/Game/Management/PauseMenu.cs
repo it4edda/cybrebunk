@@ -1,5 +1,3 @@
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -7,12 +5,14 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    [Header("Pause Menu")]
     [SerializeField] Canvas     mainCanvas;
     [SerializeField] GameObject currentTarot;
+    [SerializeField] GameObject itemList;
+    [SerializeField] GameObject itemVisual;
     
-    [SerializeField] Canvas settingsCanvas;
     [Header("Settings")]
-    
+    [SerializeField] Canvas settingsCanvas;
     [SerializeField] Slider distortionSlider;
     float distoritionValue = 0;
     //0, normal, max
@@ -42,6 +42,19 @@ public class PauseMenu : MonoBehaviour
         ;
         TimeFreeze(freeze);
         mainCanvas.enabled = freeze;
+        if (freeze)
+        {
+            SetUpItemWiew();
+        }
+    }
+
+    void SetUpItemWiew()
+    {
+        foreach (ItemData item in PlayerInventory.instance.items)
+        {
+            GameObject currentItemVisual = Instantiate(itemVisual, itemList.transform);
+            currentItemVisual.GetComponent<ItemVisual>().SetUpVisual(item);
+        }
     }
 
     public void TimeFreeze(bool freeze)
