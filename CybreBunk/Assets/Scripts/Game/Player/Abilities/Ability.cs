@@ -13,7 +13,7 @@ public class Ability : MonoBehaviour
     
     [Header("Dark Arts"), SerializeField] DarkArtsVariables darkArtsVariables;
     List<EnemyBehaviour>                                    savedDarkArtsEnemies = new List<EnemyBehaviour>();
-    List<Vector3>                                           darkArtsPositionPoints;
+    //List<Vector3>                                           darkArtsPositionPoints;
     
     [Header("AoeAttack"), SerializeField] AoeAttackVariables aoeAttackVariables;
 
@@ -59,7 +59,6 @@ public class Ability : MonoBehaviour
             else if (other.transform.CompareTag("Enemy"))
             {
                 savedDarkArtsEnemies.Add(other.GetComponent<EnemyBehaviour>());
-                AddToDarkArtsRenderer(other.transform);
                 savedDarkArtsEnemies[^1].IsStunned = true;
             }
         }
@@ -123,48 +122,38 @@ public class Ability : MonoBehaviour
         yield return new WaitForSeconds(1);
         //after delay ; release and damage enemies, delete projectiles
         
-        if(savedDarkArtsEnemies.Capacity > 0) foreach (var enemy in savedDarkArtsEnemies)
+        //LINE RENDERER
+        StartCoroutine(DarkArtsDamageAndRenderer());
+    }
+
+    
+    IEnumerator DarkArtsDamageAndRenderer()
+    {
+        darkArtsVariables.isActive = false;
+        int localCount = 0;
+        foreach (var enemy in savedDarkArtsEnemies)
         {
+            
+            darkArtsVariables.lineRenderer.SetPosition(0, savedDarkArtsEnemies[localCount].transform.position);
+
+            if (localCount -1 > 0) darkArtsVariables.lineRenderer.SetPosition(1, savedDarkArtsEnemies[localCount - 1].transform.position);
+            else darkArtsVariables.lineRenderer.SetPosition(1,                  savedDarkArtsEnemies[localCount].transform.position);
+            if (localCount -2 > 0) darkArtsVariables.lineRenderer.SetPosition(2, savedDarkArtsEnemies[localCount - 2].transform.position);
+            else darkArtsVariables.lineRenderer.SetPosition(2,                   savedDarkArtsEnemies[localCount].transform.position);
+            
+            //darkArtsVariables.lineRenderer.SetPosition(1, savedDarkArtsEnemies[localCount +1 ].transform.position);
+            //darkArtsVariables.lineRenderer.SetPosition(2, savedDarkArtsEnemies[localCount +2 ].transform.position);
+            
             enemy.IsStunned = false;
             enemy.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
-            yield return new WaitForSeconds(0.02f);
+            
+            
+            yield return new WaitForSeconds(0.1f);
+            localCount++;
         }
         
+        savedDarkArtsEnemies.Clear();
         darkArtsVariables.ToggleAbility(false);
-
-        //LINE RENDERER
-        StartCoroutine(DamageViaDarkArtsRenderer());
-    }
-
-    void AddToDarkArtsRenderer(Transform transform)
-    {
-        //darkArtsVariables.lineRenderer.positionCount++;
-        //darkArtsVariables.lineRenderer.SetPosition(darkArtsVariables.lineRenderer.positionCount -1, transform.position);
-        darkArtsPositionPoints.Capacity++;
-        darkArtsPositionPoints[^1] = transform.position;
-
-    }
-    IEnumerator DamageViaDarkArtsRenderer()
-    {
-        //Vector3[] darkArtsPositionPoints = new Vector3[savedDarkArtsEnemies.Capacity - 1];
-        //new Vector3[darkArtsVariables.lineRenderer.positionCount];
-        
-        foreach (var point in darkArtsPositionPoints)
-        {
-            //darkArtsPositionPoints = darkArtsPositionPoints.Skip(0).ToArray();
-            
-            //darkArtsVariables.lineRenderer.SetPosition(0, darkArtsPositionPoints[0]);
-            //darkArtsVariables.lineRenderer.SetPosition(1, darkArtsPositionPoints[1]);
-            //darkArtsVariables.lineRenderer.SetPosition(2, darkArtsPositionPoints[2]);
-            
-            darkArtsVariables.lineRenderer.SetPosition(0, point);
-            //darkArtsVariables.lineRenderer.SetPosition(1, darkArtsPositionPoints.Find(point). );
-            darkArtsVariables.lineRenderer.SetPosition(2, point);
-            
-            yield return new WaitForSeconds(0.3f);
-        }
-        
-        darkArtsPositionPoints.Clear();
     }
     
     IEnumerator AoeAttack()
@@ -173,3 +162,30 @@ public class Ability : MonoBehaviour
     }
 #endregion
 }
+
+//void AddToDarkArtsRenderer(Transform transform)
+//{
+//darkArtsVariables.lineRenderer.positionCount++;
+//darkArtsVariables.lineRenderer.SetPosition(darkArtsVariables.lineRenderer.positionCount -1, transform.position);
+//darkArtsPositionPoints.Capacity++;
+//darkArtsPositionPoints[^1] = transform.position;
+//darkArtsPositionPoints.Add(transform.position);
+
+//}
+
+//darkArtsPositionPoints = darkArtsPositionPoints.Skip(0).ToArray();
+            
+//darkArtsVariables.lineRenderer.SetPosition(0, darkArtsPositionPoints[0]);
+//darkArtsVariables.lineRenderer.SetPosition(1, darkArtsPositionPoints[1]);
+//darkArtsVariables.lineRenderer.SetPosition(2, darkArtsPositionPoints[2]);
+
+/*if(savedDarkArtsEnemies.Capacity > 0) foreach (var enemy in savedDarkArtsEnemies)
+        {
+            enemy.IsStunned = false;
+            enemy.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
+            yield return new WaitForSeconds(0.03f);
+        }*/
+        
+        
+//Vector3[] darkArtsPositionPoints = new Vector3[savedDarkArtsEnemies.Capacity - 1];
+//new Vector3[darkArtsVariables.lineRenderer.positionCount];
