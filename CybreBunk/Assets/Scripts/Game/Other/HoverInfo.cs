@@ -1,18 +1,38 @@
+using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class HoverInfo : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI text;
-
-    public void SetText(string newText)
+    [SerializeField] CanvasGroup canvasGroup;
+    [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] TextMeshProUGUI descriptionText;
+    [SerializeField] Vector2 offset;
+    void OnEnable()
     {
-        text.text = newText;
+        ItemVisual.OnHover += DisplayInfo;
+        ItemVisual.OnUnHover += HideInfo;
+        canvasGroup = GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0;
     }
-    void Update()
+
+    void OnDisable()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = Camera.main.transform.position.z + Camera.main.nearClipPlane;
-        transform.position = mousePosition;
+        ItemVisual.OnHover -= DisplayInfo;
+        ItemVisual.OnUnHover -= HideInfo;
+    }
+
+    void DisplayInfo(ItemData item, PointerEventData pointerEventData, GameObject senderObject)
+    {
+        gameObject.transform.position = pointerEventData.position + offset;
+        canvasGroup.alpha = 1;
+        nameText.text = item.itemName;
+        descriptionText.text = item.itemDescription;
+    }
+
+    void HideInfo(ItemData arg1, GameObject arg2)
+    {
+        canvasGroup.alpha = 0;
     }
 }

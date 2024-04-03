@@ -38,8 +38,7 @@ public class PauseMenu : MonoBehaviour
             SettingsToggle(false);
             return;
         }
-
-        ;
+        
         TimeFreeze(freeze);
         mainCanvas.enabled = freeze;
         if (freeze)
@@ -52,6 +51,7 @@ public class PauseMenu : MonoBehaviour
     {
         foreach (ItemData item in PlayerInventory.instance.items)
         {
+            //TODO turn this into a object pool
             GameObject currentItemVisual = Instantiate(itemVisual, itemList.transform);
             currentItemVisual.GetComponent<ItemVisual>().SetUpVisual(item);
         }
