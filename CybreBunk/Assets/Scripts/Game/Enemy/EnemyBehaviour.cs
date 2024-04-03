@@ -12,6 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] bool         isBig;
     [SerializeField] GameObject[] smallBlood;
     [SerializeField] GameObject[] bigBlood;
+    [SerializeField] ParticleSystem    bloodParticle;
     
     [Header("Other")]
     [SerializeField] float movementSpeed;
@@ -73,16 +74,20 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void TakeDamage(int damage, Vector2 dir)
     {
-        //do knockback
         StartCoroutine(Knockback(dir));
         health -= damage;
         if (health <= 0) Die();
-        //health |= (health <= 0);
     }
     IEnumerator Knockback(Vector2 dir)
     {
         Knockbacked = true;
         Vector2 direction =  (Vector2)transform.position - dir;
+
+        //SOME BLOOD SHIT
+        // var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        // bloodParticle.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        // bloodParticle.Play();
+        
         rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
         Knockbacked = false;
