@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -24,10 +25,19 @@ public class ItemManager : MonoBehaviour
     public List<ItemData> allItems;
     public GameObject itemCanvas;
 
-    public Queue<ItemPortrait> itemPortraitQueue;
+    public Queue<ItemPortrait> itemPortraitQueue = new();
+    PauseMenu pauseMenu;
+    
+
+    void Start()
+    {
+        pauseMenu = FindObjectOfType<PauseMenu>();
+        ItemPortrait.ChosenItem += HasChosenItem;
+    }
 
     public void SetItemSelect()
     {
+        pauseMenu.TimeFreeze(true);
         itemCanvas.SetActive(true);
         while (itemPortraitQueue.Count <3)
         {
@@ -41,6 +51,12 @@ public class ItemManager : MonoBehaviour
             currentPortrait.gameObject.SetActive(true);
             currentPortrait.SetUpItem();
         }
+    }
+
+    void HasChosenItem()
+    {
+        pauseMenu.TimeFreeze(false);
+        itemCanvas.SetActive(false);
     }
     
     public ItemData GetRandomItem()

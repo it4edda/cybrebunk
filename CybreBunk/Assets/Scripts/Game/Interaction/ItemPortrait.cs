@@ -15,8 +15,11 @@ public class ItemPortrait : MonoBehaviour
     {
         ItemPortrait.ChosenItem += Sleep;
         currentItem = ItemManager.instance.GetRandomItem();
+        if (currentItem.itemIcon)
+        {
+            itemSprite.sprite = currentItem.itemIcon;
+        }
 
-        itemSprite.sprite = currentItem.itemIcon;
         itemName.text = currentItem.itemName;
         itemDesc.text = currentItem.itemDescription;
     }

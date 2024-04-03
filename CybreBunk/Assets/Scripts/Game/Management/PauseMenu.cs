@@ -40,10 +40,16 @@ public class PauseMenu : MonoBehaviour
         }
 
         ;
-        IsPaused       = freeze;
-        Time.timeScale = freeze ? 0 : timeScaleAtStart;
+        TimeFreeze(freeze);
         mainCanvas.enabled = freeze;
     }
+
+    public void TimeFreeze(bool freeze)
+    {
+        IsPaused = freeze;
+        Time.timeScale = freeze ? 0 : timeScaleAtStart;
+    }
+
     public bool IsPaused
     {
         get => isPaused;
