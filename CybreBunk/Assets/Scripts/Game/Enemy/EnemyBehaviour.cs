@@ -19,8 +19,9 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] int   enemyGaugePrice;
     [SerializeField] float attackRange;
     
-    protected bool      midAttack;
-    bool                isStunned;
+    protected bool midAttack;
+    bool           knockbacked;
+    bool           isStunned;
     
     protected Transform target;
     Transform           bloodParent;
@@ -28,6 +29,11 @@ public class EnemyBehaviour : MonoBehaviour
     EnemySpawning       enemySpawning;
     UserInterfaceGauge  gauge;
 
+    public bool Knockbacked
+    {
+        get => knockbacked;
+        set => knockbacked = value;
+    }
     public bool IsStunned
     {
         get => isStunned;
@@ -53,11 +59,13 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!target || isStunned)
+        if (isStunned)
         {
             rb.velocity = Vector2.zero;
             return;
         }
+        if (!target || Knockbacked) return;
+        
         Movement();
 
         if (InRange() && !midAttack)
@@ -73,11 +81,11 @@ public class EnemyBehaviour : MonoBehaviour
     }
     IEnumerator Knockback(Vector2 dir)
     {
-        isStunned = true;
+        Knockbacked = true;
         Vector2 direction =  (Vector2)transform.position - dir;
         rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
-        isStunned = false;
+        Knockbacked = false;
     }
     protected virtual void Die()
     {

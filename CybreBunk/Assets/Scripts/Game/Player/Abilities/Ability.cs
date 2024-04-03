@@ -29,6 +29,7 @@ public class Ability : MonoBehaviour
         playerStats                                   = FindObjectOfType<PlayerStats>();
         playerMovement                                = GetComponent<PlayerMovement>();
         darkArtsVariables.baseVariables.canUseAbility = true;
+        darkArtsVariables.activeParticles.Stop();
     }
 
     public void InitiateAbility(ChosenAbility chosen)
@@ -110,7 +111,6 @@ public class Ability : MonoBehaviour
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
     {
         darkArtsVariables.ToggleAbility(true);
-        
         playerMovement.MoveSpeed += Vector2.one * darkArtsVariables.movementBoost;
         
         //become gray
@@ -120,9 +120,7 @@ public class Ability : MonoBehaviour
         playerMovement.MoveSpeed -= Vector2.one * darkArtsVariables.movementBoost;
 
         yield return new WaitForSeconds(1);
-        //after delay ; release and damage enemies, delete projectiles
         
-        //LINE RENDERER
         StartCoroutine(DarkArtsDamageAndRenderer());
     }
 
@@ -131,27 +129,40 @@ public class Ability : MonoBehaviour
     {
         darkArtsVariables.isActive = false;
         int localCount = 0;
+        darkArtsVariables.lineRenderer.positionCount = 3;
+        
+        List<Vector2> enemyPositions = new List<Vector2>();
         foreach (var enemy in savedDarkArtsEnemies)
         {
-            
-            darkArtsVariables.lineRenderer.SetPosition(0, savedDarkArtsEnemies[localCount].transform.position);
-
-            if (localCount -1 > 0) darkArtsVariables.lineRenderer.SetPosition(1, savedDarkArtsEnemies[localCount - 1].transform.position);
-            else darkArtsVariables.lineRenderer.SetPosition(1,                  savedDarkArtsEnemies[localCount].transform.position);
-            if (localCount -2 > 0) darkArtsVariables.lineRenderer.SetPosition(2, savedDarkArtsEnemies[localCount - 2].transform.position);
-            else darkArtsVariables.lineRenderer.SetPosition(2,                   savedDarkArtsEnemies[localCount].transform.position);
-            
-            //darkArtsVariables.lineRenderer.SetPosition(1, savedDarkArtsEnemies[localCount +1 ].transform.position);
-            //darkArtsVariables.lineRenderer.SetPosition(2, savedDarkArtsEnemies[localCount +2 ].transform.position);
-            
-            enemy.IsStunned = false;
-            enemy.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
-            
-            
-            yield return new WaitForSeconds(0.1f);
-            localCount++;
+            enemyPositions.Add(enemy.transform.position);
         }
         
+        foreach (var enemy in savedDarkArtsEnemies)
+        {
+            darkArtsVariables.lineRenderer.SetPosition(0, enemyPositions[localCount]);
+            if (localCount -1 > 0) darkArtsVariables.lineRenderer.SetPosition(1, enemyPositions[localCount - 1]);
+            else darkArtsVariables.lineRenderer.SetPosition(1,                  enemyPositions[localCount]);
+            if (localCount -2 > 0) darkArtsVariables.lineRenderer.SetPosition(2, enemyPositions[localCount - 2]);
+            else darkArtsVariables.lineRenderer.SetPosition(2,                   enemyPositions[localCount]);
+            
+            yield return new WaitForSeconds(0.05f);
+
+            if (enemy != null)
+            {
+                enemy.IsStunned = false;
+                enemy?.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
+            }
+            localCount++;
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            darkArtsVariables.lineRenderer.SetPosition(0, darkArtsVariables.lineRenderer.GetPosition(1));
+            darkArtsVariables.lineRenderer.SetPosition(1, darkArtsVariables.lineRenderer.GetPosition(2));
+            darkArtsVariables.lineRenderer.SetPosition(2, transform.position);
+        }
+
+        darkArtsVariables.lineRenderer.positionCount = 0;
         savedDarkArtsEnemies.Clear();
         darkArtsVariables.ToggleAbility(false);
     }
@@ -162,6 +173,9 @@ public class Ability : MonoBehaviour
     }
 #endregion
 }
+
+//darkArtsVariables.lineRenderer.SetPosition(1, savedDarkArtsEnemies[localCount +1 ].transform.position);
+//darkArtsVariables.lineRenderer.SetPosition(2, savedDarkArtsEnemies[localCount +2 ].transform.position);
 
 //void AddToDarkArtsRenderer(Transform transform)
 //{
@@ -181,7 +195,7 @@ public class Ability : MonoBehaviour
 
 /*if(savedDarkArtsEnemies.Capacity > 0) foreach (var enemy in savedDarkArtsEnemies)
         {
-            enemy.IsStunned = false;
+            enemy.Knockbacked = false;
             enemy.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
             yield return new WaitForSeconds(0.03f);
         }*/
