@@ -53,7 +53,11 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (!target || isStunned) return;
+        if (!target || isStunned)
+        {
+            rb.velocity = Vector2.zero;
+            return;
+        }
         Movement();
 
         if (InRange() && !midAttack)

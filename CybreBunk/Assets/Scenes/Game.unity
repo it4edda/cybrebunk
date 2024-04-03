@@ -1816,6 +1816,11 @@ RectTransform:
   m_AnchoredPosition: {x: 30.5, y: 0}
   m_SizeDelta: {x: 41, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!212 &512159596 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1388130242104096729, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+  m_PrefabInstance: {fileID: 3528347902443371520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &520792396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3736,7 +3741,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &1166291603
@@ -12546,13 +12551,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability1: 0
-  ability2: 0
   darkArtsVariables:
-    isActive: 0
     timeActive: 2
+    isActive: 0
     movementBoost: 2
+    damageMultiplier: 0
     lineRenderer: {fileID: 1146795290}
     activeParticles: {fileID: 1343401747}
+    playerSprite: {fileID: 512159596}
+    playerColorAtStart: {r: 0, g: 0, b: 0, a: 1}
+    playerColorWhileActive: {r: 1, g: 0, b: 0, a: 1}
   aoeAttackVariables:
     timeActive: 2
     damageCollider: {fileID: 0}

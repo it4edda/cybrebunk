@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,12 +8,12 @@ public class Ability : MonoBehaviour
 {
     [Header("Here's your header Alex")]
     public ChosenAbility ability1;
-    public ChosenAbility ability2;
     PlayerMovement       playerMovement;
     PlayerStats          playerStats;
     
-    [Header("Dark Arts"), SerializeField] DarkArtsVariables  darkArtsVariables;
-    EnemyBehaviour[]                                         savedDarkArtsEnemies;
+    [Header("Dark Arts"), SerializeField] DarkArtsVariables darkArtsVariables;
+    List<EnemyBehaviour>                                    savedDarkArtsEnemies = new List<EnemyBehaviour>();
+    List<Vector3>                                           darkArtsPositionPoints;
     
     [Header("AoeAttack"), SerializeField] AoeAttackVariables aoeAttackVariables;
 
@@ -49,19 +50,19 @@ public class Ability : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
-    
-    void OnCollisionEnter(Collision other)
+
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (darkArtsVariables.isActive)
         {
-            if (other.gameObject.GetComponent<DamageDealer>().IsAllied) Destroy(other.gameObject);
+            if (other.gameObject.GetComponent<DamageDealer>() && other.gameObject.GetComponent<DamageDealer>().IsAllied) Destroy(other.gameObject);
             else if (other.transform.CompareTag("Enemy"))
             {
+                savedDarkArtsEnemies.Add(other.GetComponent<EnemyBehaviour>());
                 AddToDarkArtsRenderer(other.transform);
-                other.gameObject.GetComponent<EnemyBehaviour>().IsStunned = true;
+                savedDarkArtsEnemies[^1].IsStunned = true;
             }
         }
-        //DO STUFF HERE, SHOULD WORK
     }
 
 #region Vinushka
@@ -74,13 +75,30 @@ public class Ability : MonoBehaviour
     
     [Serializable] struct DarkArtsVariables
     {
+        [Header("GENERAL")]
         public BaseVariables baseVariables;
         
-        public bool           isActive;
-        public float          timeActive;
-        public float          movementBoost; //ADDITIVE
+        /// <summary> ADDITIVE SUM </summary>
+        public float timeActive;
+        public bool  isActive;
+        public float movementBoost;
+        public int   damageMultiplier;
+        
+        [Header("GRAPHICS")]
         public LineRenderer   lineRenderer;
         public ParticleSystem activeParticles;
+
+        public SpriteRenderer playerSprite;
+        public Color          playerColorAtStart;
+        public Color          playerColorWhileActive;
+
+        public void ToggleAbility(bool enable)
+        {
+            baseVariables.canUseAbility = !enable;
+            isActive                    = enable;
+            playerSprite.color          = enable ? playerColorWhileActive : playerColorAtStart;
+            if (enable) activeParticles.Play(); else activeParticles.Stop();
+        }
     }
     [Serializable] struct AoeAttackVariables
     {
@@ -92,52 +110,61 @@ public class Ability : MonoBehaviour
 #endregion
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
     {
-        darkArtsVariables.isActive = true;
-        Debug.Log("HAHA DID DARK ARTS");
+        darkArtsVariables.ToggleAbility(true);
         
         playerMovement.MoveSpeed += Vector2.one * darkArtsVariables.movementBoost;
         
         //become gray
-        darkArtsVariables.activeParticles.Play();
 
         yield return new WaitForSeconds(darkArtsVariables.timeActive);
         
-        playerMovement.MoveSpeed            -= Vector2.one * darkArtsVariables.movementBoost;
+        playerMovement.MoveSpeed -= Vector2.one * darkArtsVariables.movementBoost;
 
         yield return new WaitForSeconds(1);
         //after delay ; release and damage enemies, delete projectiles
         
-        Debug.Log("DU JOBBADE HÄR SENAST WILLIAM LYCKA TILL HAHAHAHAHAHAHHAHAHA");
-        if(savedDarkArtsEnemies.Length > 0) foreach (var enemy in savedDarkArtsEnemies)
+        if(savedDarkArtsEnemies.Capacity > 0) foreach (var enemy in savedDarkArtsEnemies)
         {
             enemy.IsStunned = false;
-            enemy.TakeDamage(playerStats.Damage, enemy.transform.position);
+            enemy.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
             yield return new WaitForSeconds(0.02f);
         }
         
-        darkArtsVariables.activeParticles.Stop();
+        darkArtsVariables.ToggleAbility(false);
 
         //LINE RENDERER
-        
-        darkArtsVariables.isActive = false;
         StartCoroutine(DamageViaDarkArtsRenderer());
     }
 
     void AddToDarkArtsRenderer(Transform transform)
     {
-        darkArtsVariables.lineRenderer.positionCount++;
-        darkArtsVariables.lineRenderer.SetPosition(darkArtsVariables.lineRenderer.positionCount -1, transform.position);
-        
+        //darkArtsVariables.lineRenderer.positionCount++;
+        //darkArtsVariables.lineRenderer.SetPosition(darkArtsVariables.lineRenderer.positionCount -1, transform.position);
+        darkArtsPositionPoints.Capacity++;
+        darkArtsPositionPoints[^1] = transform.position;
+
     }
     IEnumerator DamageViaDarkArtsRenderer()
     {
-        Vector3[] points = new Vector3[darkArtsVariables.lineRenderer.positionCount];
-        //PLAY SOUND
-        foreach (var point in points)
+        //Vector3[] darkArtsPositionPoints = new Vector3[savedDarkArtsEnemies.Capacity - 1];
+        //new Vector3[darkArtsVariables.lineRenderer.positionCount];
+        
+        foreach (var point in darkArtsPositionPoints)
         {
-            points = points.Skip(0).ToArray();
-            yield return new WaitForSeconds(0.1f);
+            //darkArtsPositionPoints = darkArtsPositionPoints.Skip(0).ToArray();
+            
+            //darkArtsVariables.lineRenderer.SetPosition(0, darkArtsPositionPoints[0]);
+            //darkArtsVariables.lineRenderer.SetPosition(1, darkArtsPositionPoints[1]);
+            //darkArtsVariables.lineRenderer.SetPosition(2, darkArtsPositionPoints[2]);
+            
+            darkArtsVariables.lineRenderer.SetPosition(0, point);
+            //darkArtsVariables.lineRenderer.SetPosition(1, darkArtsPositionPoints.Find(point). );
+            darkArtsVariables.lineRenderer.SetPosition(2, point);
+            
+            yield return new WaitForSeconds(0.3f);
         }
+        
+        darkArtsPositionPoints.Clear();
     }
     
     IEnumerator AoeAttack()
