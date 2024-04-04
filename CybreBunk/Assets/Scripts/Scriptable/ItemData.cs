@@ -69,6 +69,7 @@ public class ItemData : ScriptableObject
         foreach (ItemEffect itemEffect in itemEffects.Where(effect =>
                      effect.activationConditions == ActivationConditions.DealDamage))
         {
+            Debug.Log(itemEffect);
             UpdateStats(playerStats, itemEffect);
         }
     }

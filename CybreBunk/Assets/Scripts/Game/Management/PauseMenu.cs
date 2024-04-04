@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -5,11 +7,13 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static event Action<bool> pausing; 
+    
     [Header("Pause Menu")]
     [SerializeField] Canvas     mainCanvas;
     [SerializeField] GameObject currentTarot;
     [SerializeField] GameObject itemList;
-    [SerializeField] GameObject itemVisual;
+    [SerializeField] ItemVisual itemVisual;
     
     [Header("Settings")]
     [SerializeField] Canvas settingsCanvas;
@@ -23,6 +27,8 @@ public class PauseMenu : MonoBehaviour
     bool                        isPaused;
 
     Volume volume;
+
+    public Queue<ItemVisual> visualsQueue = new();
     void Start()
     {
         DiosBestFriend(false);
@@ -45,15 +51,23 @@ public class PauseMenu : MonoBehaviour
         {
             SetUpItemWiew();
         }
+        pausing?.Invoke(freeze);
     }
 
     void SetUpItemWiew()
     {
+        while (visualsQueue.Count < PlayerInventory.instance.items.Count)
+        {
+            ItemVisual currentItemVisual = Instantiate(itemVisual, itemList.transform);
+            visualsQueue.Enqueue(currentItemVisual);
+        }
+
         foreach (ItemData item in PlayerInventory.instance.items)
         {
             //TODO turn this into a object pool
-            GameObject currentItemVisual = Instantiate(itemVisual, itemList.transform);
-            currentItemVisual.GetComponent<ItemVisual>().SetUpVisual(item);
+            ItemVisual currentItemVisual = visualsQueue.Dequeue();
+            currentItemVisual.gameObject.SetActive(true);
+            currentItemVisual.SetUpVisual(item);
         }
     }
 
