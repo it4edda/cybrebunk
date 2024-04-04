@@ -11,6 +11,22 @@ public class ItemVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     [SerializeField] Image itemIcon;
     
     ItemData currentItem;
+    PauseMenu pauseMenu;
+
+    void Start()
+    {
+        pauseMenu = FindObjectOfType<PauseMenu>();
+    }
+
+    void OnEnable()
+    {
+        PauseMenu.pausing += ReturnToQueue;
+    }
+
+    void OnDisable()
+    {
+        PauseMenu.pausing -= ReturnToQueue;
+    }
 
     public void SetUpVisual(ItemData item)
     {
@@ -27,5 +43,13 @@ public class ItemVisual : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerExit(PointerEventData eventData)
     {
         OnUnHover?.Invoke(currentItem, gameObject);
+    }
+
+    void ReturnToQueue(bool isPausing)
+    {
+        if (isPausing) { return; }
+        
+        pauseMenu.visualsQueue.Enqueue(this);
+        gameObject.SetActive(false);
     }
 }
