@@ -1,14 +1,16 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ChampionSelect : MonoBehaviour
 {
-    [SerializeField] Transform[]        positions;
-    [SerializeField] TMP_Text           descriptionText;
+    [SerializeField] Transform[] positions;
+    [SerializeField] TMP_Text    descriptionText;
     //[SerializeField] TarotData  //Why didnt i just do this?
     [SerializeField] ScriptableObject[] tarots;
     [SerializeField] GameObject[]       selectedTarots;
@@ -17,27 +19,72 @@ public class ChampionSelect : MonoBehaviour
     [SerializeField] KeyCode            continueInput;
     [SerializeField] int                selected;
     [SerializeField] float              swapHaste = 2;
+    [SerializeField] bool               hideCards = true; //DONT USE THIS
+    [SerializeField] Vector2            hiddenPosition;
+
+    [Header("OtherButtons")]
+    [SerializeField] Button continueButton;
+    [SerializeField] Transform titleObject;
+    [SerializeField] Vector2   titlePos1;
+    [SerializeField] Vector2   titlePos2;
+    [SerializeField] float     scaleHaste;
+    [SerializeField] float     titleScale1;
+    [SerializeField] float     titleScale2;
+    [SerializeField] string    descriptionWhileHidden;
+    [SerializeField] Vector2   descriptionBoxPos1; //= -112.4f;
+    [SerializeField] Vector2   descriptionBoxPos2;
+    
+    
     void Start()
     {
         for (var i = 0; i < selectedTarots.Length; i++)
         {
             int index = (selected + i) % tarots.Length;
             //selectedTarots[i]                                       = Instantiate((tarots[index] as TarotData)?.CurrentCard);
-            selectedTarots[i]                                       = Instantiate(new GameObject());
+            selectedTarots[i]                                       = Instantiate(new GameObject(), hiddenPosition, quaternion.identity);
             selectedTarots[i].AddComponent<SpriteRenderer>().sprite = (tarots[index] as TarotData)?.CurrentCard;
         }
 
-        UpdateTarotDescriptionText();
+        CardStatus(true);
     }
     void Update()
     {
-        foreach (string i in leftInputKeys)  if (Input.GetKeyDown(i)) SelectL();
-        foreach (string i in rightInputKeys) if (Input.GetKeyDown(i)) SelectR();
-        if (Input.GetKeyDown(continueInput)) LoadGame();
+        if (!hideCards)
+        {
+            foreach (string i in leftInputKeys)  if (Input.GetKeyDown(i)) SelectL();
+            foreach (string i in rightInputKeys) if (Input.GetKeyDown(i)) SelectR();
+            if (Input.GetKeyDown(continueInput)) LoadGame();
+        }
+        else if (Input.anyKey)
+        {
+            StartCoroutine(WaitASecond());
+            hideCards                   = false;
+            UpdateTarotDescriptionText();
+        }
+
         for (var i = 0; i < selectedTarots.Length; i++)
         {
-            selectedTarots[i].transform.position = Vector3.Lerp(selectedTarots[i].transform.position, positions[i].position, swapHaste * Time.deltaTime);
+            selectedTarots[i].transform.position = 
+                Vector3.Lerp(selectedTarots[i].transform.position, hideCards ? hiddenPosition : positions[i].position, swapHaste * Time.deltaTime);
         }
+
+        Vector2 titleScale = new Vector2(hideCards ? titleScale1 : titleScale2, hideCards ? titleScale1 : titleScale2);
+        titleObject.localScale = Vector2.Lerp(titleObject.localScale, titleScale,scaleHaste  * Time.deltaTime);
+        
+        titleObject.position   = Vector3.Lerp(titleObject.position, hideCards ? titlePos1 : titlePos2, swapHaste * Time.deltaTime);
+        
+        descriptionText.rectTransform.parent.position = 
+            Vector3.Lerp(descriptionText.rectTransform.parent.position, hideCards ? descriptionBoxPos2 : descriptionBoxPos1, swapHaste * Time.deltaTime );
+    }
+    IEnumerator WaitASecond()
+    {
+        yield return new WaitForSeconds(1);
+        continueButton.interactable = true;
+    }
+    void CardStatus(bool isHidden)
+    {
+        hideCards            = isHidden;
+        descriptionText.text = isHidden ? descriptionWhileHidden : (tarots[selected] as TarotData)?.CurrentDescription;
     }
     
     public void SelectL()
@@ -84,6 +131,13 @@ public class ChampionSelect : MonoBehaviour
         if (!savedTarot.isPlayable) return;
         PlayerManager.selectedCard = savedTarot;
         SceneManager.LoadScene("Game");
-    } 
-    
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(descriptionBoxPos1, 40);
+        Gizmos.DrawWireSphere(descriptionBoxPos2, 40);
+        Gizmos.DrawWireSphere(titlePos1, 1);
+        Gizmos.DrawWireSphere(titlePos2, 1);
+    }
+
 }

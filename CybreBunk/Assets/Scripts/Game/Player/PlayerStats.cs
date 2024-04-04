@@ -52,6 +52,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (isDead) return health;
         PlayerInventory.instance.TakingDamage();
+        Debug.Log("WHY DOES THIS ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
         damageParticles.Play();
         cam.CameraShake(0.3f);
         uiHealth.ModifyHealth(value);
