@@ -19,16 +19,18 @@ public class PlayerStats : MonoBehaviour
     bool canDie = true;
     int  health;
     int  damage;
-    
+
+    SceneTransitions    transitions;
     UserInterfaceHealth uiHealth;
     PlayerMovement      movement;
     PlayerAttack        attack;
     PlayerCamera        cam;
     void Start()
     {
-        cam      = FindObjectOfType<PlayerCamera>();
-        movement = GetComponent<PlayerMovement>();
-        attack   = GetComponent<PlayerAttack>();
+        cam         = FindObjectOfType<PlayerCamera>();
+        transitions = FindObjectOfType<SceneTransitions>();
+        movement    = GetComponent<PlayerMovement>();
+        attack      = GetComponent<PlayerAttack>();
         
         ImportStats();
         
@@ -71,7 +73,8 @@ public class PlayerStats : MonoBehaviour
         attack.CanAttack = false;
         deathParticles.Play();
         yield return new WaitForSeconds(deathParticles.main.duration + 0.5f);
-        SceneManager.LoadScene("Death");
+        StartCoroutine(transitions.Transition("Death"));
+        //SceneManager.LoadScene("Death");
     }
     #endregion
     public int Damage

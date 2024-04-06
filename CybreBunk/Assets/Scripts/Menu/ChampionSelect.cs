@@ -24,16 +24,18 @@ public class ChampionSelect : MonoBehaviour
 
     [Header("OtherButtons")]
     [SerializeField] Button continueButton;
-    [SerializeField] Transform titleObject;
-    [SerializeField] Vector2   titlePos1;
-    [SerializeField] Vector2   titlePos2;
-    [SerializeField] float     scaleHaste;
-    [SerializeField] float     titleScale1;
-    [SerializeField] float     titleScale2;
-    [SerializeField] string    descriptionWhileHidden;
-    [SerializeField] Vector2   descriptionBoxPos1; //= -112.4f;
-    [SerializeField] Vector2   descriptionBoxPos2;
-    
+    [SerializeField] Transform        titleObject;
+    [SerializeField] Vector2          titlePos1;
+    [SerializeField] Vector2          titlePos2;
+    [SerializeField] float            scaleHaste;
+    [SerializeField] float            titleScale1;
+    [SerializeField] float            titleScale2;
+    [SerializeField] string           descriptionWhileHidden;
+    [SerializeField] Vector2          descriptionBoxPos1; //= -112.4f;
+    [SerializeField] Vector2          descriptionBoxPos2;
+
+    [Header("OtherOther")]
+    [SerializeField] SceneTransitions transitions;
     
     void Start()
     {
@@ -130,7 +132,8 @@ public class ChampionSelect : MonoBehaviour
         var savedTarot = tarots[selected] as TarotData;
         if (!savedTarot.isPlayable) return;
         PlayerManager.selectedCard = savedTarot;
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
+        StartCoroutine(transitions.Transition("Game"));
     }
     void OnDrawGizmos()
     {

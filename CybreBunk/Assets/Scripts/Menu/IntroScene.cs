@@ -18,7 +18,7 @@ public class IntroScene : MonoBehaviour
         yield return new WaitForSeconds(2);
         canContinue = true;
     }
-    IEnumerator Transition()
+    public IEnumerator Transition()
     {
         if (doAnimatorStuff)
         animator.gameObject.SetActive(true);
