@@ -5826,29 +5826,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932816419}
   m_CullTransparentMesh: 1
---- !u!1 &983713472 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8181574395465407408, guid: 946f768021bdbf047aa4b3497011a91e, type: 3}
-  m_PrefabInstance: {fileID: 8041000867490097344}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &983713473 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4271813430464055778, guid: 946f768021bdbf047aa4b3497011a91e, type: 3}
   m_PrefabInstance: {fileID: 8041000867490097344}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &983713477
+--- !u!114 &983713477 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4260672195212204994, guid: 946f768021bdbf047aa4b3497011a91e, type: 3}
+  m_PrefabInstance: {fileID: 8041000867490097344}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983713472}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57dc49ba43fb84448b031a2510b2f992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doAnimatorStuff: 1
 --- !u!1 &1136220223
 GameObject:
   m_ObjectHideFlags: 0
@@ -6620,10 +6613,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7535705545556881490, guid: 946f768021bdbf047aa4b3497011a91e, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8181574395465407408, guid: 946f768021bdbf047aa4b3497011a91e, type: 3}
       propertyPath: m_Name
       value: Transition
@@ -6631,8 +6620,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8181574395465407408, guid: 946f768021bdbf047aa4b3497011a91e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 983713477}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 946f768021bdbf047aa4b3497011a91e, type: 3}
