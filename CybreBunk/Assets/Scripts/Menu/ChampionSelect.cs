@@ -24,15 +24,18 @@ public class ChampionSelect : MonoBehaviour
 
     [Header("OtherButtons")]
     [SerializeField] Button continueButton;
-    [SerializeField] Transform        titleObject;
-    [SerializeField] Vector2          titlePos1;
-    [SerializeField] Vector2          titlePos2;
-    [SerializeField] float            scaleHaste;
-    [SerializeField] float            titleScale1;
-    [SerializeField] float            titleScale2;
-    [SerializeField] string           descriptionWhileHidden;
-    [SerializeField] Vector2          descriptionBoxPos1; //= -112.4f;
-    [SerializeField] Vector2          descriptionBoxPos2;
+    [SerializeField] Transform titleObject;
+    [SerializeField] Vector2   titlePos1;
+    [SerializeField] Vector2   titlePos2;
+    [SerializeField] float     scaleHaste;
+    [SerializeField] float     titleScale1;
+    [SerializeField] float     titleScale2;
+    [SerializeField] string    descriptionWhileHidden;
+    [SerializeField] Vector2   descriptionBoxPos1; //= -112.4f;
+    [SerializeField] Vector2   descriptionBoxPos2;
+    [SerializeField] Transform quitButton;
+    [SerializeField] Vector2   quitBoxPos1; 
+    [SerializeField] Vector2   quitBoxPos2;
 
     [Header("OtherOther")]
     [SerializeField] SceneTransitions transitions;
@@ -77,6 +80,9 @@ public class ChampionSelect : MonoBehaviour
         
         descriptionText.rectTransform.parent.position = 
             Vector3.Lerp(descriptionText.rectTransform.parent.position, hideCards ? descriptionBoxPos2 : descriptionBoxPos1, swapHaste * Time.deltaTime );
+        
+        quitButton.position = 
+            Vector3.Lerp(quitButton.position, hideCards ? quitBoxPos2 : quitBoxPos1, swapHaste * Time.deltaTime );
     }
     IEnumerator WaitASecond()
     {
@@ -135,12 +141,19 @@ public class ChampionSelect : MonoBehaviour
         //SceneManager.LoadScene("Game");
         StartCoroutine(transitions.Transition("Game"));
     }
+    public void QuitGame()
+    {
+        Debug.Log("HA");
+        Application.Quit();
+    }
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(descriptionBoxPos1, 40);
         Gizmos.DrawWireSphere(descriptionBoxPos2, 40);
-        Gizmos.DrawWireSphere(titlePos1, 1);
-        Gizmos.DrawWireSphere(titlePos2, 1);
+        Gizmos.DrawWireSphere(titlePos1,          1);
+        Gizmos.DrawWireSphere(titlePos2,          1);
+        Gizmos.DrawWireSphere(quitBoxPos1,        40);
+        Gizmos.DrawWireSphere(quitBoxPos2,        40);
     }
 
 }

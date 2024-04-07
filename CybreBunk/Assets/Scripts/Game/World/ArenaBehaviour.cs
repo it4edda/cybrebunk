@@ -17,6 +17,8 @@ public class ArenaBehaviour : MonoBehaviour
     Vignette  vignette;
 
     [SerializeField] Gradient dangerLevel;
+    float                     timeOutsideDistance   = 0f;
+    [SerializeField] float     gameOverTimeThreshold = 5f;
     
     void Start()
     {
@@ -30,6 +32,19 @@ public class ArenaBehaviour : MonoBehaviour
         
         vignette.color.value = dangerLevel.Evaluate(a);
         
+        if (dis > suicideDistance)
+        {
+            timeOutsideDistance += Time.deltaTime;
+
+            if (timeOutsideDistance >= gameOverTimeThreshold)
+            {
+                player.GetComponent<PlayerStats>().Health =- 100;
+            }
+        }
+        else
+        {
+            timeOutsideDistance = 0f;
+        }
     }
     void OnDrawGizmosSelected()
     {

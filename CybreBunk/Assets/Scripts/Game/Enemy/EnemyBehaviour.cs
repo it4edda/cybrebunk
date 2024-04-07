@@ -48,14 +48,13 @@ public class EnemyBehaviour : MonoBehaviour
         target        = FindObjectOfType<PlayerMovement>().transform;
         gauge         = FindObjectOfType<UserInterfaceGauge>();
     }
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        //todo contact damage
+        Debug.Log("fix this damage on contact");
         if (other.CompareTag("Player"))
         {
-            //add a trigger collider 
-            //deal damage
-            //other.GetComponent<PlayerStats>()
+            other.GetComponent<PlayerStats>().Health--;
+            Knockback(other.transform.position);
         }
     }
     void FixedUpdate()

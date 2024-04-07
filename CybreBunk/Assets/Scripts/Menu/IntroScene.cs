@@ -15,7 +15,7 @@ public class IntroScene : MonoBehaviour
     }
     IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         canContinue = true;
     }
     public IEnumerator Transition()

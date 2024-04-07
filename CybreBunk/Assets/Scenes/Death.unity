@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8734116c80a59e4ab470db3f3904269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 0.01
+  force: 0.04
   rect: {fileID: 2108346674}
 --- !u!4 &898862889
 Transform:
