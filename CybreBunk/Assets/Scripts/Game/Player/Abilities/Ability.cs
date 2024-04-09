@@ -105,7 +105,7 @@ public class Ability : MonoBehaviour
         public BaseVariables baseVariables;  
         
         public float         timeActive;
-        public Collider2D    damageCollider;
+        public Animator      slasher;
     }
 #endregion
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
@@ -136,8 +136,8 @@ public class Ability : MonoBehaviour
         {
             enemyPositions.Add(enemy.transform.position);
         }
-        
-        foreach (var enemy in savedDarkArtsEnemies)
+        //THIS IS UN-GPTd CODE
+        /*foreach (var enemy in savedDarkArtsEnemies)
         {
             darkArtsVariables.lineRenderer.SetPosition(0, enemyPositions[localCount]);
             if (localCount -1 > 0) darkArtsVariables.lineRenderer.SetPosition(1, enemyPositions[localCount - 1]);
@@ -153,13 +153,31 @@ public class Ability : MonoBehaviour
                 enemy?.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
             }
             localCount++;
-        }
+        }*/
+        //THIS IS GPT
+        foreach (var enemy in savedDarkArtsEnemies)
+        {
+            darkArtsVariables.lineRenderer.SetPosition(0, enemyPositions[localCount]);
+            darkArtsVariables.lineRenderer.SetPosition(1, enemyPositions[Math.Max(localCount - 1, 0)]);
+            darkArtsVariables.lineRenderer.SetPosition(2, enemyPositions[Math.Max(localCount - 2, 0)]);
+            
+            yield return new WaitForSeconds(0.05f);
+
+            if (enemy != null)
+            {
+                enemy.IsStunned = false;
+                enemy?.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
+            }
+            localCount++;
+        }//END OF GPT
 
         for (int i = 0; i < 3; i++)
         {
-            darkArtsVariables.lineRenderer.SetPosition(0, darkArtsVariables.lineRenderer.GetPosition(1));
-            darkArtsVariables.lineRenderer.SetPosition(1, darkArtsVariables.lineRenderer.GetPosition(2));
-            darkArtsVariables.lineRenderer.SetPosition(2, transform.position);
+            //darkArtsVariables.lineRenderer.SetPosition(0, darkArtsVariables.lineRenderer.GetPosition(1));
+            //darkArtsVariables.lineRenderer.SetPosition(1, darkArtsVariables.lineRenderer.GetPosition(2));
+            //darkArtsVariables.lineRenderer.SetPosition(2, transform.position);
+            darkArtsVariables.lineRenderer.SetPosition(i,transform.position);
+            yield return new WaitForSeconds(0.05f);
         }
 
         darkArtsVariables.lineRenderer.positionCount = 0;
@@ -169,10 +187,22 @@ public class Ability : MonoBehaviour
     
     IEnumerator AoeAttack()
     {
-        yield return new WaitForSeconds(1);
+        aoeAttackVariables.baseVariables.canUseAbility = false;
+        aoeAttackVariables.slasher.gameObject.SetActive(true);
+        //Vector3 a = weaponGraphics.localScale;
+        //weaponGraphics.localScale = new Vector3(a.x, a.y * -1, a.z);
+        yield return new WaitForSeconds(aoeAttackVariables.slasher.GetCurrentAnimatorStateInfo(0).length);
+        aoeAttackVariables.slasher.gameObject.SetActive(false);
+        aoeAttackVariables.baseVariables.canUseAbility = true;
+        
     }
 #endregion
 }
+
+
+
+
+
 
 //darkArtsVariables.lineRenderer.SetPosition(1, savedDarkArtsEnemies[localCount +1 ].transform.position);
 //darkArtsVariables.lineRenderer.SetPosition(2, savedDarkArtsEnemies[localCount +2 ].transform.position);

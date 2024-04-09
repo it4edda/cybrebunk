@@ -3126,6 +3126,37 @@ MonoBehaviour:
   prefabToInstantiate: {fileID: 4044450823066319546, guid: 0d3fb64c0aa67c14d8fed927f5262836, type: 3}
   startPoint: {fileID: 1352614480}
   endPoint: {fileID: 1629944813}
+--- !u!1 &1008897216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008897217}
+  m_Layer: 0
+  m_Name: BigSlash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1008897217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008897216}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.0419, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1832384191}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1023390475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11005,6 +11036,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787725473}
   m_CullTransparentMesh: 1
+--- !u!4 &1832384191 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1065259305812519490, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+  m_PrefabInstance: {fileID: 3528347902443371520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1840643583
 GameObject:
   m_ObjectHideFlags: 0
@@ -12547,6 +12583,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3901097629434268975, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       insertIndex: -1
       addedObject: {fileID: 953366980}
+    - targetCorrespondingSourceObject: {fileID: 1065259305812519490, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1008897217}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 481988184173262912, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       insertIndex: -1
