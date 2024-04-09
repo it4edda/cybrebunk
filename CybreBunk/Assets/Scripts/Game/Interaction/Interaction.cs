@@ -17,11 +17,9 @@ public class Interaction : MonoBehaviour
 
         if (!canInteract || !inRange) return;
 
-        if (Input.GetKeyDown(KeyCode.Space)) InteractionActive();
+        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.E)) InteractionActive();
+        //DENNIS VILLE HA E SOM INTERACT
     }
-
-    //MAKE ADDITIONAL INTERACTION COROUTINES?
-    //item logic would profit from this
     protected virtual void InteractionPassive() { }
 
     /// <summary>

@@ -3724,12 +3724,12 @@ LineRenderer:
       - serializedVersion: 3
         time: 0
         value: 0.21478271
-        inSlope: 0
-        outSlope: 0
+        inSlope: 0.9694623
+        outSlope: 0.9694623
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.5230296
       - serializedVersion: 3
         time: 0.49999678
         value: 0.49295056
@@ -3742,11 +3742,11 @@ LineRenderer:
       - serializedVersion: 3
         time: 1
         value: 0.17956543
-        inSlope: 0
-        outSlope: 0
+        inSlope: -1.3624887
+        outSlope: -1.3624887
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0
+        inWeight: 0.18091992
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
