@@ -10,13 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9787c0c273222d64fa12c0af750580a6, type: 3}
-  m_Name: TunaSub
+  m_Name: Telecaster
   m_EditorClassIdentifier: 
-  itemName: tuNA suB
-  itemDescription: Read it backwads
-  itemIcon: {fileID: 0}
-  movementExclusive:
-    movementSpeedIncrease: 0
-  attackExclusive:
-    attackSpeedIncrease: 0
-    damageIncrease: 0
+  itemName: Telecaster
+  itemDescription: pew pew
+  itemIcon: {fileID: 21300000, guid: d8374a99507518644a2c435218a47d61, type: 3}
+  itemEffects: []
