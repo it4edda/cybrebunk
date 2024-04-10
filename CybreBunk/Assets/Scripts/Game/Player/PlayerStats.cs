@@ -17,6 +17,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] ParticleSystem deathParticles;
     //[SerializeField] ItemInven      itemInven;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip deathSound;
+
     bool isDead;
     bool canDie = true;
     int  health;
@@ -71,13 +75,17 @@ public class PlayerStats : MonoBehaviour
     }
     IEnumerator DeathAction()
     {
-        isDead           = true;
-        movement.CanMove = false;
-        attack.CanAttack = false;
+        isDead                                   = true;
+        movement.CanMove                         = false;
+        attack.CanAttack                         = false;
         deathParticles.Play();
+        
+        audioSource.PlayOneShot(deathSound);
+        var a = FindObjectOfType<MusicPlayer>();
+        a.ChangeMusic(a.allSong[3]);
+        
         yield return new WaitForSeconds(deathParticles.main.duration + 0.5f);
         StartCoroutine(transitions.Transition("Death"));
-        //SceneManager.LoadScene("Death");
     }
     #endregion
     public int Damage

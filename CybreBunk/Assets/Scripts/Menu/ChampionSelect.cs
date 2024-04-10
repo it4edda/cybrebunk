@@ -39,6 +39,8 @@ public class ChampionSelect : MonoBehaviour
 
     [Header("OtherOther")]
     [SerializeField] SceneTransitions transitions;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip   bloopSound;
     
     void Start()
     {
@@ -62,6 +64,8 @@ public class ChampionSelect : MonoBehaviour
         }
         else if (Input.anyKey)
         {
+            audioSource.PlayOneShot(bloopSound);
+            
             StartCoroutine(WaitASecond());
             hideCards                   = false;
             UpdateTarotDescriptionText();
@@ -97,6 +101,7 @@ public class ChampionSelect : MonoBehaviour
     
     public void SelectL()
     {
+        audioSource.PlayOneShot(bloopSound);
         Destroy(selectedTarots[^1]);                        //Destroy last
         for (int i = selectedTarots.Length - 1; i > 0; i--) //move all upward
         {
@@ -115,6 +120,7 @@ public class ChampionSelect : MonoBehaviour
 
     public void SelectR()
     {
+        audioSource.PlayOneShot(bloopSound);
         Destroy(selectedTarots[0]);                         // Destroy first
         for (var i = 0; i < selectedTarots.Length - 1; i++) // Move all downward
         {
@@ -135,6 +141,8 @@ public class ChampionSelect : MonoBehaviour
     }
     public void LoadGame()
     {
+        audioSource.pitch += 10;
+        audioSource.PlayOneShot(bloopSound);
         var savedTarot = tarots[selected] as TarotData;
         if (!savedTarot.isPlayable) return;
         PlayerManager.selectedCard = savedTarot;
