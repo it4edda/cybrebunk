@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Beheaded Idol
   m_EditorClassIdentifier: 
   itemName: Beheaded idol
-  itemDescription: Read it backwads
-  itemIcon: {fileID: 0}
+  itemDescription: tuna sub
+  itemIcon: {fileID: 21300000, guid: 1be8531e19f1c0e4fab448fef475bb92, type: 3}
   itemEffects: []
