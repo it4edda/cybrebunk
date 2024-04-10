@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb9fa69b872e42469e3a20706ea2758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 0}
+  itemSprite: {fileID: 5781488997832173402}
   itemName: {fileID: 8563056892879914682}
   itemDesc: {fileID: 4069269509874296308}
 --- !u!1 &5773137621182523496

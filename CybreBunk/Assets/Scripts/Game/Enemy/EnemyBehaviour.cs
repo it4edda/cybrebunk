@@ -48,13 +48,13 @@ public class EnemyBehaviour : MonoBehaviour
         target        = FindObjectOfType<PlayerMovement>().transform;
         gauge         = FindObjectOfType<UserInterfaceGauge>();
     }
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
         Debug.Log("fix this damage on contact");
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerStats>().Health--;
-            Knockback(other.transform.position);
+            other.GetComponent<PlayerStats>().Health = -1;
+            StartCoroutine(Knockback(other.transform.position));
         }
     }
     void FixedUpdate()
@@ -68,8 +68,7 @@ public class EnemyBehaviour : MonoBehaviour
         
         Movement();
 
-        if (InRange() && !midAttack)
-        Attack();
+        if (InRange() && !midAttack) Attack();
     }
     public void TakeDamage(int damage, Vector2 dir)
     {

@@ -12577,6 +12577,10 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8740983386382612959, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: invincibilityTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -12641,7 +12645,7 @@ MonoBehaviour:
     playerColorWhileActive: {r: 1, g: 0, b: 0, a: 1}
   aoeAttackVariables:
     timeActive: 2
-    damageCollider: {fileID: 0}
+    slasher: {fileID: 0}
 --- !u!114 &3528347902443371549
 MonoBehaviour:
   m_ObjectHideFlags: 0

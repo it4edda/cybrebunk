@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9787c0c273222d64fa12c0af750580a6, type: 3}
   m_Name: DickLotion
   m_EditorClassIdentifier: 
-  itemName: Dick Lotion
-  itemDescription: What does it do
+  itemName: Telecaster
+  itemDescription: pew pew
   itemIcon: {fileID: 0}
-  movementExclusive:
-    movementSpeedIncrease: 0
-  attackExclusive:
-    attackSpeedIncrease: 0
-    damageIncrease: 0
+  itemEffects: []

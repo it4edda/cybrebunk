@@ -111,6 +111,7 @@ public class Ability : MonoBehaviour
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
     {
         darkArtsVariables.ToggleAbility(true);
+        playerStats.GodMode(true);
         playerMovement.MoveSpeed += Vector2.one * darkArtsVariables.movementBoost;
         
         //become gray
@@ -120,7 +121,7 @@ public class Ability : MonoBehaviour
         playerMovement.MoveSpeed -= Vector2.one * darkArtsVariables.movementBoost;
 
         yield return new WaitForSeconds(1);
-        
+        //GWYN: LORD OF CINDER          (aldin snap)
         StartCoroutine(DarkArtsDamageAndRenderer());
     }
 
@@ -183,6 +184,7 @@ public class Ability : MonoBehaviour
         darkArtsVariables.lineRenderer.positionCount = 0;
         savedDarkArtsEnemies.Clear();
         darkArtsVariables.ToggleAbility(false);
+        playerStats.GodMode(false);
     }
     
     IEnumerator AoeAttack()

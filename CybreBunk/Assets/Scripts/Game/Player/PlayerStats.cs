@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     [Header("values")]
     [SerializeField] int maxHealth;
     [SerializeField] float movementSpeed;
+    [SerializeField] private float invincibilityTime;
     
     [Header("Particles")]
     [SerializeField] ParticleSystem damageParticles;
@@ -52,13 +54,14 @@ public class PlayerStats : MonoBehaviour
     }
     int UpdateHealth(int value)
     {
-        if (isDead) return health;
+        if (isDead || !canDie) return health;
         PlayerInventory.instance.TakingDamage();
         Debug.Log("WHY DOES THIS ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
         damageParticles.Play();
         cam.CameraShake(0.3f);
         uiHealth.ModifyHealth(value);
         if (health + value <= 0) Death();
+        StartCoroutine(Invincibility());
         return health += value;
     }
     void Death()
@@ -94,9 +97,19 @@ public class PlayerStats : MonoBehaviour
         movement.MoveSpeed = Vector2.one * movementSpeed;
         return value;
     }
-#endregion
     
-    public void GodMode() //use for debugging (most of the time)
+#endregion
+IEnumerator Invincibility()
+{
+    GodMode(true);
+    yield return new WaitForSeconds(invincibilityTime);
+    GodMode(false);
+}
+    public void GodMode(bool value)
+    {
+        canDie = !value; 
+    }
+    public void GodMode()
     {
         canDie = !canDie; 
         Debug.Log("GOD MODE =" + !canDie);

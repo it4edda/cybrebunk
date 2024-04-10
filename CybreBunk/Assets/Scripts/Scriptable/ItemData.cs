@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]
 public class ItemData : ScriptableObject
@@ -11,7 +12,7 @@ public class ItemData : ScriptableObject
     [Header("General")] public string itemName;
     public string itemDescription;
     public Sprite itemIcon;
-
+    //public Image itemIcon;
     public List<ItemEffect> itemEffects = new();
 
     #endregion
