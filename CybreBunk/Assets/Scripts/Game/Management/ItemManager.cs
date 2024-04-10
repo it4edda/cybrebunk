@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -32,7 +33,16 @@ public class ItemManager : MonoBehaviour
     void Start()
     {
         pauseMenu = FindObjectOfType<PauseMenu>();
+    }
+
+    void OnEnable()
+    {
         ItemPortrait.ChosenItem += HasChosenItem;
+    }
+
+    void OnDisable()
+    {
+        ItemPortrait.ChosenItem -= HasChosenItem;
     }
 
     public void SetItemSelect()

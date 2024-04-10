@@ -8,7 +8,7 @@ public class HoverInfo : MonoBehaviour
     [SerializeField] CanvasGroup canvasGroup;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI descriptionText;
-    [SerializeField] Vector2 offset;
+    [SerializeField] Vector3 offset;
     void OnEnable()
     {
         ItemVisual.OnHover += DisplayInfo;
@@ -25,7 +25,7 @@ public class HoverInfo : MonoBehaviour
 
     void DisplayInfo(ItemData item, PointerEventData pointerEventData, GameObject senderObject)
     {
-        gameObject.transform.position = pointerEventData.position + offset;
+        gameObject.transform.position = senderObject.transform.position + offset;
         canvasGroup.alpha = 1;
         nameText.text = item.itemName;
         descriptionText.text = item.itemDescription;

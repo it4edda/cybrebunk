@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ItemPortrait : MonoBehaviour
 {
     public static event Action ChosenItem;
-    [SerializeField] SpriteRenderer itemSprite;
+    [SerializeField] Image itemSprite;
     [SerializeField] TextMeshProUGUI itemName;
     [SerializeField] TextMeshProUGUI itemDesc;
 
@@ -26,7 +27,7 @@ public class ItemPortrait : MonoBehaviour
     public void PickItem()
     {
         PlayerInventory.instance.AddItem(currentItem);
-        Debug.Log("ChoseItem" + itemName);
+        Debug.Log("ChoseItem" + itemName.text);
         ChosenItem?.Invoke();
     }
 
@@ -34,6 +35,6 @@ public class ItemPortrait : MonoBehaviour
     {
         ItemPortrait.ChosenItem -= Sleep;
         ItemManager.instance.itemPortraitQueue.Enqueue(this);
-        gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 }
