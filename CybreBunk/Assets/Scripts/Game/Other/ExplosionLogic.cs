@@ -28,7 +28,7 @@ public class ExplosionLogic : MonoBehaviour
             }
             else if (hitCollider.CompareTag("Enemy"))
             {
-                hitCollider.GetComponent<EnemyBehaviour>()?.TakeDamage(1, transform.position);
+                hitCollider.GetComponent<EnemyBehaviour>()?.TakeDamage(5, transform.position);
             }
         }
 

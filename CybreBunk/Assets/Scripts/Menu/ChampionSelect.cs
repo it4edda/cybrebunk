@@ -5,6 +5,7 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 public class ChampionSelect : MonoBehaviour
@@ -41,6 +42,7 @@ public class ChampionSelect : MonoBehaviour
     [SerializeField] SceneTransitions transitions;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip   bloopSound;
+    bool                         anyKeyToStartTimed;
     
     void Start()
     {
@@ -67,7 +69,8 @@ public class ChampionSelect : MonoBehaviour
             audioSource.PlayOneShot(bloopSound);
             
             StartCoroutine(WaitASecond());
-            hideCards                   = false;
+            hideCards          = false;
+            anyKeyToStartTimed = true;
             UpdateTarotDescriptionText();
         }
 
@@ -82,17 +85,29 @@ public class ChampionSelect : MonoBehaviour
         
         titleObject.position   = Vector3.Lerp(titleObject.position, hideCards ? titlePos1 : titlePos2, swapHaste * Time.deltaTime);
         
+        StartCoroutine(WaitASecond2());
+        if (!anyKeyToStartTimed) return;
+        
         descriptionText.rectTransform.parent.position = 
             Vector3.Lerp(descriptionText.rectTransform.parent.position, hideCards ? descriptionBoxPos2 : descriptionBoxPos1, swapHaste * Time.deltaTime );
         
         quitButton.position = 
             Vector3.Lerp(quitButton.position, hideCards ? quitBoxPos2 : quitBoxPos1, swapHaste * Time.deltaTime );
     }
-    IEnumerator WaitASecond()
+#region shitty ienumer
+    IEnumerator WaitASecond( )
     {
         yield return new WaitForSeconds(1);
         continueButton.interactable = true;
+        //yield return value                = true;
     }
+    IEnumerator WaitASecond2()
+    {
+        yield return new WaitForSeconds(1);
+        anyKeyToStartTimed = true;
+    }
+#endregion
+    
     void CardStatus(bool isHidden)
     {
         hideCards            = isHidden;
