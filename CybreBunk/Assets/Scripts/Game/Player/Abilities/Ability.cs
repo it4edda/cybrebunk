@@ -193,8 +193,6 @@ public class Ability : MonoBehaviour
     
     IEnumerator AoeAttack()
     {
-        Debug.Log("USED ABILITY AOE");
-        
         cam.CameraShake(0.4f);
         aoeAttackVariables.baseVariables.canUseAbility = false;
         aoeAttackVariables.slasher.gameObject.SetActive(true);
@@ -206,7 +204,6 @@ public class Ability : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         aoeAttackVariables.colliderObject.SetActive(false);
         aoeAttackVariables.baseVariables.canUseAbility = true;
-        
     }
 #endregion
 }

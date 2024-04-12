@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,6 +32,7 @@ public class EnemyBehaviour : MonoBehaviour
     Rigidbody2D         rb;
     EnemySpawning       enemySpawning;
     UserInterfaceGauge  gauge;
+    Animator            animator;
 
     public bool Knockbacked
     {
@@ -47,12 +49,12 @@ public class EnemyBehaviour : MonoBehaviour
         enemySpawning = FindObjectOfType<EnemySpawning>();
         bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
         rb            = GetComponent<Rigidbody2D>();
+        animator      = GetComponentInChildren<Animator>();
         target        = FindObjectOfType<PlayerMovement>().transform;
         gauge         = FindObjectOfType<UserInterfaceGauge>();
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("fix this damage on contact");
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerStats>().Health = -1;
@@ -82,11 +84,13 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Knockbacked = true;
         Vector2 direction =  (Vector2)transform.position - dir;
+        direction.Normalize();
+        direction /= 5;
 
         //SOME BLOOD SHIT
         // var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         // bloodParticle.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        // bloodParticle.Play();
+        //bloodParticle.Play();
         
         rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
@@ -102,7 +106,8 @@ public class EnemyBehaviour : MonoBehaviour
     }
     protected virtual void Movement()
     {
-        Vector3 movement = Vector3.Normalize(target.position - transform.position);
+        Vector3 movement                            = Vector3.Normalize(target.position - transform.position);
+        if (animator) animator.transform.localScale = new Vector3(movement.x > 0 ? -1 : 1, 1, 1);
         //transform.position += movement * (movementSpeed * Time.deltaTime);
         // rb.AddForce(movement * movementSpeed);
         rb.velocity = movement * (movementSpeed * Time.deltaTime);
