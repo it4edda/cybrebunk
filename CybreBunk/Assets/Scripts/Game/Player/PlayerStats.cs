@@ -20,6 +20,8 @@ public class PlayerStats : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip damageSound;
+
 
     bool isDead;
     bool canDie = true;
@@ -59,6 +61,7 @@ public class PlayerStats : MonoBehaviour
     int UpdateHealth(int value)
     {
         if (isDead || !canDie) return health;
+        audioSource.PlayOneShot(damageSound);
         PlayerInventory.instance.TakingDamage();
         Debug.Log("WHY DOES THIS ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
         damageParticles.Play();

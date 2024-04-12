@@ -6,18 +6,20 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("General")]
     [SerializeField] bool      hasSword;
-    [SerializeField] Transform weaponGraphics;
-    
+    [SerializeField] Transform   weaponGraphics;
+    [SerializeField] AudioSource audioSource;
     [Header("General Values")]
     
     [Header("Gun")]
     [SerializeField] float triggerSpeed;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject gunGraphics;
+    [SerializeField] AudioClip  gunSound;
     
     [Header("Sword")]
     [SerializeField] Animator slasher;
     [SerializeField] GameObject swordGraphics;
+    [SerializeField] AudioClip  slashSound;
     
     bool        midAttack = false;
     Camera      cam;
@@ -65,6 +67,7 @@ public class PlayerAttack : MonoBehaviour
         slasher.gameObject.SetActive(true);
         Vector3 a = weaponGraphics.localScale;
         weaponGraphics.localScale = new Vector3(a.x, a.y * -1, a.z);
+        audioSource.PlayOneShot(slashSound);
         yield return new WaitForSeconds(slasher.GetCurrentAnimatorStateInfo(0).length);
         slasher.gameObject.SetActive(false);
         midAttack = false;
@@ -72,6 +75,7 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator Shoot()
     {
         midAttack = true;
+        audioSource.PlayOneShot(gunSound);
         Instantiate(bulletPrefab, transform.position, weaponGraphics.localRotation);
         yield return new WaitForSeconds(triggerSpeed);
         midAttack = false;

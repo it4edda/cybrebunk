@@ -12404,14 +12404,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 7534821546701278299, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: gunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 48e7bb6ba7103d7478bbed35206d2ace, type: 3}
+    - target: {fileID: 7534821546701278299, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: slashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a28290626516154d8428af45f934145, type: 3}
+    - target: {fileID: 7534821546701278299, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 3528347902443371550}
     - target: {fileID: 8740983386382612959, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: deathSound
       value: 
-      objectReference: {fileID: 8300000, guid: efcd6fc80843e594f8c653d37f737105, type: 3}
+      objectReference: {fileID: 8300000, guid: 3bf6440358f3ee7438eab63c4a2ca7e4, type: 3}
     - target: {fileID: 8740983386382612959, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 3528347902443371550}
+    - target: {fileID: 8740983386382612959, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c6a633ac2c892044b86009af902474f9, type: 3}
     - target: {fileID: 8740983386382612959, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: movementSpeed
       value: 1

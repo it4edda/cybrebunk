@@ -42,6 +42,8 @@ public class ChampionSelect : MonoBehaviour
     [SerializeField] SceneTransitions transitions;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip   bloopSound;
+    [SerializeField] AudioClip   acceptInput;
+    [SerializeField] AudioClip   declineInput;
     bool                         anyKeyToStartTimed;
     
     void Start()
@@ -156,10 +158,14 @@ public class ChampionSelect : MonoBehaviour
     }
     public void LoadGame()
     {
-        audioSource.pitch += 10;
-        audioSource.PlayOneShot(bloopSound);
         var savedTarot = tarots[selected] as TarotData;
-        if (!savedTarot.isPlayable) return;
+
+        if (!savedTarot.isPlayable)
+        {
+            audioSource.PlayOneShot(declineInput);
+            return;
+        }
+        audioSource.PlayOneShot(acceptInput);
         PlayerManager.selectedCard = savedTarot;
         //SceneManager.LoadScene("Game");
         StartCoroutine(transitions.Transition("Game"));
