@@ -8,8 +8,9 @@ public class Ability : MonoBehaviour
 {
     [Header("Here's your header Alex")]
     public ChosenAbility ability1;
-    PlayerMovement       playerMovement;
-    PlayerStats          playerStats;
+    PlayerMovement playerMovement;
+    PlayerStats    playerStats;
+    PlayerCamera   cam;
     
     [Header("Dark Arts"), SerializeField] DarkArtsVariables darkArtsVariables;
     List<EnemyBehaviour>                                    savedDarkArtsEnemies = new List<EnemyBehaviour>();
@@ -26,9 +27,11 @@ public class Ability : MonoBehaviour
 
     void Start()
     {
-        playerStats                                   = FindObjectOfType<PlayerStats>();
-        playerMovement                                = GetComponent<PlayerMovement>();
-        darkArtsVariables.baseVariables.canUseAbility = true;
+        playerStats                                    = FindObjectOfType<PlayerStats>();
+        playerMovement                                 = GetComponent<PlayerMovement>();
+        cam                                            = FindObjectOfType<PlayerCamera>();
+        darkArtsVariables.baseVariables.canUseAbility  = true;
+        aoeAttackVariables.baseVariables.canUseAbility = true;
         darkArtsVariables.activeParticles.Stop();
     }
 
@@ -104,8 +107,9 @@ public class Ability : MonoBehaviour
     {
         public BaseVariables baseVariables;  
         
-        public float         timeActive;
-        public Animator      slasher;
+        public float      timeActive;
+        public Animator   slasher;
+        public GameObject colliderObject;
     }
 #endregion
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
@@ -189,12 +193,18 @@ public class Ability : MonoBehaviour
     
     IEnumerator AoeAttack()
     {
+        Debug.Log("USED ABILITY AOE");
+        
+        cam.CameraShake(0.4f);
         aoeAttackVariables.baseVariables.canUseAbility = false;
         aoeAttackVariables.slasher.gameObject.SetActive(true);
         //Vector3 a = weaponGraphics.localScale;
         //weaponGraphics.localScale = new Vector3(a.x, a.y * -1, a.z);
         yield return new WaitForSeconds(aoeAttackVariables.slasher.GetCurrentAnimatorStateInfo(0).length);
+        aoeAttackVariables.colliderObject.SetActive(true);
         aoeAttackVariables.slasher.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        aoeAttackVariables.colliderObject.SetActive(false);
         aoeAttackVariables.baseVariables.canUseAbility = true;
         
     }
