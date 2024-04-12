@@ -8,32 +8,32 @@ public class CustomBulletShooter : MonoBehaviour
 {
     [SerializeField] List<CustomBulletPattern> bulletPattern = new();
     [SerializeField] float timeBetweenPatterns; 
-    [SerializeField] Transform firePos;
+    [SerializeField] protected Transform firePos;
+    bool isFiring;
 
-    void Start()
-    {
-        ChooseNewRoutine();
-    }
-
+    //TODO make into item and maybe set in time limit
     IEnumerator Shooting(CustomBulletPattern pattern)
     {
+        isFiring = true;
         foreach (CustomBulletPattern.PatternRows row in pattern.pattern)
         {
             foreach (CustomBulletPattern.BulletsInRows bullets in row.bulletsToFire)
             {
-                Vector3 newRotation = new Vector3(firePos.rotation.x, firePos.rotation.y,
-                    firePos.rotation.y - +bullets.angle);
+                Vector3 newRotation = new(firePos.rotation.eulerAngles.x, firePos.rotation.eulerAngles.y,
+                    firePos.rotation.eulerAngles.z + bullets.angle);
                 Instantiate(bullets.bullet, firePos.position, Quaternion.Euler(newRotation));
             }
             yield return new WaitForSeconds(row.secondsUntilNextRowFire);
         }
 
         yield return new WaitForSeconds(timeBetweenPatterns);
-        ChooseNewRoutine();
+        isFiring = false;
     }
 
-    void ChooseNewRoutine()
+    protected void ChooseNewRoutine()
     {
+        if (isFiring) { return; }
+        
         StartCoroutine(Shooting(bulletPattern[Random.Range(0, bulletPattern.Count)]));
     }
 }

@@ -2,23 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Item")]
-public class ItemData : ScriptableObject
+[CreateAssetMenu(menuName = "Items/StatItem", fileName = "NewStatItem")]
+public class StatItems : ItemData
 {
-    #region Variables
-
-    [Header("General")] public string itemName;
-    public string itemDescription;
-    public Sprite itemIcon;
-    //public Image itemIcon;
     public List<ItemEffect> itemEffects = new();
 
-    #endregion
-
     #region Structs and Enums
-
     [Serializable]
     public struct ItemEffect
     {
@@ -37,17 +27,12 @@ public class ItemData : ScriptableObject
         public float movementSpeedIncrease;
     }
 
-    public enum ActivationConditions
-    {
-        Pickup,
-        TakeDamage,
-        DealDamage
-    }
-
+    
     #endregion
 
-    #region CallFunktions
-    public void OnPickup(PlayerStats playerStats)
+    #region CallFunktion
+
+    public override void OnPickup(PlayerStats playerStats)
     {
         foreach (ItemEffect itemEffect in itemEffects.Where(effect =>
                      effect.activationConditions == ActivationConditions.Pickup))
@@ -56,16 +41,7 @@ public class ItemData : ScriptableObject
         }
     }
 
-    public void OnTakeDamage(PlayerStats playerStats)
-    {
-        foreach (ItemEffect itemEffect in itemEffects.Where(effect =>
-                     effect.activationConditions == ActivationConditions.TakeDamage))
-        {
-            UpdateStats(playerStats, itemEffect);
-        }
-    }
-
-    public void OnDealDamage(PlayerStats playerStats)
+    public override void OnDealDamage(PlayerStats playerStats)
     {
         foreach (ItemEffect itemEffect in itemEffects.Where(effect =>
                      effect.activationConditions == ActivationConditions.DealDamage))
@@ -74,6 +50,16 @@ public class ItemData : ScriptableObject
             UpdateStats(playerStats, itemEffect);
         }
     }
+
+    public override void OnTakeDamage(PlayerStats playerStats)
+    {
+        foreach (ItemEffect itemEffect in itemEffects.Where(effect =>
+                     effect.activationConditions == ActivationConditions.TakeDamage))
+        {
+            UpdateStats(playerStats, itemEffect);
+        }
+    }
+
     #endregion
 
     void UpdateStats(PlayerStats playerStats, ItemEffect effect)
