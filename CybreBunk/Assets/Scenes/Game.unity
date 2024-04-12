@@ -12504,6 +12504,8 @@ MonoBehaviour:
     playerSprite: {fileID: 512159596}
     playerColorAtStart: {r: 1, g: 1, b: 1, a: 1}
     playerColorWhileActive: {r: 1, g: 0, b: 0, a: 1}
+    slashSound: {fileID: 8300000, guid: 859304fd80cf0ca4e8ece424384df7b4, type: 3}
+    sheatheSound: {fileID: 8300000, guid: 23dbed8fa51901046aee2c490d1297f3, type: 3}
   aoeAttackVariables:
     timeActive: 2
     slasher: {fileID: 659552915}

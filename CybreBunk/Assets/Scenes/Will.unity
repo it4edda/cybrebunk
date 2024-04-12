@@ -1366,6 +1366,7 @@ MonoBehaviour:
   knockbackStrength: 5
   enemyGaugePrice: 0
   attackRange: 0
+  belongsToWaveNumber: 0
 --- !u!58 &435656275
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9864,24 +9865,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - Contestants:
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-  - Contestants:
-    - {fileID: 8528629343841285487, guid: 809aecd3a0274674284bf6fd68455a72, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-  - Contestants:
-    - {fileID: 8528629343841285487, guid: 809aecd3a0274674284bf6fd68455a72, type: 3}
-  - Contestants:
-    - {fileID: 8528629343841285487, guid: 809aecd3a0274674284bf6fd68455a72, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-  - Contestants:
-    - {fileID: 8528629343841285487, guid: 809aecd3a0274674284bf6fd68455a72, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
-    - {fileID: 2649252664702647359, guid: 1568de815c676714f82a557bfdbd620d, type: 3}
+  - contestants: []
+    spawnItem: 0
+  - contestants: []
+    spawnItem: 0
+  - contestants: []
+    spawnItem: 0
+  - contestants: []
+    spawnItem: 0
+  - contestants: []
+    spawnItem: 0
+  itemPrefab: {fileID: 0}
   timer: 4
   spawnRadius: 2.58
   player: {fileID: 1668627360}
@@ -11565,6 +11559,7 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
+  gameOverTimeThreshold: 5
 --- !u!1 &2029357285
 GameObject:
   m_ObjectHideFlags: 0
@@ -12356,7 +12351,8 @@ MonoBehaviour:
     playerColorWhileActive: {r: 1, g: 0, b: 0, a: 1}
   aoeAttackVariables:
     timeActive: 2
-    damageCollider: {fileID: 0}
+    slasher: {fileID: 0}
+    colliderObject: {fileID: 0}
 --- !u!114 &3528347902443371549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12458,6 +12454,7 @@ MonoBehaviour:
   knockbackStrength: 5
   enemyGaugePrice: 1
   attackRange: 0.41
+  belongsToWaveNumber: 0
   bulletPrefab: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
   attackSpeed: 0
 --- !u!1001 &7297912459180210113

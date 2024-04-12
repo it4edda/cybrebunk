@@ -11,6 +11,7 @@ public class Ability : MonoBehaviour
     PlayerMovement playerMovement;
     PlayerStats    playerStats;
     PlayerCamera   cam;
+    AudioSource    audioSource;
     
     [Header("Dark Arts"), SerializeField] DarkArtsVariables darkArtsVariables;
     List<EnemyBehaviour>                                    savedDarkArtsEnemies = new List<EnemyBehaviour>();
@@ -20,6 +21,7 @@ public class Ability : MonoBehaviour
 
     public enum ChosenAbility
     {
+        None,
         DarkArts,
         AoeAttack,
         C
@@ -27,6 +29,7 @@ public class Ability : MonoBehaviour
 
     void Start()
     {
+        audioSource                                    = GetComponent<AudioSource>();
         playerStats                                    = FindObjectOfType<PlayerStats>();
         playerMovement                                 = GetComponent<PlayerMovement>();
         cam                                            = FindObjectOfType<PlayerCamera>();
@@ -39,6 +42,10 @@ public class Ability : MonoBehaviour
     {
         switch (chosen)
         {
+            case ChosenAbility.None:
+                Debug.Log("haha fuckign retard");
+                break;
+            
             case ChosenAbility.DarkArts:
                 if (darkArtsVariables.baseVariables.canUseAbility) StartCoroutine(DarkArts());
                 break;
@@ -95,6 +102,9 @@ public class Ability : MonoBehaviour
         public Color          playerColorAtStart;
         public Color          playerColorWhileActive;
 
+        public AudioClip slashSound;
+        public AudioClip sheatheSound;
+            
         public void ToggleAbility(bool enable)
         {
             baseVariables.canUseAbility = !enable;
@@ -115,6 +125,7 @@ public class Ability : MonoBehaviour
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
     {
         darkArtsVariables.ToggleAbility(true);
+        cam.CameraShake(0.1f, 0.2f);
         playerStats.GodMode(true);
         playerMovement.MoveSpeed += Vector2.one * darkArtsVariables.movementBoost;
         
@@ -141,25 +152,7 @@ public class Ability : MonoBehaviour
         {
             enemyPositions.Add(enemy.transform.position);
         }
-        //THIS IS UN-GPTd CODE
-        /*foreach (var enemy in savedDarkArtsEnemies)
-        {
-            darkArtsVariables.lineRenderer.SetPosition(0, enemyPositions[localCount]);
-            if (localCount -1 > 0) darkArtsVariables.lineRenderer.SetPosition(1, enemyPositions[localCount - 1]);
-            else darkArtsVariables.lineRenderer.SetPosition(1,                  enemyPositions[localCount]);
-            if (localCount -2 > 0) darkArtsVariables.lineRenderer.SetPosition(2, enemyPositions[localCount - 2]);
-            else darkArtsVariables.lineRenderer.SetPosition(2,                   enemyPositions[localCount]);
-            
-            yield return new WaitForSeconds(0.05f);
-
-            if (enemy != null)
-            {
-                enemy.IsStunned = false;
-                enemy?.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
-            }
-            localCount++;
-        }*/
-        //THIS IS GPT
+        
         foreach (var enemy in savedDarkArtsEnemies)
         {
             darkArtsVariables.lineRenderer.SetPosition(0, enemyPositions[localCount]);
@@ -170,6 +163,8 @@ public class Ability : MonoBehaviour
 
             if (enemy != null)
             {
+                audioSource.PlayOneShot(darkArtsVariables.slashSound);
+                cam.CameraShake(0.01f, 0.2f);
                 enemy.IsStunned = false;
                 enemy?.TakeDamage(playerStats.Damage * darkArtsVariables.damageMultiplier, enemy.transform.position);
             }
