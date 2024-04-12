@@ -19,6 +19,8 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float knockbackStrength = 5f;
     [SerializeField] int   enemyGaugePrice;
     [SerializeField] float attackRange;
+
+    public int belongsToWaveNumber;
     
     protected bool midAttack;
     bool           knockbacked;
@@ -94,7 +96,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         var a = Instantiate(isBig ? bigBlood[Random.Range(0, bigBlood.Length)] : smallBlood[Random.Range(0, smallBlood.Length)] , transform.position, quaternion.identity );
         a.transform.parent = bloodParent;
-        enemySpawning.DecreaseEnemyAliveNumber();
+        enemySpawning.DecreaseEnemyAliveNumber(belongsToWaveNumber, transform.position);
         gauge.UpdateGaugeSlider(enemyGaugePrice);
         Destroy(gameObject);
     }

@@ -3,53 +3,87 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using Random = UnityEngine.Random;
-
 public class EnemySpawning : MonoBehaviour
 {
     [SerializeField] EnemyWave[] waves;
+    [SerializeField] GameObject  itemPrefab;
     [SerializeField] float       timer;
     [SerializeField] float       spawnRadius;
     [SerializeField] Transform   player;
-    int                          waveNumber = 0;
-    int                          enemiesAlive;
-    bool                         firstWaveSpawned = false;
-    void Start()
-    {
-        StartCoroutine(Spawn());
-    }
+
+    int                  waveNumber         = 0;
+    Dictionary<int, int> enemiesAliveByWave = new Dictionary<int, int>();
+    bool                 firstWaveSpawned   = false;
+
+    void Start() { StartCoroutine(Spawn()); }
+
     void Update()
     {
-        if (enemiesAlive <= 0 && firstWaveSpawned) StartCoroutine(Spawn());
+        if (firstWaveSpawned && IsAllWavesCleared()) { StartCoroutine(Spawn()); }
     }
+
     IEnumerator Spawn()
     {
-        if (waveNumber >= waves.Length) yield break;
-        float randomAngle = Random.Range(0f, 2f * Mathf.PI);
-
-        Vector3 spawnPosition = player.position + new Vector3(Mathf.Cos(randomAngle) * spawnRadius, 
-                                                                 Mathf.Sin(randomAngle) * spawnRadius, 0f);
-        
-        foreach (var i in waves[waveNumber].Contestants)
+        while (waveNumber < waves.Length)
         {
-            Instantiate(i, spawnPosition + new Vector3(RandomValue(),RandomValue(),RandomValue()), quaternion.identity);
+            float   randomAngle   = Random.Range(0f, 2f * Mathf.PI);
+            Vector3 spawnPosition = player.position + new Vector3(Mathf.Cos(randomAngle) * spawnRadius, Mathf.Sin(randomAngle) * spawnRadius, 0f);
+
+            
+            if (!enemiesAliveByWave.ContainsKey(waveNumber))  enemiesAliveByWave[waveNumber] = 0; 
+
+            foreach (var enemyPrefab in waves[waveNumber].contestants)
+            {
+                Vector3 enemySpawnPosition = spawnPosition + new Vector3(RandomValue(), RandomValue(), RandomValue());
+                var a = Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
+                a.GetComponent<EnemyBehaviour>().belongsToWaveNumber = waveNumber;
+                enemiesAliveByWave[waveNumber]++; 
+            }
+
+            
+            waveNumber++;
+            yield return new WaitForSeconds(timer);
         }
-        enemiesAlive += waves[waveNumber].Contestants.Length;
-        waveNumber++;
-        yield return new WaitForSeconds(timer);
-        firstWaveSpawned = true;
-        //if all enemies are dead => return;
-        if (enemiesAlive > 0) StartCoroutine(Spawn());
     }
-    void OnDrawGizmosSelected()
+
+
+
+public void DecreaseEnemyAliveNumber(int waveNumber, Vector3 enemyPosition)
+{
+    if (enemiesAliveByWave.ContainsKey(waveNumber))
     {
-        Gizmos.DrawWireSphere(player.position, spawnRadius);
+        enemiesAliveByWave[waveNumber]--;
+        if (enemiesAliveByWave[waveNumber] <= 0)
+        {
+            if (waves[waveNumber].spawnItem) 
+                Instantiate(itemPrefab, enemyPosition, Quaternion.identity);
+            
+            enemiesAliveByWave.Remove(waveNumber); 
+        }
     }
-    
-    //add motherwaves, spawn in waves of enemies in waves, (first 5, then 6, then 10)
-    //add waves, if wave is killed => spawn new wave. If player takes too long, spawn in next wave.
-    public void DecreaseEnemyAliveNumber() => enemiesAlive--;
-    float  RandomValue()              => Random.Range(-3, 3) * 0.05f;
-    [Serializable] struct EnemyWave { public GameObject[] Contestants; }
+}
+
+    bool IsAllWavesCleared()
+    {
+        foreach (var kvp in enemiesAliveByWave)
+        {
+            if (kvp.Value > 0) return false;
+        }
+
+        return true;
+    }
+
+    void OnDrawGizmosSelected() { Gizmos.DrawWireSphere(player.position, spawnRadius); }
+
+    float RandomValue() => Random.Range(-3, 3) * 0.05f;
+
+    [Serializable]
+    struct EnemyWave
+    {
+        public GameObject[] contestants;
+        public bool         spawnItem;
+    }
 }
 
