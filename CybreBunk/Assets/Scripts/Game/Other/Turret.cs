@@ -7,10 +7,13 @@ public class Turret : CustomBulletShooter
     [SerializeField] float range;
     [SerializeField] float rotationSpeed;
     [SerializeField] float rotationMod;
+    [SerializeField] float timer;
 
+    //TODO make into item and maybe set in time limit
     Transform nearestEnemy;
     void Update()
     {
+        //TODO if buggy fix this
         if (FindNearestEnemy())
         {
             Vector3 v2Target = nearestEnemy.position - transform.position;
@@ -19,6 +22,14 @@ public class Turret : CustomBulletShooter
             firePos.rotation = Quaternion.Slerp(transform.rotation, q ,Time.deltaTime * rotationSpeed);
 
             ChooseNewRoutine();
+        }
+
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            //TODO object pool
+            Destroy(gameObject);
         }
     }
 

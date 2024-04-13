@@ -1,5 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -48,6 +51,34 @@ public class PlayerInventory : MonoBehaviour
         foreach (ItemData t in items)
         {
             t.OnDealDamage(stats);
+        }
+    }
+
+    public void StartSpawning(PlayerStats playerStats, SpawnableItems.SpawnableObjects spawnableObjects)
+    {
+        StartCoroutine(SpawnObject(playerStats, spawnableObjects));
+    }
+    
+    IEnumerator SpawnObject(PlayerStats playerStats, SpawnableItems.SpawnableObjects spawnableObjects)
+    {
+        switch (spawnableObjects.spawnPos)
+        {
+            case SpawnableItems.SpawnPos.OnPlayer:
+                Instantiate(spawnableObjects.objectToSpawn, playerStats.transform.position, quaternion.identity);
+                break;
+            case SpawnableItems.SpawnPos.Radius:
+                Vector2 point = Random.insideUnitCircle.normalized * Random.Range(spawnableObjects.minRadius, spawnableObjects.maxRadius);
+
+                Instantiate(spawnableObjects.objectToSpawn, point, quaternion.identity);
+                break;
+            default:
+                break;
+        }
+        yield return new WaitForSeconds(spawnableObjects.timeBetweenSpawns);
+
+        if (spawnableObjects.spawnRepeatedly)
+        {
+            StartCoroutine(SpawnObject(playerStats, spawnableObjects));
         }
     }
 }
