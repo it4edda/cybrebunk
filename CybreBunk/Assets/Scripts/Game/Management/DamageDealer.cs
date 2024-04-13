@@ -23,6 +23,7 @@ public class DamageDealer : MonoBehaviour
             case true:
                 if (!other.CompareTag("Enemy")) { return;}
                 other.GetComponent<EnemyBehaviour>().TakeDamage(damage, transform.position);
+                FindObjectOfType<DamageNumberManager>().DamageNumbers(damage, other.transform);
                 OnHitEvent?.Invoke(other.gameObject);
                 if (oneHitLife) Destroy(gameObject);
                 break;
