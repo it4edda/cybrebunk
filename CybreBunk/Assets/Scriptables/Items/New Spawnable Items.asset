@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e815da043fb2c944a83828fbaf46fe8e, type: 3}
+  m_Name: New Spawnable Items
+  m_EditorClassIdentifier: 
+  itemName: Turret
+  itemDescription: Spawns a turret every x sec
+  itemIcon: {fileID: 0}
+  spawnableObjects:
+    spawnRepeatedly: 1
+    timeBetweenSpawns: 5
+    objectToSpawn: {fileID: 4430388497189651148, guid: 8e9fe39508f2d274eb77d2ebf44d63a9, type: 3}
+    spawnPos: 1
+    minRadius: 0.1
+    maxRadius: 1

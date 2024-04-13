@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +9,7 @@ public class CustomBulletShooter : MonoBehaviour
     [SerializeField] float timeBetweenPatterns; 
     [SerializeField] protected Transform firePos;
     bool isFiring;
-
-    //TODO make into item and maybe set in time limit
+    
     IEnumerator Shooting(CustomBulletPattern pattern)
     {
         isFiring = true;
