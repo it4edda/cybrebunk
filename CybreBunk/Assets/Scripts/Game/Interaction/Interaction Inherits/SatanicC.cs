@@ -45,7 +45,6 @@ public class SatanicC : Interaction
             case <= 1:
                 audioSource.PlayOneShot(continuationSound);
                 Debug.Log("SPAWN BOSS 1");
-                Instantiate(bosses[2]);
                 break;
             
             case 2:
