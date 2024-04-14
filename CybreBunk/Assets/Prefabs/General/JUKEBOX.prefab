@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea4069c1115be84cb340ba1a70a7c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMusic: {fileID: 8300000, guid: 6c13b86b19f68714c970af2b66ba199c, type: 3}
+  defaultMusic: {fileID: 8300000, guid: 54c71c99459745242954a9c5d7c35472, type: 3}
   musicFadeDuration: 1
   musicVolume: 1
   allSong:
-  - {fileID: 8300000, guid: 6c13b86b19f68714c970af2b66ba199c, type: 3}
-  - {fileID: 8300000, guid: 8c9bb590ba1d4a94084f0ccb8ccf04d3, type: 3}
-  - {fileID: 8300000, guid: e23db7596c64b8249b127486d6086b82, type: 3}
+  - {fileID: 8300000, guid: 54c71c99459745242954a9c5d7c35472, type: 3}
+  - {fileID: 8300000, guid: 4f9f6d78c99837846b2e7427b1449f38, type: 3}
+  - {fileID: 8300000, guid: 6ab0b473a2faef447809703be6a8d221, type: 3}
   - {fileID: 8300000, guid: 06bef63da51df9341a5c12c82dccb57d, type: 3}
