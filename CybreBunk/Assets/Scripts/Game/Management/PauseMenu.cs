@@ -18,8 +18,11 @@ public class PauseMenu : MonoBehaviour
     [Header("Settings")]
     [SerializeField] Canvas settingsCanvas;
     [SerializeField] Slider distortionSlider;
-    float distoritionValue = 0;
-    //0, normal, max
+
+    [Header("Sound")]
+    [SerializeField] AudioClip declineSound;
+    [SerializeField] AudioClip acceptSound;
+    AudioSource audioSource;
     
     bool                    inSettingsMenu = false;
     
@@ -31,6 +34,7 @@ public class PauseMenu : MonoBehaviour
     public Queue<ItemVisual> visualsQueue = new();
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         DiosBestFriend(false);
         settingsCanvas.enabled                    = false;
         
@@ -73,6 +77,7 @@ public class PauseMenu : MonoBehaviour
 
     public void TimeFreeze(bool freeze)
     {
+        audioSource.PlayOneShot(freeze ? acceptSound: declineSound);
         IsPaused = freeze;
         Time.timeScale = freeze ? 0 : timeScaleAtStart;
     }
@@ -85,12 +90,14 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
+        audioSource.PlayOneShot(declineSound);
         Time.timeScale = timeScaleAtStart;
         SceneManager.LoadScene("Deity");
     }
 
     public void SettingsToggle(bool visibility)
     {
+        audioSource.PlayOneShot(visibility ? acceptSound : declineSound);
         inSettingsMenu         = visibility;
         settingsCanvas.enabled = visibility;
         mainCanvas.enabled     = !visibility;
