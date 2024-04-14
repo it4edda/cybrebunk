@@ -218,9 +218,9 @@ public class Ability : MonoBehaviour
         aoeAttackVariables.colliderObject.SetActive(true);
         aoeAttackVariables.slasher.gameObject.SetActive(false);
         yield return new WaitForSeconds(0.1f);
+        cooldown = aoeAttackVariables.baseVariables.abilityCooldown;
         aoeAttackVariables.colliderObject.SetActive(false);
         aoeAttackVariables.baseVariables.canUseAbility = true;
-        cooldown = aoeAttackVariables.baseVariables.abilityCooldown;
 
     }
 
