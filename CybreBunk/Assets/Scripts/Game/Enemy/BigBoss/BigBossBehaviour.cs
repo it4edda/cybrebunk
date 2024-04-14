@@ -6,18 +6,26 @@ public class BigBossBehaviour : EnemyBehaviour
     [SerializeField] float                   timeBetweenSlams;
     [SerializeField] MegaEyes[]              eyes;
     [SerializeField] HandSlam[]              hands;
-    [SerializeField] UserInterfaceBossHealth healthBar;
+    UserInterfaceBossHealth healthBar;
     bool                                     rightHand;
     protected override void Start()
     {
         base.Start();
-        healthBar.gameObject.SetActive(true);
+        healthBar = FindObjectOfType<UserInterfaceBossHealth>();
+        healthBar.transform.GetChild(0).gameObject.SetActive(true);
         healthBar.SetValues(health, 0);
+        
     }
     public override void TakeDamage(int damage, Vector2 dir)
     {
         base.TakeDamage(damage, dir);
         healthBar.UpdateHealthValue(health);
+    }
+    protected override void Die()
+    {
+        //base.Die();
+        healthBar.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
     IEnumerator HandSlams()
     {
@@ -29,12 +37,14 @@ public class BigBossBehaviour : EnemyBehaviour
     }
     IEnumerator IntroHandSlams()
     {
+        yield return null;
+        /*
         hands[0].FireSlamBullets();
         hands[1].FireSlamBullets();
         yield return new WaitForSeconds(timeBetweenSlams);
         eyes[0].ShootEyes();
         eyes[1].ShootEyes();
-        StartCoroutine(HandSlams());
+        StartCoroutine(HandSlams());*/
     }
     
 
