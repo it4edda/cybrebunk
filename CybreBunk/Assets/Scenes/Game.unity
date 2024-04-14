@@ -7370,25 +7370,17 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1668627360}
-    - target: {fileID: 295191669246295072, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
-      propertyPath: timeBetweenPatterns
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5241496367068797078, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1668627360}
-    - target: {fileID: 5241496367068797078, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
-      propertyPath: timeBetweenPatterns
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5707838869939362141, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
       propertyPath: m_Name
       value: ASSEMBLED
       objectReference: {fileID: 0}
     - target: {fileID: 5707838869939362141, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7813890138105732458, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
       propertyPath: m_RootOrder
@@ -7792,8 +7784,9 @@ MonoBehaviour:
   enemyGaugePrice: 1
   attackRange: 0.41
   belongsToWaveNumber: 0
-  bulletPrefab: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
-  attackSpeed: 0
+  shooter: {fileID: 0}
+  rotationMod: 0
+  rotationSpeed: 0
 --- !u!1001 &8712122742772622889
 PrefabInstance:
   m_ObjectHideFlags: 0
