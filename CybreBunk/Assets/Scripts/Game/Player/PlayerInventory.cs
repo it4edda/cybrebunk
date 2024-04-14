@@ -26,6 +26,7 @@ public class PlayerInventory : MonoBehaviour
     PlayerStats stats;
     public List<ItemData> items;
     ItemData currentAbility;
+    ItemData currentPattern;
     #endregion
 
     #region SetUp
@@ -53,6 +54,9 @@ public class PlayerInventory : MonoBehaviour
         if (newItem.itemType == ItemData.ItemType.Ability)
         {
             ChangeAbility(newItem);
+        }else if (newItem.itemType == ItemData.ItemType.Pattern)
+        {
+            
         }
         else
         {
@@ -117,6 +121,17 @@ public class PlayerInventory : MonoBehaviour
             ItemManager.instance.ReturnItem(currentAbility);
         }
         currentAbility = newAbility;
+    }
+    #endregion
+
+    #region Pattern
+    void ChangePattern(ItemData newPattern)
+    {
+        if (currentPattern)
+        {
+            ItemManager.instance.ReturnItem(currentPattern);
+        }
+        currentPattern = newPattern;
     }
     #endregion
 }

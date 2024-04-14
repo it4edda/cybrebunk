@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : CustomBulletShooter
 {
     [Header("General")]
     [SerializeField] bool      hasSword;
@@ -11,8 +10,6 @@ public class PlayerAttack : MonoBehaviour
     [Header("General Values")]
     
     [Header("Gun")]
-    [SerializeField] float triggerSpeed;
-    [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject gunGraphics;
     [SerializeField] AudioClip  gunSound;
     
@@ -21,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject swordGraphics;
     [SerializeField] AudioClip  slashSound;
     
-    bool        midAttack = false;
+    //bool        midAttack = false;
     Camera      cam;
     bool        canAttack = true;
     
@@ -31,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
         cam = Camera.main;
         InheritTarotData();
         StartupGraphics();
+        
     }
     void InheritTarotData() { hasSword = PlayerManager.selectedCard != null && PlayerManager.selectedCard.swordStart; }
     void StartupGraphics()
@@ -46,12 +44,13 @@ public class PlayerAttack : MonoBehaviour
     public void Attack()
     {
         if (!CanAttack) return;
-        if (midAttack) return;
-        StartCoroutine(!hasSword ? Shoot() : Slash());
+        if (isAttacking) return;
+        if(!hasSword) { ChooseNewRoutine(); }
+        if (hasSword) { StartCoroutine(Slash());}
     }
     void Aim()
     {
-        if (midAttack) return;
+        if (isAttacking) return;
         Vector3 dir   = Input.mousePosition - cam.WorldToScreenPoint(weaponGraphics.position);
         float   angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         weaponGraphics.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -63,22 +62,20 @@ public class PlayerAttack : MonoBehaviour
     }
     IEnumerator Slash()
     {
-        midAttack = true;
+        isAttacking = true;
         slasher.gameObject.SetActive(true);
         Vector3 a = weaponGraphics.localScale;
         weaponGraphics.localScale = new Vector3(a.x, a.y * -1, a.z);
         audioSource.PlayOneShot(slashSound);
         yield return new WaitForSeconds(slasher.GetCurrentAnimatorStateInfo(0).length);
         slasher.gameObject.SetActive(false);
-        midAttack = false;
+        isAttacking = false;
     }
-    IEnumerator Shoot()
+
+    public void ChangePattern(CustomBulletPattern newPattern)
     {
-        midAttack = true;
-        audioSource.PlayOneShot(gunSound);
-        Instantiate(bulletPrefab, transform.position, weaponGraphics.localRotation);
-        yield return new WaitForSeconds(triggerSpeed);
-        midAttack = false;
+        bulletPattern.Clear();
+        bulletPattern.Add(newPattern);
     }
     public bool HasSword
     {
@@ -87,8 +84,8 @@ public class PlayerAttack : MonoBehaviour
     }
     public float AttackSpeed
     {
-        get => triggerSpeed;
-        set => triggerSpeed = value;
+        get => timeBetweenPatterns;
+        set => timeBetweenPatterns = value;
     }
     
 }

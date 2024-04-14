@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -78,9 +79,20 @@ public class ItemManager : MonoBehaviour
     {
         ItemData chosenItem = allItems[Random.Range(0, allItems.Count)];
 
-        if (chosenItem.itemType == ItemData.ItemType.Ability)
+        switch (chosenItem.itemType)
         {
-            allItems.Remove(chosenItem);
+            case ItemData.ItemType.Ability:
+                allItems.Remove(chosenItem);
+                break;
+            case ItemData.ItemType.Stat:
+                break;
+            case ItemData.ItemType.Spawner:
+                break;
+            case ItemData.ItemType.Pattern:
+                allItems.Remove(chosenItem);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
         
         return chosenItem;

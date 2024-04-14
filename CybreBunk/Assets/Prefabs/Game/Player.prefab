@@ -43,7 +43,7 @@ Transform:
   - {fileID: 7403982498312479244}
   - {fileID: 489774301358104504}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6534916195127062065
 MonoBehaviour:
@@ -83,11 +83,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 519882c918f94a14b8079a8662827be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPattern:
+  - {fileID: 11400000, guid: 44f81a606d584bb49bfa9b43d87d0f2b, type: 2}
+  timeBetweenPatterns: 0
+  firePos: {fileID: 226870220432944716}
   hasSword: 0
   weaponGraphics: {fileID: 1065259305812519490}
   audioSource: {fileID: 7734500547816187146}
-  triggerSpeed: 0
-  bulletPrefab: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
   gunGraphics: {fileID: 1066222594241496617}
   gunSound: {fileID: 8300000, guid: 48e7bb6ba7103d7478bbed35206d2ace, type: 3}
   slasher: {fileID: 3232641438958291123}
