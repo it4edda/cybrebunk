@@ -96,6 +96,7 @@ public class Ability : MonoBehaviour
 
 #region Vinushka
 #region  Variables
+    [Serializable]
     public struct BaseVariables
     {
         public bool  canUseAbility;

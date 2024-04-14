@@ -7793,6 +7793,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: darkArtsVariables.baseVariables.abilityCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: aoeAttackVariables.baseVariables.abilityCooldown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 481988184173262912, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: m_Name
       value: Player
