@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class CustomBulletShooter : MonoBehaviour
@@ -10,8 +9,8 @@ public class CustomBulletShooter : MonoBehaviour
     [SerializeField] protected List<CustomBulletPattern> bulletPattern = new();
     [SerializeField] bool fireContinuously;
     [SerializeField] protected float timeBetweenPatterns; 
-    [SerializeField] protected Transform firePos;
-    protected bool isAttacking;
+    [SerializeField] public Transform firePos;
+    public bool isAttacking = false;
     
     IEnumerator Shooting(CustomBulletPattern pattern)
     {
@@ -35,7 +34,7 @@ public class CustomBulletShooter : MonoBehaviour
         }
     }
 
-    protected void ChooseNewRoutine()
+    public void ChooseNewRoutine()
     {
         if (isAttacking) { return; }
         

@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,7 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] float movementSpeed;
     [SerializeField] float knockbackStrength = 5f;
     [SerializeField] int   enemyGaugePrice;
-    [SerializeField] float attackRange;
+    [SerializeField] protected float attackRange;
 
     public int belongsToWaveNumber;
     
@@ -29,7 +26,7 @@ public class EnemyBehaviour : MonoBehaviour
     
     protected Transform target;
     Transform           bloodParent;
-    Rigidbody2D         rb;
+    protected Rigidbody2D         rb;
     EnemySpawning       enemySpawning;
     UserInterfaceGauge  gauge;
     Animator            animator;
@@ -72,7 +69,7 @@ public class EnemyBehaviour : MonoBehaviour
         
         Movement();
 
-        if (InRange() && !midAttack) Attack();
+        if (InRange()) Attack();
     }
     public void TakeDamage(int damage, Vector2 dir)
     {
@@ -106,7 +103,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     protected virtual void Movement()
     {
-        Vector3 movement                            = Vector3.Normalize(target.position - transform.position);
+        Vector3 movement = Vector3.Normalize(target.position - transform.position);
         if (animator) animator.transform.localScale = new Vector3(movement.x > 0 ? -1 : 1, 1, 1);
         //transform.position += movement * (movementSpeed * Time.deltaTime);
         // rb.AddForce(movement * movementSpeed);
@@ -117,7 +114,7 @@ public class EnemyBehaviour : MonoBehaviour
         //FILL THIS WITH SOMETHING
         Debug.Log(gameObject.name + " is attacking!");
     }
-    protected bool InRange()              => Vector2.Distance(target.position, transform.position) < attackRange;
+    protected bool InRange() => Vector2.Distance(target.position, transform.position) < attackRange;
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
