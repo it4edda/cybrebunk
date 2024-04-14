@@ -5422,7 +5422,7 @@ Transform:
   - {fileID: 6298523821224712982}
   - {fileID: 433683819063867540}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3448330763691491978
 MonoBehaviour:
@@ -5444,7 +5444,10 @@ MonoBehaviour:
   bloodGround: {fileID: 0}
   continuationSound: {fileID: 8300000, guid: 1b20222f6f639c942a4863a90a8d3c01, type: 3}
   finalBossSound: {fileID: 8300000, guid: b5babf0497009c94fb25ba963e63a14b, type: 3}
-  bosses: []
+  bosses:
+  - {fileID: 5619565095776028225, guid: b7e59652cd816c94a9c94e71d4f66a05, type: 3}
+  - {fileID: 5619565095776028225, guid: b7e59652cd816c94a9c94e71d4f66a05, type: 3}
+  - {fileID: 5707838869939362141, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
 --- !u!82 &2373839624214541608
 AudioSource:
   m_ObjectHideFlags: 0
