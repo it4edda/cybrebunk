@@ -65,7 +65,7 @@ public class Ability : MonoBehaviour
                 break;
 
             case ChosenAbility.AoeAttack:
-                if (aoeAttackVariables.baseVariables.canUseAbility)
+                if (aoeAttackVariables.baseVariables.canUseAbility && canActivateAbilities)
                 {
                     StartCoroutine(AoeAttack());
                     canActivateAbilities = false;
