@@ -10,13 +10,17 @@ public class SatanicC : Interaction
     [SerializeField] ParticleSystem particles;
     [SerializeField] ParticleSystem bloodTrail;
     [SerializeField] Animator       bloodGround;
+    [SerializeField] AudioClip      continuationSound;
+    [SerializeField] AudioClip      finalBossSound;
     [SerializeField] GameObject[]   bosses;
     Transform                       bloodParent;
     UserInterfaceGauge              gauge;
+    AudioSource                     audioSource;
     int                             timesUsed;
     protected override void Start()
     {
         base.Start();
+        audioSource = GetComponent<AudioSource>();
         bloodParent = transform.Find("BloodParent");
         gauge       = FindObjectOfType<UserInterfaceGauge>();
     }
@@ -39,15 +43,18 @@ public class SatanicC : Interaction
         switch (timesUsed)
         {
             case <= 1:
+                audioSource.PlayOneShot(continuationSound);
                 Debug.Log("SPAWN BOSS 1");
                 break;
             
             case 2:
+                audioSource.PlayOneShot(continuationSound);
                 Debug.Log("SPAWN BOSS 2");
                 break;
                 
             case 3:
                 Debug.Log("FINAL BOSS");
+                audioSource.PlayOneShot(finalBossSound);
                 FindObjectOfType<PlayerCamera>().SetStationary();
                 Instantiate(bosses[2]);
                 break;

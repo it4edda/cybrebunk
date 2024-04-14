@@ -11,7 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] GameObject[] smallBlood;
     [SerializeField] GameObject[] bigBlood;
     [SerializeField] ParticleSystem    bloodParticle;
-    
+
     [Header("Other")]
     [SerializeField] float movementSpeed;
     [SerializeField] float knockbackStrength = 5f;
@@ -20,9 +20,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     public int belongsToWaveNumber;
     
-    protected bool midAttack;
-    bool           knockbacked;
-    bool           isStunned;
+    protected AudioSource audioSource;
+    protected bool        midAttack;
+    bool                  knockbacked;
+    bool                  isStunned;
     
     protected Transform target;
     Transform           bloodParent;
@@ -43,6 +44,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     protected virtual void Start()
     {
+        audioSource   = GetComponent<AudioSource>();
         enemySpawning = FindObjectOfType<EnemySpawning>();
         bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
         rb            = GetComponent<Rigidbody2D>();
