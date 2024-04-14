@@ -38,13 +38,13 @@ public class BigBossBehaviour : EnemyBehaviour
     IEnumerator IntroHandSlams()
     {
         yield return null;
-        /*
+        
         hands[0].FireSlamBullets();
         hands[1].FireSlamBullets();
         yield return new WaitForSeconds(timeBetweenSlams);
         eyes[0].ShootEyes();
         eyes[1].ShootEyes();
-        StartCoroutine(HandSlams());*/
+        StartCoroutine(HandSlams());
     }
     
 
