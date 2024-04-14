@@ -80,7 +80,7 @@ public class EnemyBehaviour : MonoBehaviour
         health -= damage;
         if (health <= 0) Die();
     }
-    IEnumerator Knockback(Vector2 dir)
+    protected virtual IEnumerator Knockback(Vector2 dir)
     {
         Knockbacked = true;
         Vector2 direction =  (Vector2)transform.position - dir;

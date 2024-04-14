@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
-    [SerializeField] bool                  isAllied;
+    [SerializeField] protected bool                  isAllied;
     public bool IsAllied { get => isAllied; set => isAllied = value; }
     
     [SerializeField] bool                  oneHitLife = false;

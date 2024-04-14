@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d647f7dbf76aa8544add18e10b53601b, type: 3}
+  m_Name: HandPattern
+  m_EditorClassIdentifier: 
+  pattern:
+  - bulletsToFire:
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 0
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 10
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 20
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 30
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 40
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 50
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 60
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 70
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 80
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 90
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 100
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 110
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 120
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 130
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 140
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 150
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 160
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 170
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: 180
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -10
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -20
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -30
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -40
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -50
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -60
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -70
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -80
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -90
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -100
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -110
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -120
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -130
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -140
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -150
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -160
+    - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
+      angle: -170
+    secondsUntilNextRowFire: 0
