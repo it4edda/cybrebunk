@@ -13,11 +13,11 @@ public class Ability : MonoBehaviour
     PlayerCamera   cam;
     AudioSource    audioSource;
     
-    [Header("Dark Arts"), SerializeField] DarkArtsVariables darkArtsVariables;
+    [Header("Dark Arts"), SerializeField] public DarkArtsVariables darkArtsVariables;
     List<EnemyBehaviour>                                    savedDarkArtsEnemies = new List<EnemyBehaviour>();
     //List<Vector3>                                           darkArtsPositionPoints;
     
-    [Header("AoeAttack"), SerializeField] AoeAttackVariables aoeAttackVariables;
+    [Header("AoeAttack"), SerializeField] public AoeAttackVariables aoeAttackVariables;
 
     public enum ChosenAbility
     {
@@ -77,13 +77,13 @@ public class Ability : MonoBehaviour
 
 #region Vinushka
 #region  Variables
-    struct BaseVariables
+    public struct BaseVariables
     {
         public bool  canUseAbility;
         public float abilityCooldown;
     }
     
-    [Serializable] struct DarkArtsVariables
+    [Serializable] public struct DarkArtsVariables
     {
         [Header("GENERAL")]
         public BaseVariables baseVariables;
@@ -113,7 +113,7 @@ public class Ability : MonoBehaviour
             if (enable) activeParticles.Play(); else activeParticles.Stop();
         }
     }
-    [Serializable] struct AoeAttackVariables
+    [Serializable] public struct AoeAttackVariables
     {
         public BaseVariables baseVariables;  
         

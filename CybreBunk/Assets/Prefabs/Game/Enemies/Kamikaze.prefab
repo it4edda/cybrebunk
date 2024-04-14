@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2795778735189789656}
   - component: {fileID: 413896612188705515}
-  - component: {fileID: 1226858640546029197}
   m_Layer: 0
   m_Name: Expls
   m_TagString: Untagged
@@ -85,19 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1226858640546029197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6829375254569913382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b3f2eb72e5a77945a26177fd94b6678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 500
 --- !u!1 &8528629343841285487
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +149,8 @@ MonoBehaviour:
   belongsToWaveNumber: 0
   explosion: {fileID: 4396125702283910185, guid: 79620939a82b1b24287264f8154b6518, type: 3}
   suicideRange: 0.21
+  rotationSpeed: 500
+  art: {fileID: 2795778735189789656}
 --- !u!50 &1920717013137705936
 Rigidbody2D:
   serializedVersion: 4

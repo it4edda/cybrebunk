@@ -10,10 +10,19 @@ public class KamikazeEnemy : EnemyBehaviour
 {
     [Header("Uni-bomber Exclusive")]
     [SerializeField] GameObject explosion;
-    [SerializeField] float suicideRange;
+    [SerializeField] float     suicideRange;
+    [SerializeField] float     rotationSpeed = 500;
+    [SerializeField] Transform art;
+    Ability                    ability;
+    protected override void Start()
+    {
+        base.Start();
+        ability = FindObjectOfType<Ability>();
+    }
     void Update()
     {
-        if (Vector2.Distance(target.position, transform.position) < suicideRange && !IsStunned) Die();
+        art.Rotate(transform.forward, rotationSpeed * Time.deltaTime);
+        if (Vector2.Distance(target.position, transform.position) < suicideRange && !IsStunned && !ability.darkArtsVariables.isActive) Die();
     }
     protected override void Die()
     {
