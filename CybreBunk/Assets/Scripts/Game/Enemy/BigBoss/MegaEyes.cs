@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MegaEyes : MonoBehaviour
+public class MegaEyes : CustomBulletShooter
 {
     [SerializeField] Transform player;
     [SerializeField] float     speed;
@@ -15,5 +15,5 @@ public class MegaEyes : MonoBehaviour
         Quaternion q = Quaternion.AngleAxis(ang, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q ,Time.deltaTime * speed);
     }
-    
+    public void ShootEyes() => ChooseNewRoutine();
 }

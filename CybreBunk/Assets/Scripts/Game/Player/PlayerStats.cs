@@ -63,7 +63,6 @@ public class PlayerStats : MonoBehaviour
         if (isDead || !canDie) return health;
         audioSource.PlayOneShot(damageSound);
         PlayerInventory.instance.TakingDamage();
-        Debug.Log("WHY DOES THIS ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
         damageParticles.Play();
         cam.CameraShake(0.3f);
         uiHealth.ModifyHealth(value);
