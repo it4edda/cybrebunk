@@ -6,10 +6,9 @@ using Random = UnityEngine.Random;
 
 public class PlayerInventory : MonoBehaviour
 {
+    #region Instance
     public static PlayerInventory instance;
-    PlayerStats stats;
-    public List<ItemData> items;
-    
+
     void Awake()
     {
         if (instance == null)
@@ -21,19 +20,44 @@ public class PlayerInventory : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
 
+    #region Variables
+    PlayerStats stats;
+    public List<ItemData> items;
+    ItemData currentAbility;
+    #endregion
+
+    #region SetUp
     void Start()
     {
         stats = FindObjectOfType<PlayerStats>();
         items.Clear();
-
+    }
+    void OnEnable()
+    {
         DamageDealer.OnHitEvent += DealingDamage;
     }
-    
+
+    void OnDisable()
+    {
+        DamageDealer.OnHitEvent -= DealingDamage;
+    }
+    #endregion
+
+    #region Callers
     public void AddItem(ItemData newItem)
     {
         newItem.OnPickup(stats);
-        items.Add(newItem);
+        //maybe convert to switch statement later
+        if (newItem.itemType == ItemData.ItemType.Ability)
+        {
+            ChangeAbility(newItem);
+        }
+        else
+        {
+            items.Add(newItem);
+        }
         Debug.Log("Did effect" + newItem.itemName);
     }
 
@@ -53,7 +77,9 @@ public class PlayerInventory : MonoBehaviour
             t.OnDealDamage(stats);
         }
     }
-
+    #endregion
+    
+    #region Spawners
     public void StartSpawning(PlayerStats playerStats, SpawnableItems.SpawnableObjects spawnableObjects)
     {
         StartCoroutine(SpawnObject(playerStats, spawnableObjects));
@@ -81,4 +107,16 @@ public class PlayerInventory : MonoBehaviour
             StartCoroutine(SpawnObject(playerStats, spawnableObjects));
         }
     }
+    #endregion
+
+    #region Abilities
+    void ChangeAbility(ItemData newAbility)
+    {
+        if (currentAbility)
+        {
+            ItemManager.instance.ReturnItem(currentAbility);
+        }
+        currentAbility = newAbility;
+    }
+    #endregion
 }

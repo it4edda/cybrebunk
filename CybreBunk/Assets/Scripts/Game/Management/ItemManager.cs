@@ -1,5 +1,3 @@
-
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,28 +20,29 @@ public class ItemManager : MonoBehaviour
     }
     #endregion
 
+    #region Variables
     public ItemPortrait itemPortrait;
-    public List<ItemData> allItems;
+    [SerializeField] List<ItemData> allItems;
     [SerializeField] GameObject itemCanvas;
 
     public Queue<ItemPortrait> itemPortraitQueue = new();
     PauseMenu pauseMenu;
-    
+    #endregion
 
+    #region SetUp
     void Start()
     {
         pauseMenu = FindObjectOfType<PauseMenu>();
     }
-
     void OnEnable()
     {
         ItemPortrait.ChosenItem += HasChosenItem;
     }
-
     void OnDisable()
     {
         ItemPortrait.ChosenItem -= HasChosenItem;
     }
+    #endregion
 
     public void SetItemSelect()
     {
@@ -78,7 +77,17 @@ public class ItemManager : MonoBehaviour
     public ItemData GetRandomItem()
     {
         ItemData chosenItem = allItems[Random.Range(0, allItems.Count)];
+
+        if (chosenItem.itemType == ItemData.ItemType.Ability)
+        {
+            allItems.Remove(chosenItem);
+        }
         
         return chosenItem;
+    }
+
+    public void ReturnItem(ItemData itemData)
+    {
+        allItems.Add(itemData);
     }
 }

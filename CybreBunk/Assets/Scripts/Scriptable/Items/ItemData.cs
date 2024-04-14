@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class ItemData : ScriptableObject
 {
     #region Variables
     [Header("General")] public string itemName;
+    public ItemType itemType;
     public string itemDescription;
     public Sprite itemIcon;
     //public Image itemIcon;
@@ -14,6 +16,15 @@ public class ItemData : ScriptableObject
         Pickup,
         TakeDamage,
         DealDamage
+    }
+    
+    [Serializable]
+    public enum ItemType
+    {
+        Stat,
+        Spawner,
+        Ability,
+        Pattern
     }
 
     #region CallFunktions

@@ -9,17 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9787c0c273222d64fa12c0af750580a6, type: 3}
+  m_Script: {fileID: 11500000, guid: b3991ea9ec0cc6e44a7123b0080f4322, type: 3}
   m_Name: Telecaster
   m_EditorClassIdentifier: 
   itemName: Telecaster
-  itemDescription: pew pew
+  itemType: 2
+  itemDescription: Cast the tele
   itemIcon: {fileID: 21300000, guid: d8374a99507518644a2c435218a47d61, type: 3}
-  itemEffects:
-  - activationConditions: 0
-    stats:
-      maxHealth: 0
-      health: 0
-      attackSpeedIncrease: 0
-      damageIncrease: 0
-      movementSpeedIncrease: 0
+  itemAbility: 2
