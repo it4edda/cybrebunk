@@ -7320,6 +7320,22 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1668627360}
+    - target: {fileID: 3851550117428556916, guid: a0c7ec480733a3a4cbc0d7481d0b9127, type: 3}
+      propertyPath: zoomSpeed
+      value: 5.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851550117428556916, guid: a0c7ec480733a3a4cbc0d7481d0b9127, type: 3}
+      propertyPath: tallAspect
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851550117428556916, guid: a0c7ec480733a3a4cbc0d7481d0b9127, type: 3}
+      propertyPath: shortAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3851550117428556916, guid: a0c7ec480733a3a4cbc0d7481d0b9127, type: 3}
+      propertyPath: isStationary
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5854660650410367653, guid: a0c7ec480733a3a4cbc0d7481d0b9127, type: 3}
       propertyPath: m_Name
       value: Camera Game
@@ -7354,13 +7370,25 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1668627360}
+    - target: {fileID: 295191669246295072, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
+      propertyPath: timeBetweenPatterns
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5241496367068797078, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1668627360}
+    - target: {fileID: 5241496367068797078, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
+      propertyPath: timeBetweenPatterns
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5707838869939362141, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
       propertyPath: m_Name
       value: ASSEMBLED
+      objectReference: {fileID: 0}
+    - target: {fileID: 5707838869939362141, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7813890138105732458, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
       propertyPath: m_RootOrder
@@ -7424,9 +7452,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1248829813}
     - target: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
-      propertyPath: canInteract
-      value: 0
+      propertyPath: bosses.Array.size
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
+      propertyPath: bosses.Array.data[0]
+      value: 
+      objectReference: {fileID: 5619565095776028225, guid: b7e59652cd816c94a9c94e71d4f66a05, type: 3}
+    - target: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
+      propertyPath: bosses.Array.data[1]
+      value: 
+      objectReference: {fileID: 5619565095776028225, guid: b7e59652cd816c94a9c94e71d4f66a05, type: 3}
+    - target: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
+      propertyPath: bosses.Array.data[2]
+      value: 
+      objectReference: {fileID: 5707838869939362141, guid: 9f5c446ba172985408e632869bfdb949, type: 3}
     - target: {fileID: 7318782096941177279, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
       propertyPath: m_Name
       value: Satanic Circle

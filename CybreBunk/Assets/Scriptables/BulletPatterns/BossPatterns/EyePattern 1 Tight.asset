@@ -22,7 +22,7 @@ MonoBehaviour:
       angle: 10
     - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
       angle: -10
-    secondsUntilNextRowFire: 0.2
+    secondsUntilNextRowFire: 0.4
   - bulletsToFire:
     - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
       angle: -20
@@ -30,4 +30,4 @@ MonoBehaviour:
       angle: 0
     - bullet: {fileID: 7893046059939648333, guid: 5d66d1c07ad8fbb4ba2a955501055abd, type: 3}
       angle: 20
-    secondsUntilNextRowFire: 0.2
+    secondsUntilNextRowFire: 0.4

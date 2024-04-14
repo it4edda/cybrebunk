@@ -5421,7 +5421,7 @@ Transform:
   - {fileID: 6298523821224712982}
   - {fileID: 433683819063867540}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3448330763691491978
 MonoBehaviour:
@@ -5436,10 +5436,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.28
-  canInteract: 1
+  canInteract: 0
   interactIcon: {fileID: 2191809245213823955}
   particles: {fileID: 6475622118492361201}
   bloodTrail: {fileID: 378603379659117408, guid: 0aae0a8f6a3149c4595ff677437ef6fd, type: 3}
+  bloodGround: {fileID: 0}
+  bosses: []
 --- !u!1001 &2013395253860966618
 PrefabInstance:
   m_ObjectHideFlags: 0
