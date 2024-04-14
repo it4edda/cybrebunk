@@ -121,6 +121,10 @@ public class PlayerInventory : MonoBehaviour
             ItemManager.instance.ReturnItem(currentAbility);
         }
         currentAbility = newAbility;
+        if (FindObjectOfType<AbilityCoolDownUI>())
+        {
+            FindObjectOfType<AbilityCoolDownUI>().GetNewAbility(newAbility);
+        }
     }
     #endregion
 

@@ -12,6 +12,10 @@ public class Ability : MonoBehaviour
     PlayerStats    playerStats;
     PlayerCamera   cam;
     AudioSource    audioSource;
+    float cooldown;
+
+    public float Cooldown1 => cooldown;
+    bool canActivateAbilities = true;
     
     [Header("Dark Arts"), SerializeField] public DarkArtsVariables darkArtsVariables;
     List<EnemyBehaviour>                                    savedDarkArtsEnemies = new List<EnemyBehaviour>();
@@ -38,6 +42,11 @@ public class Ability : MonoBehaviour
         darkArtsVariables.activeParticles.Stop();
     }
 
+    void Update()
+    {
+        Cooldown();
+    }
+
     public void InitiateAbility(ChosenAbility chosen)
     {
         switch (chosen)
@@ -47,11 +56,21 @@ public class Ability : MonoBehaviour
                 break;
             
             case ChosenAbility.DarkArts:
-                if (darkArtsVariables.baseVariables.canUseAbility) StartCoroutine(DarkArts());
+                if (darkArtsVariables.baseVariables.canUseAbility && canActivateAbilities)
+                {
+                    StartCoroutine(DarkArts());
+                    canActivateAbilities = false;
+                }
+
                 break;
 
             case ChosenAbility.AoeAttack:
-                if (aoeAttackVariables.baseVariables.canUseAbility) StartCoroutine(AoeAttack());
+                if (aoeAttackVariables.baseVariables.canUseAbility)
+                {
+                    StartCoroutine(AoeAttack());
+                    canActivateAbilities = false;
+                }
+
                 break;
 
             case ChosenAbility.C:
@@ -182,6 +201,7 @@ public class Ability : MonoBehaviour
 
         darkArtsVariables.lineRenderer.positionCount = 0;
         savedDarkArtsEnemies.Clear();
+        cooldown = darkArtsVariables.baseVariables.abilityCooldown;
         darkArtsVariables.ToggleAbility(false);
         playerStats.GodMode(false);
     }
@@ -199,8 +219,21 @@ public class Ability : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         aoeAttackVariables.colliderObject.SetActive(false);
         aoeAttackVariables.baseVariables.canUseAbility = true;
+        cooldown = aoeAttackVariables.baseVariables.abilityCooldown;
+
     }
-#endregion
+
+    #endregion
+
+    void Cooldown()
+    {
+        if (!(cooldown > 0)) return;
+        cooldown -= Time.deltaTime;
+        if (cooldown <= 0)
+        {
+            canActivateAbilities = true;
+        }
+    }
 }
 
 
