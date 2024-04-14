@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class EnemyBehaviour : MonoBehaviour
 {
     [Header("Mortality fields")]
-    [SerializeField] int health;
+    [SerializeField] protected int health;
     [SerializeField] bool         isBig;
     [SerializeField] GameObject[] smallBlood;
     [SerializeField] GameObject[] bigBlood;
@@ -73,7 +73,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (InRange()) Attack();
     }
-    public void TakeDamage(int damage, Vector2 dir)
+    public virtual void TakeDamage(int damage, Vector2 dir)
     {
         StartCoroutine(Knockback(dir));
         health -= damage;

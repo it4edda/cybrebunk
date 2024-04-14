@@ -1,14 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class BigBossBehaviour : EnemyBehaviour
 {
-    [SerializeField] float      timeBetweenSlams;
-    [SerializeField] MegaEyes[] eyes;
-    [SerializeField] HandSlam[] hands;
-    bool                        rightHand;
+    [SerializeField] float                   timeBetweenSlams;
+    [SerializeField] MegaEyes[]              eyes;
+    [SerializeField] HandSlam[]              hands;
+    [SerializeField] UserInterfaceBossHealth healthBar;
+    bool                                     rightHand;
+    protected override void Start()
+    {
+        base.Start();
+        healthBar.gameObject.SetActive(true);
+        healthBar.SetValues(health, 0);
+    }
+    public override void TakeDamage(int damage, Vector2 dir)
+    {
+        base.TakeDamage(damage, dir);
+        healthBar.UpdateHealthValue(health);
+    }
     IEnumerator HandSlams()
     {
         if (rightHand) hands[0].StartSlam();
