@@ -7978,6 +7978,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: aoeAttackVariables.guitarSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fec2b957b1b365c478b8f3db335b83bd, type: 3}
+    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: darkArtsVariables.baseVariables.abilityCooldown
       value: 5
       objectReference: {fileID: 0}

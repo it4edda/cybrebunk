@@ -135,8 +135,9 @@ public class Ability : MonoBehaviour
     }
     [Serializable] public struct AoeAttackVariables
     {
-        public BaseVariables baseVariables;  
-        
+        public BaseVariables baseVariables;
+
+        public AudioClip  guitarSound;
         public float      timeActive;
         public Animator   slasher;
         public GameObject colliderObject;
@@ -148,7 +149,6 @@ public class Ability : MonoBehaviour
         cam.CameraShake(0.1f, 0.2f);
         playerStats.GodMode(true);
         playerMovement.MoveSpeed += Vector2.one * darkArtsVariables.movementBoost;
-        
         //become gray
 
         yield return new WaitForSeconds(darkArtsVariables.timeActive);
@@ -212,6 +212,7 @@ public class Ability : MonoBehaviour
         cam.CameraShake(0.4f);
         aoeAttackVariables.baseVariables.canUseAbility = false;
         aoeAttackVariables.slasher.gameObject.SetActive(true);
+        audioSource.PlayOneShot(aoeAttackVariables.guitarSound);
         //Vector3 a = weaponGraphics.localScale;
         //weaponGraphics.localScale = new Vector3(a.x, a.y * -1, a.z);
         yield return new WaitForSeconds(aoeAttackVariables.slasher.GetCurrentAnimatorStateInfo(0).length);
