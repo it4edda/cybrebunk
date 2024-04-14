@@ -1,5 +1,6 @@
 using System.Collections;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -75,7 +76,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public virtual void TakeDamage(int damage, Vector2 dir)
     {
-        StartCoroutine(Knockback(dir));
+        if(!isBig) StartCoroutine(Knockback(dir));
         health -= damage;
         if (health <= 0) Die();
     }
