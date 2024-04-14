@@ -12,6 +12,7 @@ public class AbilityCoolDownUI : MonoBehaviour
     void Start()
     {
         ability = FindObjectOfType<Ability>();
+        GetNewAbility(PlayerInventory.instance.CurrentAbility);
     }
 
     void Update()

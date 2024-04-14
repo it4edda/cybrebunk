@@ -26,6 +26,7 @@ public class PlayerInventory : MonoBehaviour
     PlayerStats stats;
     public List<ItemData> items;
     ItemData currentAbility;
+    public ItemData CurrentAbility => currentAbility;
     ItemData currentPattern;
     #endregion
 

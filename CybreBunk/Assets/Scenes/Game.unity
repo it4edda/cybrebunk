@@ -266,17 +266,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4843650}
   m_CullTransparentMesh: 1
---- !u!114 &27243157 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7674991035881043305, guid: bcabdd35f00c78d45a9d9104e3020d29, type: 3}
-  m_PrefabInstance: {fileID: 390958449}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &44194277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1106,7 +1095,7 @@ PrefabInstance:
     - target: {fileID: 2622962772055726776, guid: bcabdd35f00c78d45a9d9104e3020d29, type: 3}
       propertyPath: image
       value: 
-      objectReference: {fileID: 27243157}
+      objectReference: {fileID: 1978754801}
     - target: {fileID: 2622962772055726776, guid: bcabdd35f00c78d45a9d9104e3020d29, type: 3}
       propertyPath: slider
       value: 
@@ -6602,6 +6591,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1978754801 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 53742126021633404, guid: bcabdd35f00c78d45a9d9104e3020d29, type: 3}
+  m_PrefabInstance: {fileID: 390958449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1993388763
 GameObject:
   m_ObjectHideFlags: 0
@@ -7793,6 +7793,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: darkArtsVariables.baseVariables.abilityCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: aoeAttackVariables.baseVariables.abilityCooldown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 481988184173262912, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: m_Name
       value: Player
