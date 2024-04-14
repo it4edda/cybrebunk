@@ -18,7 +18,6 @@ public class PlayerCamera : MonoBehaviour
     Camera                     cam;
     void Start()
     {
-        //SetStationary();
         cam = GetComponent<Camera>();
     }
     void LateUpdate()

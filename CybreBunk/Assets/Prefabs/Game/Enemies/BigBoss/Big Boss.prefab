@@ -482,6 +482,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
+      propertyPath: timeBetweenPatterns
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: bulletPattern.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -666,6 +670,10 @@ PrefabInstance:
     - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: fireContinuously
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
+      propertyPath: timeBetweenPatterns
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: bulletPattern.Array.size

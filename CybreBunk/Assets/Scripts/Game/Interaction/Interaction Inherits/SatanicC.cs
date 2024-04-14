@@ -48,6 +48,7 @@ public class SatanicC : Interaction
                 
             case 3:
                 Debug.Log("FINAL BOSS");
+                FindObjectOfType<PlayerCamera>().SetStationary();
                 Instantiate(bosses[2]);
                 break;
             
