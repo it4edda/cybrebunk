@@ -216,8 +216,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPattern:
   - {fileID: 11400000, guid: acb2783bcc4644143b73eb162328124a, type: 2}
+  fireContinuously: 0
   timeBetweenPatterns: 2
   firePos: {fileID: 4845090216869016308}
+  isAttacking: 0
+  canAttack: 1
   range: 1
   rotationSpeed: 1000
   rotationMod: 1
