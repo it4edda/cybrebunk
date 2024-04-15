@@ -5,16 +5,15 @@ using UnityEngine;
 public class ChimeraBoss : EnemyBehaviour
 {
     #region Variables
-
-    [SerializeField] Rigidbody2D rb;
+    
     [SerializeField] Transform moveTarget;
-    [SerializeField] float movementSpeed;
     [Header("Shooter tail")]
     [SerializeField] CustomBulletShooter snakeShooter;
     [SerializeField] float rotationSpeed;
     [SerializeField] float rotationMod;
     [Header("Charge")]
     [SerializeField] int numberOfChargesPerCycle;
+    [SerializeField] float chargeIndicatorTime;
     [SerializeField] float timePerCharge;
     [SerializeField] float chargeForce;
     [SerializeField] float timeBetweenCharges;
@@ -42,16 +41,14 @@ public class ChimeraBoss : EnemyBehaviour
         for (int i = 0; i < numberOfChargesPerCycle; i++)
         { 
             isBigCharging = true;
-            // Vector2 point = Random.insideUnitCircle.normalized * Random.Range(minChargeStartingRadius, maxChargeStartingRadius);
-            // transform.position = point;
-            
-            Vector2 chargeDir = Vector3.Normalize(target.position - transform.position);
-            
             rb.velocity = Vector2.zero;
+            Vector2 chargeDir = Vector3.Normalize(target.position - transform.position);
+            yield return new WaitForSeconds(chargeIndicatorTime);
+            
             rb.AddForce(chargeDir * chargeForce);
             yield return new WaitForSeconds(timePerCharge);
-            rb.velocity = Vector2.zero;
             
+            rb.velocity = Vector2.zero;
             isBigCharging = false;
             moveTarget = FindNearestMovementTarget();
             yield return new WaitForSeconds(timeBetweenCharges);

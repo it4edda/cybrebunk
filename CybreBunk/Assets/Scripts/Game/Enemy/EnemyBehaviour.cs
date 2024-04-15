@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] ParticleSystem    bloodParticle;
 
     [Header("Other")]
-    [SerializeField] float movementSpeed;
+    [SerializeField] protected float movementSpeed;
     [SerializeField] float knockbackStrength = 5f;
     [SerializeField] int   enemyGaugePrice;
     [SerializeField] protected float attackRange;
@@ -47,7 +47,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         audioSource   = GetComponent<AudioSource>();
         enemySpawning = FindObjectOfType<EnemySpawning>();
-        bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
+        //bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
         rb            = GetComponent<Rigidbody2D>();
         animator      = GetComponentInChildren<Animator>();
         target        = FindObjectOfType<PlayerMovement>().transform;

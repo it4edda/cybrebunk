@@ -45,6 +45,8 @@ public class SatanicC : Interaction
             case <= 1:
                 audioSource.PlayOneShot(continuationSound);
                 Debug.Log("SPAWN BOSS 1");
+                FindObjectOfType<PlayerCamera>().SetStationary();
+                Instantiate(bosses[0]);
                 break;
             
             case 2:
