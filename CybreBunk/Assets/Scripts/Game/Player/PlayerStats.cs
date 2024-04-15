@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -46,6 +47,11 @@ public class PlayerStats : MonoBehaviour
         uiHealth = FindObjectOfType<UserInterfaceHealth>();
         uiHealth.SetMaxHealth(maxHealth);
     }
+    void Update()
+    {
+        Debug.Log(canDie);
+    }
+    
 #region Practical HealthRelated
     #region Health
     public int MaxHealth

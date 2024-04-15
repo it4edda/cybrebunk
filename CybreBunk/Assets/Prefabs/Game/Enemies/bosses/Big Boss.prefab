@@ -99,7 +99,7 @@ Transform:
   - {fileID: 6361360176009279930}
   - {fileID: 2958108059428509569}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7751168404360967557
 MonoBehaviour:
@@ -494,42 +494,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6361360176009279930}
     m_Modifications:
-    - target: {fileID: 1947819724110328531, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: m_SortingOrder
-      value: -240
-      objectReference: {fileID: 0}
-    - target: {fileID: 3235105352352550807, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: m_Name
-      value: ART
-      objectReference: {fileID: 0}
-    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: firePos
-      value: 
-      objectReference: {fileID: 8853916169686598744}
-    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: fireContinuously
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: timeBetweenPatterns
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: bulletPattern.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: bulletPattern.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 097a93d5a44691548b2157c188c1c71a, type: 2}
-    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: bulletPattern.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: f9489c3c67f4a8e48b029ac0c7dca61b, type: 2}
-    - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-      propertyPath: bulletPattern.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: fbd56fe6e53cbb14aa7984aeadc6e180, type: 2}
     - target: {fileID: 7840200819785686905, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -599,11 +563,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e55ea4276bcfb1d4eadae90b9189ed2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &8853916169686598744 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6164576826657375934, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
-  m_PrefabInstance: {fileID: 3410232271406711526}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3827376610129020599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -686,7 +645,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1947819724110328531, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: m_SortingOrder
-      value: -99
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3235105352352550807, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: m_Name
