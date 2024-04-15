@@ -10,17 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c81fc831929aa84449ac1e150fbc5c2f, type: 3}
-  m_Name: BeheadedIdol
+  m_Name: Bible
   m_EditorClassIdentifier: 
-  itemName: Beheaded Idol
+  itemName: Bible
   itemType: 0
-  itemDescription: Shit game?
-  itemIcon: {fileID: 21300000, guid: 1be8531e19f1c0e4fab448fef475bb92, type: 3}
-  itemEffects:
-  - activationConditions: 0
-    stats:
-      maxHealth: 0
-      health: 1
-      attackSpeedIncrease: 0
-      damageIncrease: 1
-      movementSpeedIncrease: 0
+  itemDescription: technique o more blood
+  itemIcon: {fileID: 21300000, guid: b2bc891e16afc374e93344302e199a51, type: 3}
+  itemEffects: []

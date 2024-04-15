@@ -62,6 +62,7 @@ public class StatItems : ItemData
 
     #endregion
 
+    //ADD RANGE
     void UpdateStats(PlayerStats playerStats, ItemEffect effect)
     {
         playerStats.MaxHealth += effect.stats.maxHealth;

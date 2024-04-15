@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e815da043fb2c944a83828fbaf46fe8e, type: 3}
   m_Name: Turret
   m_EditorClassIdentifier: 
-  itemName: Turret
+  itemName: Polare
   itemType: 1
-  itemDescription: Spawns a turret every x sec
-  itemIcon: {fileID: 0}
+  itemDescription: Summon a turret every x sec
+  itemIcon: {fileID: 21300000, guid: fcf1e338949123a4085b184fb67eb1fe, type: 3}
   spawnableObjects:
     spawnRepeatedly: 1
     timeBetweenSpawns: 5

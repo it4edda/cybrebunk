@@ -10,13 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9787c0c273222d64fa12c0af750580a6, type: 3}
-  m_Name: ZoroBodypillow
+  m_Name: Hachi
   m_EditorClassIdentifier: 
-  itemName: Zoro Bodypillow
-  itemDescription: As per Nils request (ps, biggest bust in the strawhats)
-  itemIcon: {fileID: 0}
-  movementExclusive:
-    movementSpeedIncrease: 0
-  attackExclusive:
-    attackSpeedIncrease: 0
-    damageIncrease: 0
+  itemName: Squid
+  itemType: 0
+  itemDescription: idk what this does
+  itemIcon: {fileID: 21300000, guid: e0213c5d44b12f347b1fff367efe5f1f, type: 3}

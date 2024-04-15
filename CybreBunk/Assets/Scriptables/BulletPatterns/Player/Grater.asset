@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d647f7dbf76aa8544add18e10b53601b, type: 3}
+  m_Name: Grater
+  m_EditorClassIdentifier: 
+  pattern:
+  - bulletsToFire:
+    - bullet: {fileID: 0}
+      angle: 0
+    secondsUntilNextRowFire: 0.2
+  - bulletsToFire:
+    - bullet: {fileID: 0}
+      angle: 20
+    - bullet: {fileID: 0}
+      angle: -20
+    secondsUntilNextRowFire: 0
+  - bulletsToFire:
+    - bullet: {fileID: 0}
+      angle: 40
+    - bullet: {fileID: 0}
+      angle: -40
+    secondsUntilNextRowFire: 0
