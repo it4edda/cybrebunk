@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChimeraBoss : MonoBehaviour
+public class ChimeraBoss : EnemyBehaviour
 {
     #region Variables
 
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform moveTarget;
     [SerializeField] float movementSpeed;
+    [Header("Shooter tail")]
+    [SerializeField] CustomBulletShooter snakeShooter;
+    [SerializeField] float rotationSpeed;
+    [SerializeField] float rotationMod;
     [Header("Charge")]
-    [SerializeField] Transform chargeTarget;
-    [SerializeField] float minChargeStartingRadius;
-    [SerializeField] float maxChargeStartingRadius;
     [SerializeField] int numberOfChargesPerCycle;
     [SerializeField] float timePerCharge;
     [SerializeField] float chargeForce;
@@ -24,23 +25,27 @@ public class ChimeraBoss : MonoBehaviour
     #endregion
 
     #region SetUp
-    void Start()
+
+    protected override void Start()
     {
+        base.Start();
         moveTarget = FindNearestMovementTarget();
         StartCoroutine(BigCharge());
     }
     #endregion
+    
 
     #region TheBigCharge
     IEnumerator BigCharge()
     {
+        snakeShooter.canAttack = false;
         for (int i = 0; i < numberOfChargesPerCycle; i++)
         { 
             isBigCharging = true;
             // Vector2 point = Random.insideUnitCircle.normalized * Random.Range(minChargeStartingRadius, maxChargeStartingRadius);
             // transform.position = point;
             
-            Vector2 chargeDir = Vector3.Normalize(chargeTarget.position - transform.position);
+            Vector2 chargeDir = Vector3.Normalize(target.position - transform.position);
             
             rb.velocity = Vector2.zero;
             rb.AddForce(chargeDir * chargeForce);
@@ -52,6 +57,9 @@ public class ChimeraBoss : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenCharges);
         }
 
+        snakeShooter.canAttack = true;
+        snakeShooter.ChooseNewRoutine();
+
         yield return new WaitForSeconds(timeBetweenCycles);
         StartCoroutine(BigCharge());
     }
@@ -59,22 +67,24 @@ public class ChimeraBoss : MonoBehaviour
 
     #region Movement
 
-    void FixedUpdate()
-    {
-        Movement();
-    }
     //charging and stand in center
-    protected void Movement()
+    protected override void Movement()
     {
+        RotateSnakeTail();
         if (isBigCharging) { return;}
         Vector3 movement = Vector3.Normalize(moveTarget.position - transform.position);
         
         //transform.position += movement * (movementSpeed * Time.deltaTime);
         // rb.AddForce(movement * movementSpeed);
         rb.velocity = movement * (movementSpeed * Time.deltaTime);
-        return;
     }
-
+    void RotateSnakeTail()
+    {
+        Vector3 v2Target = target.position - transform.position;
+        float ang = Mathf.Atan2(v2Target.y, v2Target.x) * Mathf.Rad2Deg * rotationMod;
+        Quaternion q = Quaternion.AngleAxis(ang, Vector3.forward);
+        snakeShooter.firePos.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+    }
     Transform FindNearestMovementTarget()
     {
         Transform nearestTarget = null;
@@ -95,6 +105,6 @@ public class ChimeraBoss : MonoBehaviour
         return nearestTarget;
     }
     #endregion
-    //
-    // protected override IEnumerator Knockback(Vector2 dir) { yield return null;}
+    
+    protected override IEnumerator Knockback(Vector2 dir) { yield return null;}
 }

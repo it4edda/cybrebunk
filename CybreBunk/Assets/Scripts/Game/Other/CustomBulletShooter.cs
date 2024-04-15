@@ -11,6 +11,7 @@ public class CustomBulletShooter : MonoBehaviour
     [SerializeField] protected float timeBetweenPatterns; 
     [SerializeField] public Transform firePos;
     public bool isAttacking = false;
+    public bool canAttack = true;
     
     IEnumerator Shooting(CustomBulletPattern pattern)
     {
@@ -28,7 +29,7 @@ public class CustomBulletShooter : MonoBehaviour
 
         yield return new WaitForSeconds(timeBetweenPatterns);
         isAttacking = false;
-        if (fireContinuously)
+        if (fireContinuously && canAttack)
         {
             ChooseNewRoutine();
         }
@@ -36,7 +37,7 @@ public class CustomBulletShooter : MonoBehaviour
 
     public void ChooseNewRoutine()
     {
-        if (isAttacking) { return; }
+        if (isAttacking || !canAttack) { return; }
         
         StartCoroutine(Shooting(bulletPattern[Random.Range(0, bulletPattern.Count)]));
     }
