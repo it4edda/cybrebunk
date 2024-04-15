@@ -50,6 +50,9 @@ public class DiamondBoss : EnemyBehaviour
     {
         //base.Die();
         FindObjectOfType<SatanicC>().CallBloodGround();
+        enemySpawning.CanSpawn = true;
+        enemySpawning.StartSpawning();
+        FindObjectOfType<PlayerCamera>().SetFollow();
         Destroy(gameObject);
     }
     protected override IEnumerator Knockback(Vector2 dir) { yield break; }

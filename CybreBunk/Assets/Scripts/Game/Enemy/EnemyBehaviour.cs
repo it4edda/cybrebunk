@@ -29,7 +29,7 @@ public class EnemyBehaviour : MonoBehaviour
     protected Transform target;
     Transform           bloodParent;
     protected Rigidbody2D         rb;
-    EnemySpawning       enemySpawning;
+    protected EnemySpawning       enemySpawning;
     UserInterfaceGauge  gauge;
     Animator            animator;
 
