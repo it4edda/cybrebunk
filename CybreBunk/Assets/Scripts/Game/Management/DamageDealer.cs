@@ -30,7 +30,8 @@ public class DamageDealer : MonoBehaviour
 
             case false:
                 if (!other.CompareTag("Player")) { return;}
-                other.GetComponent<PlayerStats>().Health--;
+                Debug.Log("Damage player");
+                other.GetComponent<PlayerStats>().Health =- 1;
                 if (oneHitLife) Destroy(gameObject);
                 break;
         }
