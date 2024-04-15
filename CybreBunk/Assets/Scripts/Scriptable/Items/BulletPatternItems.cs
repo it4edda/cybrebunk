@@ -7,7 +7,6 @@ public class BulletPatternItems : ItemData
     
     public override void OnPickup(PlayerStats playerStats)
     {
-        //TODO change bullet pattern
         FindObjectOfType<PlayerAttack>().ChangePattern(bulletPattern);
     }
 }

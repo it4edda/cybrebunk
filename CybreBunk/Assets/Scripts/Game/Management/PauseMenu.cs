@@ -43,6 +43,10 @@ public class PauseMenu : MonoBehaviour
     }
     public void DiosBestFriend(bool freeze)
     {
+        if (isPaused && !mainCanvas.enabled)
+        {
+            return;
+        }
         if (inSettingsMenu)
         {
             SettingsToggle(false);

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Turret
   m_EditorClassIdentifier: 
   itemName: Turret
+  itemType: 1
   itemDescription: Spawns a turret every x sec
   itemIcon: {fileID: 0}
   spawnableObjects:
