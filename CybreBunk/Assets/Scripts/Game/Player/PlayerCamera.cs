@@ -54,7 +54,10 @@ public class PlayerCamera : MonoBehaviour
     {
         isStationary = true;
         followVector = Vector3.forward * -10;
-
+    }
+    public void SetFollow()
+    {
+        isStationary = false;
     }
     void OnDrawGizmos()
     {
