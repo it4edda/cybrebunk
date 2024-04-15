@@ -46,8 +46,14 @@ public class DiamondBoss : EnemyBehaviour
         yield return new WaitForSeconds(breakTime);
         StartCoroutine(SpawnWaves());
     }
+    protected override void Die()
+    {
+        //base.Die();
+        FindObjectOfType<SatanicC>().CallBloodGround();
+        Destroy(gameObject);
+    }
     protected override IEnumerator Knockback(Vector2 dir) { yield break; }
-    protected override void Movement() { return; }
+    protected override void        Movement()             { return; }
 
     void OnDrawGizmosSelected()
     {

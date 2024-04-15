@@ -16,7 +16,7 @@ public class SatanicC : Interaction
     Transform                       bloodParent;
     UserInterfaceGauge              gauge;
     AudioSource                     audioSource;
-    int                             timesUsed;
+    public int                             timesUsed;
     protected override void Start()
     {
         base.Start();
@@ -36,7 +36,6 @@ public class SatanicC : Interaction
     {
         Suction();
         timesUsed++;
-        bloodGround.gameObject.SetActive(true);
         gauge.UpdateGaugeSlider(-gauge.MaxValue);
         base.InteractionActive();
 
@@ -66,6 +65,10 @@ public class SatanicC : Interaction
                 break;
                 
         }
+    }
+    public void CallBloodGround()
+    {
+        bloodGround.gameObject.SetActive(true);
     }
     void Suction()
     {
