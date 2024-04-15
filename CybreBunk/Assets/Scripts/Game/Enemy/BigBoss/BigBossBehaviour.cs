@@ -24,6 +24,9 @@ public class BigBossBehaviour : EnemyBehaviour
     protected override void Die()
     {
         //base.Die();
+        enemySpawning.CanSpawn = true;
+        enemySpawning.StartSpawning();
+        FindObjectOfType<PlayerCamera>().SetFollow();
         healthBar.gameObject.SetActive(false);
         Destroy(gameObject);
     }
@@ -50,4 +53,5 @@ public class BigBossBehaviour : EnemyBehaviour
 
     protected override void Movement() { return; }
     protected override IEnumerator Knockback(Vector2 dir) { yield return null;}
+    
 }

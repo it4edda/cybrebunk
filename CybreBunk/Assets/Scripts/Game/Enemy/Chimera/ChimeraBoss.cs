@@ -101,7 +101,14 @@ public class ChimeraBoss : EnemyBehaviour
 
         return nearestTarget;
     }
-    #endregion
-    
     protected override IEnumerator Knockback(Vector2 dir) { yield return null;}
+    #endregion
+
+    protected override void Die()
+    {
+        enemySpawning.CanSpawn = true;
+        enemySpawning.StartSpawning();
+        FindObjectOfType<PlayerCamera>().SetFollow();
+        Destroy(gameObject);
+    }
 }

@@ -16,10 +16,12 @@ public class SatanicC : Interaction
     Transform                       bloodParent;
     UserInterfaceGauge              gauge;
     AudioSource                     audioSource;
-    public int                             timesUsed;
+    EnemySpawning enemySpawning;
+    public int                      timesUsed;
     protected override void Start()
     {
         base.Start();
+        enemySpawning = FindObjectOfType<EnemySpawning>();
         audioSource = GetComponent<AudioSource>();
         bloodParent = transform.Find("BloodParent");
         gauge       = FindObjectOfType<UserInterfaceGauge>();
@@ -45,18 +47,22 @@ public class SatanicC : Interaction
                 audioSource.PlayOneShot(continuationSound);
                 Debug.Log("SPAWN BOSS 1");
                 FindObjectOfType<PlayerCamera>().SetStationary();
+                enemySpawning.CanSpawn = false;
                 Instantiate(bosses[0]);
                 break;
             
             case 2:
                 audioSource.PlayOneShot(continuationSound);
                 Debug.Log("SPAWN BOSS 2");
+                FindObjectOfType<PlayerCamera>().SetStationary();
+                enemySpawning.CanSpawn = false;
                 break;
                 
             case 3:
                 Debug.Log("FINAL BOSS");
                 audioSource.PlayOneShot(finalBossSound);
                 FindObjectOfType<PlayerCamera>().SetStationary();
+                enemySpawning.CanSpawn = false;
                 Instantiate(bosses[2]);
                 break;
             

@@ -85,8 +85,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPattern:
   - {fileID: 11400000, guid: 44f81a606d584bb49bfa9b43d87d0f2b, type: 2}
+  fireContinuously: 0
   timeBetweenPatterns: 0
   firePos: {fileID: 226870220432944716}
+  isAttacking: 0
+  canAttack: 1
   hasSword: 0
   weaponGraphics: {fileID: 1065259305812519490}
   audioSource: {fileID: 7734500547816187146}
@@ -201,6 +204,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability1: 1
   darkArtsVariables:
+    baseVariables:
+      canUseAbility: 0
+      abilityCooldown: 0
     timeActive: 2
     isActive: 0
     movementBoost: 2
@@ -213,6 +219,10 @@ MonoBehaviour:
     slashSound: {fileID: 8300000, guid: 859304fd80cf0ca4e8ece424384df7b4, type: 3}
     sheatheSound: {fileID: 8300000, guid: 23dbed8fa51901046aee2c490d1297f3, type: 3}
   aoeAttackVariables:
+    baseVariables:
+      canUseAbility: 0
+      abilityCooldown: 0
+    guitarSound: {fileID: 0}
     timeActive: 2
     slasher: {fileID: 3587702942091998687}
     colliderObject: {fileID: 1666683658797783619}
