@@ -11,11 +11,14 @@ public class DiamondBoss : EnemyBehaviour
     [SerializeField] float               breakTime;
     [SerializeField] float               timeBetweenShove;
     [SerializeField] int                 timesToShove;
+    [SerializeField] AudioClip           enemyBoop;
+    //AudioSource                          audioSource;
     int                                  shoving;
     bool                                 shooting;
     
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         StartCoroutine(SpawnWaves());
         shoving = timesToShove;
     }
@@ -26,6 +29,7 @@ public class DiamondBoss : EnemyBehaviour
 
         foreach (var i in enemiesToSpawn)
         {
+            audioSource.PlayOneShot(enemyBoop);
             Instantiate(i, transform.position + spawnPositions[Random.Range(0, spawnPositions.Length)] ,Quaternion.identity);
             yield return new WaitForSeconds(0.2f);
         }
