@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pattern:
   - bulletsToFire:
-    - bullet: {fileID: 0}
+    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: 0
     secondsUntilNextRowFire: 0.2
   - bulletsToFire:
-    - bullet: {fileID: 0}
+    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: 20
-    - bullet: {fileID: 0}
+    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: -20
-    secondsUntilNextRowFire: 0
+    secondsUntilNextRowFire: 0.2
   - bulletsToFire:
-    - bullet: {fileID: 0}
+    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: 40
-    - bullet: {fileID: 0}
+    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: -40
     secondsUntilNextRowFire: 0

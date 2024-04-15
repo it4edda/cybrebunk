@@ -16,4 +16,4 @@ MonoBehaviour:
   itemType: 0
   itemDescription: Wide range of flavour
   itemIcon: {fileID: 21300000, guid: 84c0702f5b2fae841b598ba3f1cdddc6, type: 3}
-  bulletPattern: {fileID: 0}
+  bulletPattern: {fileID: 11400000, guid: 61c93b900e15d8240b036a34cd681e41, type: 2}
