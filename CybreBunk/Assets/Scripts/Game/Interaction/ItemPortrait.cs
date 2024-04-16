@@ -11,8 +11,11 @@ public class ItemPortrait : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemDesc;
 
     ItemData currentItem;
+
+    bool pickedThisItem;
     public void SetUpItem()
     {
+        pickedThisItem = false;
         currentItem = ItemManager.instance.GetRandomItem();
         if (currentItem.itemIcon)
         {
@@ -35,6 +38,7 @@ public class ItemPortrait : MonoBehaviour
 
     public void PickItem()
     {
+        pickedThisItem = true;
         PlayerInventory.instance.AddItem(currentItem);
         Debug.Log("ChoseItem" + itemName.text);
         ChosenItem?.Invoke();
@@ -42,6 +46,14 @@ public class ItemPortrait : MonoBehaviour
 
     void Sleep()
     {
+        if (currentItem.itemType == ItemData.ItemType.Ability && !pickedThisItem)
+        {
+            ItemManager.instance.ReturnItem(currentItem);
+        }
+        if (currentItem.itemType == ItemData.ItemType.Pattern && !pickedThisItem)
+        {
+            ItemManager.instance.ReturnItem(currentItem);
+        }
         ItemManager.instance.itemPortraitQueue.Enqueue(this);
         this.gameObject.SetActive(false);
     }

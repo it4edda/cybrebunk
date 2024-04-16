@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mirror
   m_EditorClassIdentifier: 
   itemName: Rearview mirror
-  itemType: 0
+  itemType: 3
   itemDescription: Eyes in the back of your head
   itemIcon: {fileID: 21300000, guid: 8a7d9a59a0068f743995b6d4d22d8473, type: 3}
   bulletPattern: {fileID: 11400000, guid: da8a0339af439fc48bc98aa30d00a502, type: 2}

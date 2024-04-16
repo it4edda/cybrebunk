@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Blast
   m_EditorClassIdentifier: 
   itemName: Killer Wail 0.1
-  itemType: 0
+  itemType: 2
   itemDescription: Shots fired
   itemIcon: {fileID: 21300000, guid: d7800e6a9b2e87647aba1d1b77605206, type: 3}
   itemAbility: 3

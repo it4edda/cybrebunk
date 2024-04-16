@@ -13,7 +13,7 @@ public class BulletLogic : DamageDealer
     {
         if(isAllied && usePlayerRange)
         {
-            timeToLive *= PlayerManager.selectedCard.playerRange;
+            timeToLive = FindObjectOfType<PlayerStats>().Range * 0.5f;
             speed      = PlayerManager.selectedCard.bulletSpeed * speed;
         }
         base.Start();
