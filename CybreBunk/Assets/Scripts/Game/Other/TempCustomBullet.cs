@@ -8,7 +8,7 @@ public class TempCustomBullet : MonoBehaviour
     [SerializeField] float timeToLive;
     void Start()
     {
-        timeToLive = PlayerManager.selectedCard.bulletLifetime;
+        timeToLive = PlayerManager.selectedCard.playerRange;
         speed      = PlayerManager.selectedCard.bulletSpeed;
     }
     void Update()

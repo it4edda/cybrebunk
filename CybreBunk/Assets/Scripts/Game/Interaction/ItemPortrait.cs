@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEditor.Search;
 using UnityEngine.UI;
 
 public class ItemPortrait : MonoBehaviour
@@ -13,7 +14,6 @@ public class ItemPortrait : MonoBehaviour
     ItemData currentItem;
     public void SetUpItem()
     {
-        ItemPortrait.ChosenItem += Sleep;
         currentItem = ItemManager.instance.GetRandomItem();
         if (currentItem.itemIcon)
         {
@@ -22,6 +22,16 @@ public class ItemPortrait : MonoBehaviour
 
         itemName.text = currentItem.itemName;
         itemDesc.text = currentItem.itemDescription;
+    }
+
+    void OnEnable()
+    {
+        ItemPortrait.ChosenItem += Sleep;
+    }
+
+    void OnDisable()
+    {
+        ItemPortrait.ChosenItem -= Sleep;
     }
 
     public void PickItem()
@@ -33,7 +43,6 @@ public class ItemPortrait : MonoBehaviour
 
     void Sleep()
     {
-        ItemPortrait.ChosenItem -= Sleep;
         ItemManager.instance.itemPortraitQueue.Enqueue(this);
         this.gameObject.SetActive(false);
     }

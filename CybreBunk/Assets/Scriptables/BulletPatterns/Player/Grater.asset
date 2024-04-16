@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: Grater
   m_EditorClassIdentifier: 
   pattern:
-  - bulletsToFire:
-    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
-      angle: 0
+  - bulletsToFire: []
     secondsUntilNextRowFire: 0.2
   - bulletsToFire:
     - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}

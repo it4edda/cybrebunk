@@ -11,6 +11,21 @@ public class Turret : CustomBulletShooter
 
     //TODO make into item and maybe set in time limit
     Transform nearestEnemy;
+
+    void Start()
+    {
+        ChoosePattern();
+    }
+
+    void ChoosePattern()
+    {
+        if (FindObjectOfType<PlayerAttack>().addedBulletPaterns.Count <= 0) return;
+        foreach (CustomBulletPattern pattern in FindObjectOfType<PlayerAttack>().addedBulletPaterns)
+        {
+            bulletPattern.Add(pattern);
+        }
+    }
+
     void Update()
     {
         //TODO if buggy fix this
