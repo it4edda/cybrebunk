@@ -19,9 +19,10 @@ public class EnemySpawning : MonoBehaviour
 
     SatanicC satanicC;
     int                  waveNumber         = 0;
-    Dictionary<int, int> enemiesAliveByWave = new Dictionary<int, int>();
+    Dictionary<int, int> enemiesAliveByWave = new();
+    Dictionary<int, bool> waveSpawnItem = new();
     bool                 firstWaveSpawned   = false;
-    bool canSpawn;
+    [SerializeField] bool canSpawn = true;
 
     public bool CanSpawn { get => canSpawn; set => canSpawn = value; }
 
@@ -45,13 +46,14 @@ public class EnemySpawning : MonoBehaviour
     
     IEnumerator Spawn()
     {
-        while (waveNumber < beginnerWaves.Length)
+        if (waveNumber < beginnerWaves.Length)
         {
             float   randomAngle   = Random.Range(0f, 2f * Mathf.PI);
             Vector3 spawnPosition = player.position + new Vector3(Mathf.Cos(randomAngle) * spawnRadius, Mathf.Sin(randomAngle) * spawnRadius, 0f);
 
             
             if (!enemiesAliveByWave.ContainsKey(waveNumber))  enemiesAliveByWave[waveNumber] = 0; 
+            if (!waveSpawnItem.ContainsKey(waveNumber))  waveSpawnItem[waveNumber] = beginnerWaves[waveNumber].spawnItem; 
 
             foreach (var enemyPrefab in beginnerWaves[waveNumber].contestants)
             {
@@ -60,21 +62,18 @@ public class EnemySpawning : MonoBehaviour
                 a.GetComponent<EnemyBehaviour>().belongsToWaveNumber = waveNumber;
                 enemiesAliveByWave[waveNumber]++; 
             }
-
             
             waveNumber++;
-            yield return new WaitForSeconds(timer);
         }
-
-        if (satanicC.timesUsed ==0 && waveNumber >= beginnerWaves.Length)
+        else if (satanicC.timesUsed ==0)
         { 
             SpawnRandomWave(preFirstBossRandom);
         }
-        else if(satanicC.timesUsed == 1 && waveNumber >= beginnerWaves.Length)
+        else if(satanicC.timesUsed == 1)
         {
             SpawnRandomWave(preSecondBossRandom);
         }
-        else if (waveNumber >= beginnerWaves.Length)
+        else
         {
             SpawnRandomWave(preThirdBossRandom);
         }
@@ -94,6 +93,7 @@ public class EnemySpawning : MonoBehaviour
 
 
         if (!enemiesAliveByWave.ContainsKey(waveNumber)) enemiesAliveByWave[waveNumber] = 0;
+        if (!waveSpawnItem.ContainsKey(waveNumber))  waveSpawnItem[waveNumber] = beginnerWaves[waveNumber].spawnItem; 
 
         EnemyWave randomWave = enemyWaves[Random.Range(0, preFirstBossRandom.Length)];
         foreach (var enemyPrefab in randomWave.contestants)
@@ -108,18 +108,21 @@ public class EnemySpawning : MonoBehaviour
     }
 
 
-    public void DecreaseEnemyAliveNumber(int waveNumber, Vector3 enemyPosition)
+    public void DecreaseEnemyAliveNumber(int enemyWaveNumber, Vector3 enemyPosition)
 {
-    if (enemiesAliveByWave.ContainsKey(waveNumber))
+    if (enemiesAliveByWave.ContainsKey(enemyWaveNumber))
     {
-        enemiesAliveByWave[waveNumber]--;
-        if (enemiesAliveByWave[waveNumber] <= 0)
+        enemiesAliveByWave[enemyWaveNumber]--;
+        if (enemiesAliveByWave[enemyWaveNumber] > 0) return;
+        if (waveSpawnItem[enemyWaveNumber])
         {
-            if (beginnerWaves.Length < waveNumber && beginnerWaves[waveNumber].spawnItem) 
+            
                 Instantiate(itemPrefab, enemyPosition, Quaternion.identity);
             
-            enemiesAliveByWave.Remove(waveNumber); 
         }
+
+        waveSpawnItem.Remove(enemyWaveNumber);
+        enemiesAliveByWave.Remove(enemyWaveNumber);
     }
 }
 
