@@ -176,6 +176,7 @@ public class Ability : MonoBehaviour
 #endregion
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
     {
+        playerAttack.canTurretAttack = false;
         playerAttack.canAttack = false;
         darkArtsVariables.ToggleAbility(true);
         cam.CameraShake(0.1f, 0.2f);
@@ -237,6 +238,7 @@ public class Ability : MonoBehaviour
         cooldown = darkArtsVariables.baseVariables.abilityCooldown;
         darkArtsVariables.ToggleAbility(false);
         playerAttack.canAttack = true;
+        playerAttack.canTurretAttack = true;
         playerStats.GodMode(false);
     }
     

@@ -11,9 +11,11 @@ public class Turret : CustomBulletShooter
 
     //TODO make into item and maybe set in time limit
     Transform nearestEnemy;
+    PlayerAttack playerAttack;
 
     void Start()
     {
+        playerAttack = FindObjectOfType<PlayerAttack>();
         ChoosePattern();
     }
 
@@ -29,6 +31,8 @@ public class Turret : CustomBulletShooter
     void Update()
     {
         //TODO if buggy fix this
+        if (!playerAttack.canTurretAttack) { return; }
+        
         if (FindNearestEnemy())
         {
             Vector3 v2Target = nearestEnemy.position - transform.position;
