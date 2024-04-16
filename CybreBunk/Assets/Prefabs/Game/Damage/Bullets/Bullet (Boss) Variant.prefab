@@ -137,6 +137,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9036618125156146634, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
+      propertyPath: usePlayerRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9036618125156146634, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       propertyPath: damageMultiplier
       value: 1
       objectReference: {fileID: 0}

@@ -20,7 +20,7 @@ MonoBehaviour:
   swordStart: 0
   startingAttackSpeed: 1
   bulletSpeed: 2
-  bulletLifetime: 1
+  playerRange: 1
   startingDamage: 35
   startingMovementSpeed: 1.5
   startingHealth: 5

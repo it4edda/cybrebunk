@@ -52,6 +52,7 @@ MonoBehaviour:
   damageMultiplier: 1
   speed: 0.69
   timeToLive: 1
+  usePlayerRange: 1
 --- !u!58 &7415659642486810995
 CircleCollider2D:
   m_ObjectHideFlags: 0
