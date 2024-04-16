@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07211ad28419a44099f24557c93ebc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 45
+  CanDarkArts: 0
+  health: 60
   isBig: 0
   smallBlood: []
   bigBlood: []

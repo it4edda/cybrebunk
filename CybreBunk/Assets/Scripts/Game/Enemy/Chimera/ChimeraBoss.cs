@@ -40,7 +40,6 @@ public class ChimeraBoss : EnemyBehaviour
     }
     #endregion
     
-
     #region TheBigCharge
     IEnumerator BigCharge()
     {

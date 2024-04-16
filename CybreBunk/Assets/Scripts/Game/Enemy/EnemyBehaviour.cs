@@ -2,11 +2,13 @@ using System.Collections;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    [Header("Mortality fields")]
+    [Header("Mortality fields")] 
+    public bool canDarkArts = true;
     [SerializeField] protected int health;
     [SerializeField] bool         isBig;
     [SerializeField] GameObject[] smallBlood;
