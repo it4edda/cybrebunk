@@ -8,6 +8,7 @@ public class PlayerAttack : CustomBulletShooter
     [SerializeField] bool      hasSword;
     [SerializeField] Transform   weaponGraphics;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] float attackSpeed;
     [Header("General Values")]
     
     [Header("Gun")]
