@@ -4953,7 +4953,7 @@ Transform:
   - {fileID: 7107395868438748191}
   - {fileID: 2760944964407702478}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1947360016399013809
 MonoBehaviour:
@@ -14720,7 +14720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4647433444651681502, guid: e6f11acaed9c8264bbe72f8857d355d1, type: 3}
       propertyPath: m_SortingLayer
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4647433444651681502, guid: e6f11acaed9c8264bbe72f8857d355d1, type: 3}
       propertyPath: m_SortingLayerID

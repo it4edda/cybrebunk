@@ -11,6 +11,7 @@ public class SatanicC : Interaction
     [SerializeField] ParticleSystem particles;
     [SerializeField] ParticleSystem bloodTrail;
     [SerializeField] Animator       bloodGround;
+    [SerializeField] Animator       exclamation;
     [SerializeField] AudioClip      continuationSound;
     [SerializeField] AudioClip      finalBossSound;
     [SerializeField] GameObject[]   bosses;
@@ -38,8 +39,12 @@ public class SatanicC : Interaction
     {
         if (particles.isEmitting != canInteract)
         {
-            if (canInteract) particles.Play();
+            if (canInteract)
+                particles.Play();
+            
             else particles.Stop();
+            
+            exclamation.SetBool("Show", canInteract);
         }
     }
     protected override void InteractionActive()
