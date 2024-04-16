@@ -122,7 +122,7 @@ MonoBehaviour:
   - {fileID: 6119379356871097387, guid: d6913b06535da1b4ca7893b869a29437, type: 3}
   - {fileID: 5755959647317791914, guid: dbc9a7b917e07aa468601f8bffa2d9e2, type: 3}
   bigBlood: []
-  bloodParticle: {fileID: 0}
+  bloodParticle: {fileID: 7059027924720660576, guid: bf4f35e6fbe0599499819f94bf419b11, type: 3}
   movementSpeed: 10
   knockbackStrength: 5
   enemyGaugePrice: 1
@@ -146,10 +146,12 @@ MonoBehaviour:
   bulletPattern:
   - {fileID: 11400000, guid: 2b3df3b6ffac3ab4f8b0f9ddf6544d53, type: 2}
   - {fileID: 11400000, guid: eb0a8a94c63cf9b468d54ef6198a0516, type: 2}
+  shootEverythingSimultaneously: 0
   fireContinuously: 1
   timeBetweenPatterns: 1
   firePos: {fileID: 3590567904818439802}
   isAttacking: 0
+  canAttack: 1
 --- !u!82 &-4000242953795908154
 AudioSource:
   m_ObjectHideFlags: 0

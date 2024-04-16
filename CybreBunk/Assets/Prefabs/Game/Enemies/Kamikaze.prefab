@@ -142,7 +142,7 @@ MonoBehaviour:
   - {fileID: 6119379356871097387, guid: d6913b06535da1b4ca7893b869a29437, type: 3}
   - {fileID: 5755959647317791914, guid: dbc9a7b917e07aa468601f8bffa2d9e2, type: 3}
   bigBlood: []
-  bloodParticle: {fileID: 0}
+  bloodParticle: {fileID: 7059027924720660576, guid: bf4f35e6fbe0599499819f94bf419b11, type: 3}
   movementSpeed: 23
   knockbackStrength: 5
   enemyGaugePrice: 2

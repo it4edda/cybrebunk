@@ -78,6 +78,16 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public virtual void TakeDamage(int damage, Vector2 dir)
     {
+        Vector2 bloodDir =playerStats.transform.position - transform.position;
+        ParticleSystem particleSystemObject = Instantiate(bloodParticle, transform.position, Quaternion.identity);
+
+        Quaternion rotation = Quaternion.LookRotation(bloodDir, Vector3.forward);
+
+        particleSystemObject.transform.rotation = rotation;
+        particleSystemObject.transform.Rotate(0f, 180f, 0f);
+        particleSystemObject.Play();
+        
+        
         if(!isBig) StartCoroutine(Knockback(dir));
         health -= damage;
         if (health <= 0) Die();
@@ -88,11 +98,7 @@ public class EnemyBehaviour : MonoBehaviour
         Vector2 direction =  (Vector2)transform.position - dir;
         direction.Normalize();
         direction /= 5;
-
-        //SOME BLOOD SHIT
-        // var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        // bloodParticle.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //bloodParticle.Play();
+        
         
         rb.AddForce(direction * knockbackStrength, ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
