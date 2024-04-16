@@ -100,7 +100,7 @@ MonoBehaviour:
   isBig: 0
   smallBlood: []
   bigBlood: []
-  bloodParticle: {fileID: 7865765980510023416}
+  bloodParticle: {fileID: 7530264791114784395, guid: 229f5977465dfdf4d9ecf0c6ef0b26f6, type: 3}
   movementSpeed: 65
   knockbackStrength: 5
   enemyGaugePrice: 0
