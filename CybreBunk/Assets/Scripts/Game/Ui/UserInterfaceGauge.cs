@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UserInterfaceGauge : MonoBehaviour
 {
     [SerializeField] int maxValue;
+    [SerializeField] int increasePerBoss;
     
     int                  currentValue;
     bool                 maxedGauge = false;
@@ -34,6 +35,11 @@ public class UserInterfaceGauge : MonoBehaviour
         currentValue += value;
         slider.value = currentValue <= maxValue ? currentValue + value : MaxGaugeTrigger();
         //ADD RED VIGNETTE?
+    }
+
+    public void IncreaseGauge()
+    {
+        maxValue += increasePerBoss;
     }
     int MaxGaugeTrigger()
     {

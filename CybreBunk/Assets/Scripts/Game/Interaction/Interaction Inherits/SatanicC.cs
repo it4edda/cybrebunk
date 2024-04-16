@@ -52,6 +52,7 @@ public class SatanicC : Interaction
         Suction();
         timesUsed++;
         gauge.UpdateGaugeSlider(-gauge.MaxValue);
+        gauge.IncreaseGauge();
         base.InteractionActive();
 
         switch (timesUsed)

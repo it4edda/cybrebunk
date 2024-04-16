@@ -12,7 +12,6 @@ public class AbilityCoolDownUI : MonoBehaviour
     void Start()
     {
         ability = FindObjectOfType<Ability>();
-        GetNewAbility(PlayerInventory.instance.CurrentAbility);
     }
 
     void Update()
@@ -42,6 +41,8 @@ public class AbilityCoolDownUI : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+    
+    
 
     void SetCooldown()
     {

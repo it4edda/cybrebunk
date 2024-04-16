@@ -150,6 +150,8 @@ MonoBehaviour:
   fireContinuously: 1
   timeBetweenPatterns: 1
   firePos: {fileID: 3590567904818439802}
+  gunSound: {fileID: 8300000, guid: c6b6d1cdae9e1dc499e43695a1d00321, type: 3}
+  audioSource: {fileID: -4000242953795908154}
   isAttacking: 0
   canAttack: 1
 --- !u!82 &-4000242953795908154

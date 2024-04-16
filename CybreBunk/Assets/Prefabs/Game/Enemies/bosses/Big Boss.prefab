@@ -470,6 +470,8 @@ MonoBehaviour:
   fireContinuously: 0
   timeBetweenPatterns: 0
   firePos: {fileID: 487869595057106188}
+  gunSound: {fileID: 0}
+  audioSource: {fileID: 0}
   isAttacking: 0
   canAttack: 1
 --- !u!58 &8379264913600684203
@@ -1104,6 +1106,8 @@ MonoBehaviour:
   fireContinuously: 0
   timeBetweenPatterns: 0
   firePos: {fileID: 5442587903500543668}
+  gunSound: {fileID: 0}
+  audioSource: {fileID: 0}
   isAttacking: 0
   canAttack: 1
 --- !u!58 &7973800755745145842

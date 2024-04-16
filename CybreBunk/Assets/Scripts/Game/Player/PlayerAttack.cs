@@ -8,12 +8,10 @@ public class PlayerAttack : CustomBulletShooter
     [Header("General")]
     [SerializeField] bool      hasSword;
     [SerializeField] Transform   weaponGraphics;
-    [SerializeField] AudioSource audioSource;
     [Header("General Values")]
     
     [Header("Gun")]
     [SerializeField] GameObject gunGraphics;
-    [SerializeField] AudioClip  gunSound;
     public List<CustomBulletPattern> addedBulletPaterns = new();
     
     [Header("Sword")]
@@ -51,7 +49,6 @@ public class PlayerAttack : CustomBulletShooter
 
         if (!hasSword)
         {
-            audioSource.PlayOneShot(gunSound);
             ChooseNewRoutine();
         }
         if (hasSword) { StartCoroutine(Slash());}

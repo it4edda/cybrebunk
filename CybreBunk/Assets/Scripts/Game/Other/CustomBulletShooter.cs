@@ -14,7 +14,7 @@ public class CustomBulletShooter : MonoBehaviour
     [SerializeField] protected float timeBetweenPatterns; 
     [SerializeField] public Transform firePos;
     [SerializeField] AudioClip  gunSound;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] protected AudioSource audioSource;
     public bool isAttacking = false;
     public bool canAttack = true;
     int numberOfShootingActive = 0;
@@ -25,7 +25,7 @@ public class CustomBulletShooter : MonoBehaviour
         isAttacking = true;
         foreach (CustomBulletPattern.PatternRows row in pattern.pattern)
         {
-            audioSource.PlayOneShot(gunSound);
+            if (audioSource) { audioSource.PlayOneShot(gunSound); }
             foreach (CustomBulletPattern.BulletsInRows bullets in row.bulletsToFire)
             {
                 Vector3 newRotation = new(firePos.rotation.eulerAngles.x, firePos.rotation.eulerAngles.y,
