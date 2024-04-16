@@ -20,17 +20,19 @@ public class SatanicC : Interaction
     UserInterfaceGauge              gauge;
     AudioSource                     audioSource;
     EnemySpawning                   enemySpawning;
+    MusicPlayer                     musicPlayer;
     public int                      timesUsed;
     public bool                     canConsume = true;
     protected override void Start()
     {
         base.Start();
-        canConsume     = true;
+        canConsume    = true;
         arena         = FindObjectOfType<ArenaBehaviour>();
         enemySpawning = FindObjectOfType<EnemySpawning>();
         audioSource   = GetComponent<AudioSource>();
         bloodParent   = transform.Find("BloodParent");
         gauge         = FindObjectOfType<UserInterfaceGauge>();
+        musicPlayer   = FindObjectOfType<MusicPlayer>();
     }
     protected override void InteractionPassive()
     {
@@ -73,6 +75,7 @@ public class SatanicC : Interaction
     void BossSpawning(AudioClip clip)
     {
         FindObjectOfType<PlayerCamera>().SetStationary();
+        musicPlayer.ChangeMusic(musicPlayer.allSong[4]);
         arena.bossIsAlive = true;
         audioSource.PlayOneShot(clip);
         canConsume             = false;
@@ -80,6 +83,7 @@ public class SatanicC : Interaction
     }
     public void BossDeath()
     {
+        musicPlayer.ChangeMusic(musicPlayer.allSong[1]);
         canConsume        = true;
         arena.bossIsAlive = false;
     }

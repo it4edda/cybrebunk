@@ -1035,6 +1035,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1054997806}
     m_Modifications:
+    - target: {fileID: 53742126021633404, guid: bcabdd35f00c78d45a9d9104e3020d29, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f7192a4f2dadd8048bd081358e9278a2, type: 3}
     - target: {fileID: 571375156561773850, guid: bcabdd35f00c78d45a9d9104e3020d29, type: 3}
       propertyPath: m_Name
       value: AbilityCoolDown
@@ -8201,6 +8205,10 @@ PrefabInstance:
       propertyPath: blastVariables.shooter
       value: 
       objectReference: {fileID: 1733930227}
+    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: blastVariables.blastSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 48e7bb6ba7103d7478bbed35206d2ace, type: 3}
     - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: aoeAttackVariables.guitarSound
       value: 

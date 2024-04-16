@@ -35,6 +35,7 @@ public class Ability : MonoBehaviour
 
     void Start()
     {
+        ability1                                       = ChosenAbility.None;
         audioSource                                    = GetComponent<AudioSource>();
         playerStats                                    = FindObjectOfType<PlayerStats>();
         playerMovement                                 = GetComponent<PlayerMovement>();
@@ -258,7 +259,7 @@ public class Ability : MonoBehaviour
     void BlastAttack()
     {
         cooldown = blastVariables.baseVariables.abilityCooldown;
-        //audioSource.PlayOneShot(blastVariables.blastSound);
+        audioSource.PlayOneShot(blastVariables.blastSound);
         
         blastVariables.shooter.ChooseNewRoutine();
     }

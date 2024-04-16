@@ -22,18 +22,19 @@ public class ItemManager : MonoBehaviour
     #endregion
 
     #region Variables
-    public ItemPortrait itemPortrait;
+    public           ItemPortrait   itemPortrait;
     [SerializeField] List<ItemData> allItems;
-    [SerializeField] GameObject itemCanvas;
-
-    public Queue<ItemPortrait> itemPortraitQueue = new();
-    PauseMenu pauseMenu;
+    [SerializeField] GameObject     itemCanvas;
+    MusicPlayer                     musicPlayer;
+    public Queue<ItemPortrait>      itemPortraitQueue = new();
+    PauseMenu                       pauseMenu;
     #endregion
 
     #region SetUp
     void Start()
     {
-        pauseMenu = FindObjectOfType<PauseMenu>();
+        musicPlayer = FindObjectOfType<MusicPlayer>();
+        pauseMenu   = FindObjectOfType<PauseMenu>();
     }
     void OnEnable()
     {
@@ -71,6 +72,7 @@ public class ItemManager : MonoBehaviour
     {
         if(!itemCanvas){Debug.Log("NO CANVAS AAGHAGHAHGAHGA"); return; }
         
+        musicPlayer.ChangeMusic(freeze ? musicPlayer.allSong[2] : musicPlayer.allSong[1]);
         itemCanvas.SetActive(freeze);
         pauseMenu.TimeFreeze(freeze);
     }

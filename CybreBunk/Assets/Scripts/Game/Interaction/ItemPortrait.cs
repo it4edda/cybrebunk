@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Search;
 using UnityEngine.UI;
 
 public class ItemPortrait : MonoBehaviour
