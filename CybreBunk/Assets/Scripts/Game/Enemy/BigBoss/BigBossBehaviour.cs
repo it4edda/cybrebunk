@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class BigBossBehaviour : EnemyBehaviour
 {
-    [SerializeField] float                   timeBetweenSlams;
-    [SerializeField] MegaEyes[]              eyes;
-    [SerializeField] HandSlam[]              hands;
-    UserInterfaceBossHealth healthBar;
-    bool                                     rightHand;
+    [SerializeField] float      timeBetweenSlams;
+    [SerializeField] MegaEyes[] eyes;
+    [SerializeField] HandSlam[] hands;
+    UserInterfaceBossHealth     healthBar;
+    bool                        rightHand;
     protected override void Start()
     {
         base.Start();
