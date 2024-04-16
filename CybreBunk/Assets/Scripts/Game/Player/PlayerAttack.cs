@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 public class PlayerAttack : CustomBulletShooter
 {
@@ -8,7 +9,6 @@ public class PlayerAttack : CustomBulletShooter
     [SerializeField] bool      hasSword;
     [SerializeField] Transform   weaponGraphics;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] float attackSpeed;
     [Header("General Values")]
     
     [Header("Gun")]
@@ -48,7 +48,12 @@ public class PlayerAttack : CustomBulletShooter
     {
         if (!CanAttack) return;
         if (isAttacking) return;
-        if(!hasSword) { ChooseNewRoutine(); }
+
+        if (!hasSword)
+        {
+            audioSource.PlayOneShot(gunSound);
+            ChooseNewRoutine();
+        }
         if (hasSword) { StartCoroutine(Slash());}
     }
     void Aim()
@@ -72,6 +77,7 @@ public class PlayerAttack : CustomBulletShooter
         audioSource.PlayOneShot(slashSound);
         yield return new WaitForSeconds(slasher.GetCurrentAnimatorStateInfo(0).length);
         slasher.gameObject.SetActive(false);
+        yield return new WaitForSeconds(timeBetweenPatterns);
         isAttacking = false;
     }
 
@@ -79,6 +85,11 @@ public class PlayerAttack : CustomBulletShooter
     {
         addedBulletPaterns.Add(newPattern);
         bulletPattern.Add(newPattern);
+    }
+    public float IncreaseMeleeRange(float value)
+    {
+        slasher.transform.localScale += new Vector3(1* value, 1 * value, 1 *value) / 2 ;
+        return value;
     }
     public bool HasSword
     {

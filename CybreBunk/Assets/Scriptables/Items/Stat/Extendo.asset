@@ -21,6 +21,8 @@ MonoBehaviour:
     stats:
       maxHealth: 0
       health: 0
+      range: 2
       attackSpeedIncrease: 0
       damageIncrease: 0
       movementSpeedIncrease: 0
+      increaseInBloodGain: 0

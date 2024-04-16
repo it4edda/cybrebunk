@@ -68,10 +68,12 @@ public class StatItems : ItemData
     //ADD RANGE
     void UpdateStats(PlayerStats playerStats, ItemEffect effect)
     {
+        PlayerAttack attack = FindObjectOfType<PlayerAttack>();
+        
         playerStats.MaxHealth += effect.stats.maxHealth;
         playerStats.Health += effect.stats.health;
-        playerStats.Range += effect.stats.range;
-        FindObjectOfType<PlayerAttack>().AttackSpeed *= (1 - effect.stats.attackSpeedIncrease);
+        playerStats.Range += attack.HasSword ? attack.IncreaseMeleeRange(effect.stats.range) : effect.stats.range;
+        attack.AttackSpeed *= (1 - effect.stats.attackSpeedIncrease);
         playerStats.IncreaseInBloodGain += effect.stats.increaseInBloodGain;
         playerStats.Damage += effect.stats.damageIncrease;
         playerStats.MovementSpeed += effect.stats.movementSpeedIncrease;

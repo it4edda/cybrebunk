@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
@@ -109,9 +110,12 @@ public class PlayerStats : MonoBehaviour
         set => damage = damage <= 0 ? damage = 1 : damage += value;
     }
 
-    public float Range { get => range; set => range = value; }
-
-    public int IncreaseInBloodGain { get => increaseInBloodGain; set => increaseInBloodGain = value; }
+    public float Range               { get => range; set => range = IncreaseRange(value); }
+    float IncreaseRange(float val)
+    {
+        return val;
+    }
+    public int   IncreaseInBloodGain { get => increaseInBloodGain; set => increaseInBloodGain = value; }
 
     #region MovementSpeed
     public float MovementSpeed
