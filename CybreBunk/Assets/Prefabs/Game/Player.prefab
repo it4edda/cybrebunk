@@ -191,15 +191,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44f81a606d584bb49bfa9b43d87d0f2b, type: 2}
   shootEverythingSimultaneously: 1
   fireContinuously: 0
-  timeBetweenPatterns: 0
+  timeBetweenPatterns: 4
   firePos: {fileID: 226870220432944716}
+  gunSound: {fileID: 8300000, guid: 48e7bb6ba7103d7478bbed35206d2ace, type: 3}
+  audioSource: {fileID: 7734500547816187146}
   isAttacking: 0
   canAttack: 1
   hasSword: 0
   weaponGraphics: {fileID: 1065259305812519490}
-  audioSource: {fileID: 7734500547816187146}
   gunGraphics: {fileID: 1066222594241496617}
-  gunSound: {fileID: 8300000, guid: 48e7bb6ba7103d7478bbed35206d2ace, type: 3}
   addedBulletPaterns: []
   slasher: {fileID: 3232641438958291123}
   swordGraphics: {fileID: 347122410230248303}
@@ -285,7 +285,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.04}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -310,11 +310,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adadd520577f08d4495e44262244fb95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ability1: 1
+  ability1: 3
   darkArtsVariables:
     baseVariables:
       canUseAbility: 0
-      abilityCooldown: 0
+      abilityCooldown: 5
     timeActive: 2
     isActive: 0
     movementBoost: 2
@@ -329,18 +329,18 @@ MonoBehaviour:
   aoeAttackVariables:
     baseVariables:
       canUseAbility: 0
-      abilityCooldown: 0
-    guitarSound: {fileID: 0}
+      abilityCooldown: 5
+    guitarSound: {fileID: 8300000, guid: fec2b957b1b365c478b8f3db335b83bd, type: 3}
     timeActive: 2
     slasher: {fileID: 3587702942091998687}
     colliderObject: {fileID: 1666683658797783619}
   blastVariables:
     baseVariables:
-      canUseAbility: 0
-      abilityCooldown: 0
-    shooter: {fileID: 0}
-    pattern: {fileID: 0}
-    blastSound: {fileID: 0}
+      canUseAbility: 1
+      abilityCooldown: 2
+    shooter: {fileID: 6265345497116895287}
+    pattern: {fileID: 11400000, guid: 779299cf56d40754cbbb3eb96ef4010a, type: 2}
+    blastSound: {fileID: 8300000, guid: 48e7bb6ba7103d7478bbed35206d2ace, type: 3}
 --- !u!114 &155344807732353690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5572,7 +5572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7403982498312479244}
   m_Layer: 0
-  m_Name: DarkArts
+  m_Name: DarkArts Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5627,6 +5627,7 @@ Transform:
   - {fileID: 665621737812941578}
   - {fileID: 226870220432944716}
   - {fileID: 2325439516573479516}
+  - {fileID: 8072112023170092552}
   m_Father: {fileID: 3901097629434268975}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5672,7 +5673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 489774301358104504}
   m_Layer: 0
-  m_Name: Telecaster
+  m_Name: Telecaster Ability
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10900,7 +10901,7 @@ Transform:
   m_GameObject: {fileID: 6142411665607584088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.02750329, y: 0.027991638, z: 0}
-  m_LocalScale: {x: 1, y: -1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1065259305812519490}
@@ -15926,6 +15927,60 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &6458696640985408685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8072112023170092552}
+  - component: {fileID: 6265345497116895287}
+  m_Layer: 0
+  m_Name: Blast Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8072112023170092552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458696640985408685}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1065259305812519490}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6265345497116895287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458696640985408685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f02e1fe95512b441b9bbe51389f3994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPattern:
+  - {fileID: 11400000, guid: 779299cf56d40754cbbb3eb96ef4010a, type: 2}
+  shootEverythingSimultaneously: 0
+  fireContinuously: 0
+  timeBetweenPatterns: 0
+  firePos: {fileID: 8072112023170092552}
+  gunSound: {fileID: 0}
+  audioSource: {fileID: 0}
+  isAttacking: 0
+  canAttack: 1
 --- !u!1 &6498977977061900454
 GameObject:
   m_ObjectHideFlags: 0

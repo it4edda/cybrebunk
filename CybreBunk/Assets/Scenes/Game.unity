@@ -5076,6 +5076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxValue: 30
+  increasePerBoss: 0
 --- !u!1 &1534611550
 GameObject:
   m_ObjectHideFlags: 0
@@ -5712,60 +5713,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3901097629434268975, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
   m_PrefabInstance: {fileID: 3528347902443371520}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1733930225
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1733930226}
-  - component: {fileID: 1733930227}
-  m_Layer: 0
-  m_Name: Blast Ability
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1733930226
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733930225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3528347902443371521}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1733930227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733930225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f02e1fe95512b441b9bbe51389f3994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPattern:
-  - {fileID: 11400000, guid: 779299cf56d40754cbbb3eb96ef4010a, type: 2}
-  shootEverythingSimultaneously: 0
-  fireContinuously: 0
-  timeBetweenPatterns: 0
-  firePos: {fileID: 1733930226}
-  gunSound: {fileID: 0}
-  audioSource: {fileID: 0}
-  isAttacking: 0
-  canAttack: 1
 --- !u!1 &1751656394
 GameObject:
   m_ObjectHideFlags: 0
@@ -7953,53 +7900,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: ability1
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: blastVariables.pattern
-      value: 
-      objectReference: {fileID: 11400000, guid: 779299cf56d40754cbbb3eb96ef4010a, type: 2}
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: blastVariables.shooter
-      value: 
-      objectReference: {fileID: 1733930227}
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: blastVariables.blastSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 48e7bb6ba7103d7478bbed35206d2ace, type: 3}
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: aoeAttackVariables.guitarSound
-      value: 
-      objectReference: {fileID: 8300000, guid: fec2b957b1b365c478b8f3db335b83bd, type: 3}
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: blastVariables.baseVariables.canUseAbility
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: blastVariables.baseVariables.abilityCooldown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: darkArtsVariables.baseVariables.abilityCooldown
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 76304778872353872, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: aoeAttackVariables.baseVariables.abilityCooldown
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 481988184173262912, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1993243269592400808, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: m_Name
-      value: DarkArts Ability
-      objectReference: {fileID: 0}
-    - target: {fileID: 3210314107795859694, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: m_Name
-      value: Telecaster Ability
       objectReference: {fileID: 0}
     - target: {fileID: 3901097629434268975, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: m_RootOrder
@@ -8045,27 +7948,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7333022211653405983, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7534821546701278299, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      propertyPath: timeBetweenPatterns
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 1065259305812519490, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1733930226}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
---- !u!4 &3528347902443371521 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1065259305812519490, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
-  m_PrefabInstance: {fileID: 3528347902443371520}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3528347902443371539 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8740983386382612959, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
