@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Telecaster
   itemType: 2
-  itemDescription: Cast the tele
+  itemDescription: Enemies wish not to hear your awful song
   itemIcon: {fileID: 21300000, guid: d8374a99507518644a2c435218a47d61, type: 3}
   itemAbility: 2

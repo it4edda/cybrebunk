@@ -55,6 +55,7 @@ public class SatanicC : Interaction
                 audioSource.PlayOneShot(continuationSound);
                 Debug.Log("SPAWN BOSS 2");
                 FindObjectOfType<PlayerCamera>().SetStationary();
+                Instantiate(bosses[1]);
                 enemySpawning.CanSpawn = false;
                 break;
                 

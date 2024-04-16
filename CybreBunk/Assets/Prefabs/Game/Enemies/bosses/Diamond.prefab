@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3751640951497430632}
   m_Layer: 0
   m_Name: Diamond
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   breakTime: 1
   timeBetweenShove: 6
   timesToShove: 3
+  enemyBoop: {fileID: 0}
 --- !u!1 &7093533344686437167
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +177,7 @@ MonoBehaviour:
   timeBetweenPatterns: 0
   firePos: {fileID: 6640136522840931991}
   isAttacking: 0
+  canAttack: 1
 --- !u!1001 &6996798429769016071
 PrefabInstance:
   m_ObjectHideFlags: 0
