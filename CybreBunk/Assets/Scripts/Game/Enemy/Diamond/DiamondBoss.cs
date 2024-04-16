@@ -12,13 +12,16 @@ public class DiamondBoss : EnemyBehaviour
     [SerializeField] float               timeBetweenShove;
     [SerializeField] int                 timesToShove;
     [SerializeField] AudioClip           enemyBoop;
-    //AudioSource                          audioSource;
+    UserInterfaceBossHealth              healthBar;
     int                                  shoving;
     bool                                 shooting;
     
     protected override void Start()
     {
         base.Start();
+        healthBar = FindObjectOfType<UserInterfaceBossHealth>();
+        healthBar.transform.GetChild(0).gameObject.SetActive(true);
+        healthBar.SetValues(health, 0);
         StartCoroutine(SpawnWaves());
         shoving = timesToShove;
     }
@@ -52,8 +55,14 @@ public class DiamondBoss : EnemyBehaviour
         FindObjectOfType<SatanicC>().CallBloodGround();
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
+        healthBar.gameObject.SetActive(false);
         FindObjectOfType<PlayerCamera>().SetFollow();
         Destroy(gameObject);
+    }
+    public override void TakeDamage(int damage, Vector2 dir)
+    {
+        base.TakeDamage(damage, dir);
+        healthBar.UpdateHealthValue(health);
     }
     protected override IEnumerator Knockback(Vector2 dir) { yield break; }
     protected override void        Movement()             { return; }

@@ -19,7 +19,8 @@ public class ChimeraBoss : EnemyBehaviour
     [SerializeField] float timeBetweenCharges;
     [SerializeField] float timeBetweenCycles;
 
-    bool isBigCharging;
+    UserInterfaceBossHealth healthBar;
+    bool                    isBigCharging;
 
     #endregion
 
@@ -28,6 +29,10 @@ public class ChimeraBoss : EnemyBehaviour
     protected override void Start()
     {
         base.Start();
+        healthBar = FindObjectOfType<UserInterfaceBossHealth>();
+        healthBar.transform.GetChild(0).gameObject.SetActive(true);
+        healthBar.SetValues(health, 0);
+        
         moveTarget = FindNearestMovementTarget();
         StartCoroutine(BigCharge());
     }
@@ -75,6 +80,11 @@ public class ChimeraBoss : EnemyBehaviour
         // rb.AddForce(movement * movementSpeed);
         rb.velocity = movement * (movementSpeed * Time.deltaTime);
     }
+    public override void TakeDamage(int damage, Vector2 dir)
+    {
+        base.TakeDamage(damage, dir);
+        healthBar.UpdateHealthValue(health);
+    }
     void RotateSnakeTail()
     {
         Vector3 v2Target = target.position - transform.position;
@@ -108,6 +118,7 @@ public class ChimeraBoss : EnemyBehaviour
     {
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
+        healthBar.gameObject.SetActive(false);
         FindObjectOfType<PlayerCamera>().SetFollow();
         Destroy(gameObject);
     }
