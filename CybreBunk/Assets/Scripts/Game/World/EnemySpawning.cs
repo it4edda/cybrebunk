@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 public class EnemySpawning : MonoBehaviour
 {
+    [SerializeField] int wavesBetweenItem;
     [SerializeField] EnemyWave[] beginnerWaves;
     [SerializeField] EnemyWave[] preFirstBossRandom;
     [SerializeField] EnemyWave[] preSecondBossRandom;
@@ -20,7 +21,6 @@ public class EnemySpawning : MonoBehaviour
     SatanicC satanicC;
     int                  waveNumber         = 0;
     Dictionary<int, int> enemiesAliveByWave = new();
-    Dictionary<int, bool> waveSpawnItem = new();
     bool                 firstWaveSpawned   = false;
     [SerializeField] bool canSpawn = true;
 
@@ -53,7 +53,6 @@ public class EnemySpawning : MonoBehaviour
 
             
             if (!enemiesAliveByWave.ContainsKey(waveNumber))  enemiesAliveByWave[waveNumber] = 0; 
-            if (!waveSpawnItem.ContainsKey(waveNumber))  waveSpawnItem[waveNumber] = beginnerWaves[waveNumber].spawnItem; 
 
             foreach (var enemyPrefab in beginnerWaves[waveNumber].contestants)
             {
@@ -94,7 +93,6 @@ public class EnemySpawning : MonoBehaviour
 
         EnemyWave randomWave = enemyWaves[Random.Range(0, preFirstBossRandom.Length)];
         if (!enemiesAliveByWave.ContainsKey(waveNumber)) enemiesAliveByWave[waveNumber] = 0;
-        if (!waveSpawnItem.ContainsKey(waveNumber))  waveSpawnItem[waveNumber] = randomWave.spawnItem;
 
         foreach (var enemyPrefab in randomWave.contestants)
         {
@@ -114,14 +112,11 @@ public class EnemySpawning : MonoBehaviour
     {
         enemiesAliveByWave[enemyWaveNumber]--;
         if (enemiesAliveByWave[enemyWaveNumber] > 0) return;
-        if (waveSpawnItem[enemyWaveNumber])
+        wavesBetweenItem -= 1;
+        if (wavesBetweenItem <= 0)
         {
-            
-                Instantiate(itemPrefab, enemyPosition, Quaternion.identity);
-            
+            Instantiate(itemPrefab, enemyPosition, Quaternion.identity);
         }
-
-        waveSpawnItem.Remove(enemyWaveNumber);
         enemiesAliveByWave.Remove(enemyWaveNumber);
     }
 }

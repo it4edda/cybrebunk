@@ -15,9 +15,11 @@ public class CustomBulletShooter : MonoBehaviour
     [SerializeField] public Transform firePos;
     public bool isAttacking = false;
     public bool canAttack = true;
+    int numberOfShootingActive = 0;
     
     IEnumerator Shooting(CustomBulletPattern pattern)
     {
+        numberOfShootingActive++;
         isAttacking = true;
         foreach (CustomBulletPattern.PatternRows row in pattern.pattern)
         {
@@ -32,10 +34,16 @@ public class CustomBulletShooter : MonoBehaviour
 
         yield return new WaitForSeconds(timeBetweenPatterns);
         
-        isAttacking = false;
-        if (fireContinuously && canAttack)
+        numberOfShootingActive--;
+
+        if (numberOfShootingActive == 0)
         {
-            ChooseNewRoutine();
+            isAttacking = false;
+
+            if (fireContinuously && canAttack)
+            {
+                ChooseNewRoutine();
+            }
         }
     }
 
