@@ -65,7 +65,7 @@ public class PlayerStats : MonoBehaviour
     public int MaxHealth
     {
         get => maxHealth;
-        set => maxHealth += value;
+        set => maxHealth = value;
     }
     public int Health
     {
@@ -107,7 +107,7 @@ public class PlayerStats : MonoBehaviour
     public int Damage
     {
         get => damage;
-        set => damage = damage <= 0 ? damage = 1 : damage += value;
+        set => damage = damage <= 0 ? damage = 1 : damage = value;
     }
 
     public float Range               { get => range; set => range = IncreaseRange(value); }
@@ -121,11 +121,11 @@ public class PlayerStats : MonoBehaviour
     public float MovementSpeed
     {
         get => movementSpeed;
-        set => movementSpeed += UpdateMovement(value);
+        set => movementSpeed = UpdateMovement(value);
     }
     float UpdateMovement(float value)
     {
-        movementSpeed      = math.abs(movementSpeed * value);
+        movementSpeed      = math.abs(value);
         movement.MoveSpeed = Vector2.one * movementSpeed;
         return value;
     }
