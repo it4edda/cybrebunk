@@ -17,6 +17,7 @@ public class ArenaBehaviour : MonoBehaviour
     [SerializeField] Volume volume;
     PlayerCamera            cam;
     Vignette                vignette;
+    Animator                animator;
 
     [SerializeField] Gradient dangerLevel;
     float                     timeOutsideDistance   = 0f;
@@ -37,8 +38,10 @@ public class ArenaBehaviour : MonoBehaviour
         
         vignette.color.value = dangerLevel.Evaluate(a);
         
+        animator.SetBool("Danger", dis > savedDistance);
         if (dis > savedDistance)
         {
+            
             timeOutsideDistance += Time.deltaTime;
 
             if (timeOutsideDistance >= gameOverTimeThreshold)
