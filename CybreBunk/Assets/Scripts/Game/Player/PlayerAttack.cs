@@ -20,9 +20,9 @@ public class PlayerAttack : CustomBulletShooter
     
     //bool        midAttack = false;
     Camera      cam;
-    bool        canAttack = true;
+    bool        localCanAttack = true;
     
-    public bool CanAttack { get => canAttack; set => canAttack = value; }
+    public bool CanAttack { get => localCanAttack; set => localCanAttack = value; }
     void Start()
     {
         cam = Camera.main;

@@ -400,6 +400,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61809734}
   m_CullTransparentMesh: 1
+--- !u!4 &71470544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8802822005166452391, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
+  m_PrefabInstance: {fileID: 1231210914009720591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &134457119
 GameObject:
   m_ObjectHideFlags: 0
@@ -8107,6 +8112,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1248829813}
     - target: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
+      propertyPath: centrePoint
+      value: 
+      objectReference: {fileID: 71470544}
+    - target: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
       propertyPath: bosses.Array.data[0]
       value: 
       objectReference: {fileID: 5555708493390540177, guid: 8e70f758b52904e41a79bc93dac5f490, type: 3}
@@ -8161,6 +8170,10 @@ PrefabInstance:
     - target: {fileID: 7568135033773821234, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8802822005166452391, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

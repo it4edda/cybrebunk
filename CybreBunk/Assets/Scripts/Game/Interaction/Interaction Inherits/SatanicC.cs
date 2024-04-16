@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -13,10 +14,11 @@ public class SatanicC : Interaction
     [SerializeField] AudioClip      continuationSound;
     [SerializeField] AudioClip      finalBossSound;
     [SerializeField] GameObject[]   bosses;
+    [SerializeField] Transform      centrePoint;
     Transform                       bloodParent;
     UserInterfaceGauge              gauge;
     AudioSource                     audioSource;
-    EnemySpawning enemySpawning;
+    EnemySpawning                   enemySpawning;
     public int                      timesUsed;
     protected override void Start()
     {
@@ -55,7 +57,7 @@ public class SatanicC : Interaction
                 audioSource.PlayOneShot(continuationSound);
                 Debug.Log("SPAWN BOSS 2");
                 FindObjectOfType<PlayerCamera>().SetStationary();
-                Instantiate(bosses[1]);
+                Instantiate(bosses[1], centrePoint.position, quaternion.identity);
                 enemySpawning.CanSpawn = false;
                 break;
                 
@@ -87,5 +89,5 @@ public class SatanicC : Interaction
         }
         //Debug.Log(bloodParent.childCount);
     }
-    public void ResetSatan() => canInteract = true;
+    public void ResetSatan()   => canInteract = true;
 }
