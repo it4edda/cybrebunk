@@ -102,7 +102,7 @@ MonoBehaviour:
   isBig: 0
   smallBlood: []
   bigBlood: []
-  bloodParticle: {fileID: 0}
+  bloodParticle: {fileID: 7134119375900386424}
   movementSpeed: 0
   knockbackStrength: 0
   enemyGaugePrice: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   breakTime: 1
   timeBetweenShove: 6
   timesToShove: 3
-  enemyBoop: {fileID: 0}
+  enemyBoop: {fileID: 8300000, guid: 6f39ea7dbbf4dba4bb2d67b944f5c06e, type: 3}
 --- !u!50 &436433334586826672
 Rigidbody2D:
   serializedVersion: 4
