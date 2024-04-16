@@ -14,11 +14,12 @@ public class ChimeraBoss : EnemyBehaviour
     [SerializeField] float rotationMod;
     [Header("Charge")]
     [SerializeField] int numberOfChargesPerCycle;
-    [SerializeField] float chargeIndicatorTime;
-    [SerializeField] float timePerCharge;
-    [SerializeField] float chargeForce;
-    [SerializeField] float timeBetweenCharges;
-    [SerializeField] float timeBetweenCycles;
+    [SerializeField] float     chargeIndicatorTime;
+    [SerializeField] float     timePerCharge;
+    [SerializeField] float     chargeForce;
+    [SerializeField] float     timeBetweenCharges;
+    [SerializeField] float     timeBetweenCycles;
+    [SerializeField] AudioClip dashClip;
 
     bool                    stopWalking = false;
     UserInterfaceBossHealth healthBar;
@@ -47,6 +48,7 @@ public class ChimeraBoss : EnemyBehaviour
         snakeShooter.canAttack = false;
         for (int i = 0; i < numberOfChargesPerCycle; i++)
         { 
+            audioSource.PlayOneShot(dashClip);
             isBigCharging = true;
             rb.velocity = Vector2.zero;
             Vector2 chargeDir = Vector3.Normalize(target.position - transform.position);
