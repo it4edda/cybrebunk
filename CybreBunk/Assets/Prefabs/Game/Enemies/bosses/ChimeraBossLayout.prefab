@@ -74,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2545045920124575669}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.82, y: 0.464, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -100,7 +100,7 @@ MonoBehaviour:
   isBig: 0
   smallBlood: []
   bigBlood: []
-  bloodParticle: {fileID: 0}
+  bloodParticle: {fileID: 7865765980510023416}
   movementSpeed: 65
   knockbackStrength: 5
   enemyGaugePrice: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   chargeIndicatorTime: 0.5
   timePerCharge: 1
   chargeForce: 200
-  timeBetweenCharges: 2
+  timeBetweenCharges: 1
   timeBetweenCycles: 15
 --- !u!50 &4926539519409790812
 Rigidbody2D:

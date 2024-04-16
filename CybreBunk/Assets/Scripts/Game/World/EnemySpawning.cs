@@ -60,7 +60,7 @@ public class EnemySpawning : MonoBehaviour
                 Vector3 enemySpawnPosition = spawnPosition + new Vector3(RandomValue(), RandomValue(), RandomValue());
                 var a = Instantiate(enemyPrefab, enemySpawnPosition, Quaternion.identity);
                 a.GetComponent<EnemyBehaviour>().belongsToWaveNumber = waveNumber;
-                enemiesAliveByWave[waveNumber]++; 
+                enemiesAliveByWave[waveNumber]++;
             }
             
             waveNumber++;
