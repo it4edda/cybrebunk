@@ -13,7 +13,8 @@ public class Ability : MonoBehaviour
     PlayerStats    playerStats;
     PlayerCamera   cam;
     AudioSource    audioSource;
-    float cooldown;
+    PlayerAttack   playerAttack;
+    float          cooldown;
 
     public float Cooldown1 => cooldown;
     bool canActivateAbilities = true;
@@ -36,6 +37,7 @@ public class Ability : MonoBehaviour
     void Start()
     {
         ability1                                       = ChosenAbility.None;
+        playerAttack                                   = FindObjectOfType<PlayerAttack>();
         audioSource                                    = GetComponent<AudioSource>();
         playerStats                                    = FindObjectOfType<PlayerStats>();
         playerMovement                                 = GetComponent<PlayerMovement>();
@@ -174,6 +176,7 @@ public class Ability : MonoBehaviour
 #endregion
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
     {
+        playerAttack.canAttack = false;
         darkArtsVariables.ToggleAbility(true);
         cam.CameraShake(0.1f, 0.2f);
         playerStats.GodMode(true);
@@ -233,6 +236,7 @@ public class Ability : MonoBehaviour
         savedDarkArtsEnemies.Clear();
         cooldown = darkArtsVariables.baseVariables.abilityCooldown;
         darkArtsVariables.ToggleAbility(false);
+        playerAttack.canAttack = true;
         playerStats.GodMode(false);
     }
     
