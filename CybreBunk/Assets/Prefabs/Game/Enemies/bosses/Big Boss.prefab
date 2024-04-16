@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDarkArts: 0
-  health: 100
+  health: 70
   isBig: 0
   smallBlood: []
   bigBlood: []
