@@ -17,7 +17,7 @@ public class ArenaBehaviour : MonoBehaviour
     [SerializeField] Volume volume;
     PlayerCamera            cam;
     Vignette                vignette;
-    Animator                animator;
+    [SerializeField] Animator                animator;
 
     [SerializeField] Gradient dangerLevel;
     float                     timeOutsideDistance   = 0f;

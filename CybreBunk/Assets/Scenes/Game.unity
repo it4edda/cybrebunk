@@ -6247,6 +6247,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797530772}
   m_CullTransparentMesh: 1
+--- !u!95 &1800066388 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3379127072127449972, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+  m_PrefabInstance: {fileID: 3528347902443371520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1840643583
 GameObject:
   m_ObjectHideFlags: 0
@@ -8709,8 +8714,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1326362524}
     - target: {fileID: 6423442991245239993, guid: c3382fb649530464eb7093c98db06611, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1800066388}
+    - target: {fileID: 6423442991245239993, guid: c3382fb649530464eb7093c98db06611, type: 3}
       propertyPath: gameOverTimeThreshold
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6423442991245239993, guid: c3382fb649530464eb7093c98db06611, type: 3}
       propertyPath: suicideDistanceWhileBossIsAlive
