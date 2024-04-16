@@ -27,12 +27,14 @@ public class ItemManager : MonoBehaviour
     [SerializeField] GameObject     itemCanvas;
     MusicPlayer                     musicPlayer;
     public Queue<ItemPortrait>      itemPortraitQueue = new();
+    SatanicC                        satan;
     PauseMenu                       pauseMenu;
     #endregion
 
     #region SetUp
     void Start()
     {
+        satan       = FindObjectOfType<SatanicC>();
         musicPlayer = FindObjectOfType<MusicPlayer>();
         pauseMenu   = FindObjectOfType<PauseMenu>();
     }
@@ -72,7 +74,7 @@ public class ItemManager : MonoBehaviour
     {
         if(!itemCanvas){Debug.Log("NO CANVAS AAGHAGHAHGAHGA"); return; }
         
-        musicPlayer.ChangeMusic(freeze ? musicPlayer.allSong[2] : musicPlayer.allSong[1]);
+        musicPlayer.ChangeMusic(freeze ? musicPlayer.allSong[2] : satan.canConsume ? musicPlayer.allSong[1] : musicPlayer.allSong[4]);
         itemCanvas.SetActive(freeze);
         pauseMenu.TimeFreeze(freeze);
     }

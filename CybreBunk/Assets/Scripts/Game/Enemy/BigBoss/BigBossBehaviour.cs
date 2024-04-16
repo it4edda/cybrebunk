@@ -23,6 +23,7 @@ public class BigBossBehaviour : EnemyBehaviour
     }
     protected override void Die()
     {
+        GetComponent<Collider2D>().gameObject.SetActive(false);
         //base.Die();
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();

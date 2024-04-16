@@ -35,6 +35,8 @@ public class AbilityCoolDownUI : MonoBehaviour
                 image.sprite = itemData.itemIcon;
                 break;
             case Ability.ChosenAbility.Blast:
+                slider.maxValue = ability.blastVariables.baseVariables.abilityCooldown;
+                image.sprite    = itemData.itemIcon;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

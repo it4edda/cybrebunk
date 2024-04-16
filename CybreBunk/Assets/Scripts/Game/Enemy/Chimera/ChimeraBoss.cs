@@ -120,6 +120,7 @@ public class ChimeraBoss : EnemyBehaviour
 
     protected override void Die()
     {
+        GetComponent<Collider2D>().gameObject.SetActive(false);
         stopWalking            = true;
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();

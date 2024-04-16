@@ -52,6 +52,7 @@ public class DiamondBoss : EnemyBehaviour
     protected override void Die()
     {
         //base.Die();
+        GetComponent<Collider2D>().gameObject.SetActive(false);
         var a = FindObjectOfType<SatanicC>();
         a.CallBloodGround();
         a.BossDeath();
