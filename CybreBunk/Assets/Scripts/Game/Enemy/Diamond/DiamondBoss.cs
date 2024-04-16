@@ -57,7 +57,7 @@ public class DiamondBoss : EnemyBehaviour
         enemySpawning.StartSpawning();
         healthBar.transform.GetChild(0).gameObject.SetActive(false);
         FindObjectOfType<PlayerCamera>().SetFollow();
-        Destroy(gameObject);
+        GetComponentInChildren<Animator>().SetTrigger("Die");
     }
     public override void TakeDamage(int damage, Vector2 dir)
     {

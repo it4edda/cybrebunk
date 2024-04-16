@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChimeraBoss : EnemyBehaviour
@@ -19,6 +20,7 @@ public class ChimeraBoss : EnemyBehaviour
     [SerializeField] float timeBetweenCharges;
     [SerializeField] float timeBetweenCycles;
 
+    bool                    stopWalking = false;
     UserInterfaceBossHealth healthBar;
     bool                    isBigCharging;
 
@@ -42,6 +44,7 @@ public class ChimeraBoss : EnemyBehaviour
     #region TheBigCharge
     IEnumerator BigCharge()
     {
+        if (stopWalking) yield break;
         snakeShooter.canAttack = false;
         for (int i = 0; i < numberOfChargesPerCycle; i++)
         { 
@@ -72,6 +75,7 @@ public class ChimeraBoss : EnemyBehaviour
     //charging and stand in center
     protected override void Movement()
     {
+        if (stopWalking) return;
         RotateSnakeTail();
         if (isBigCharging) { return;}
         Vector3 movement = Vector3.Normalize(moveTarget.position - transform.position);
@@ -116,10 +120,11 @@ public class ChimeraBoss : EnemyBehaviour
 
     protected override void Die()
     {
+        stopWalking            = true;
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
         healthBar.transform.GetChild(0).gameObject.SetActive(false);
         FindObjectOfType<PlayerCamera>().SetFollow();
-        Destroy(gameObject);
+        GetComponentInChildren<Animator>().SetTrigger("Die");
     }
 }
