@@ -27,7 +27,7 @@ public class BigBossBehaviour : EnemyBehaviour
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
         FindObjectOfType<PlayerCamera>().SetFollow();
-        healthBar.gameObject.SetActive(false);
+        healthBar.transform.GetChild(0).gameObject.SetActive(false);
         Destroy(gameObject);
     }
     IEnumerator HandSlams()

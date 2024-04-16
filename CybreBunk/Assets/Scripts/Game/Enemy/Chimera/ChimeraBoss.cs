@@ -118,7 +118,7 @@ public class ChimeraBoss : EnemyBehaviour
     {
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
-        healthBar.gameObject.SetActive(false);
+        healthBar.transform.GetChild(0).gameObject.SetActive(false);
         FindObjectOfType<PlayerCamera>().SetFollow();
         Destroy(gameObject);
     }
