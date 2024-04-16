@@ -31,10 +31,7 @@ public class CustomBulletShooter : MonoBehaviour
         }
 
         yield return new WaitForSeconds(timeBetweenPatterns);
-        if (expr)
-        {
-            
-        }
+        
         isAttacking = false;
         if (fireContinuously && canAttack)
         {

@@ -92,10 +92,10 @@ public class EnemySpawning : MonoBehaviour
                                 new Vector3(Mathf.Cos(randomAngle) * spawnRadius, Mathf.Sin(randomAngle) * spawnRadius, 0f);
 
 
-        if (!enemiesAliveByWave.ContainsKey(waveNumber)) enemiesAliveByWave[waveNumber] = 0;
-        if (!waveSpawnItem.ContainsKey(waveNumber))  waveSpawnItem[waveNumber] = beginnerWaves[waveNumber].spawnItem; 
-
         EnemyWave randomWave = enemyWaves[Random.Range(0, preFirstBossRandom.Length)];
+        if (!enemiesAliveByWave.ContainsKey(waveNumber)) enemiesAliveByWave[waveNumber] = 0;
+        if (!waveSpawnItem.ContainsKey(waveNumber))  waveSpawnItem[waveNumber] = randomWave.spawnItem;
+
         foreach (var enemyPrefab in randomWave.contestants)
         {
             Vector3 enemySpawnPosition = spawnPosition + new Vector3(RandomValue(), RandomValue(), RandomValue());
