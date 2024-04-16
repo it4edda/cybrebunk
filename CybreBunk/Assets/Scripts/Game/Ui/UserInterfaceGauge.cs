@@ -30,6 +30,7 @@ public class UserInterfaceGauge : MonoBehaviour
     }
     public void UpdateGaugeSlider(int value)
     {
+        if(!satanicC.canConsume) return;
         currentValue += value;
         slider.value = currentValue <= maxValue ? currentValue + value : MaxGaugeTrigger();
         //ADD RED VIGNETTE?

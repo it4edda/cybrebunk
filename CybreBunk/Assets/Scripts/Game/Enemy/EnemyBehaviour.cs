@@ -26,13 +26,13 @@ public class EnemyBehaviour : MonoBehaviour
     bool                  knockbacked;
     bool                  isStunned;
     
-    protected Transform target;
-    PlayerStats playerStats;
-    Transform           bloodParent;
-    protected Rigidbody2D         rb;
-    protected EnemySpawning       enemySpawning;
-    UserInterfaceGauge  gauge;
-    Animator            animator;
+    protected Transform     target;
+    PlayerStats             playerStats;
+    Transform               bloodParent;
+    protected Rigidbody2D   rb;
+    protected EnemySpawning enemySpawning;
+    UserInterfaceGauge      gauge;
+    Animator                animator;
 
     public bool Knockbacked
     {
@@ -48,7 +48,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         audioSource   = GetComponent<AudioSource>();
         enemySpawning = FindObjectOfType<EnemySpawning>();
-        //bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
+        bloodParent   = FindObjectOfType<SatanicC>().transform.Find("BloodParent");
         rb            = GetComponent<Rigidbody2D>();
         animator      = GetComponentInChildren<Animator>();
         target        = FindObjectOfType<PlayerMovement>().transform;

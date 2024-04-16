@@ -29,8 +29,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] int increaseInBloodGain;
-
-
+    
     bool isDead;
     bool canDie = true;
     int  health;

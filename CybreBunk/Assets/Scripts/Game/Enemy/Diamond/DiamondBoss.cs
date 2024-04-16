@@ -52,7 +52,9 @@ public class DiamondBoss : EnemyBehaviour
     protected override void Die()
     {
         //base.Die();
-        FindObjectOfType<SatanicC>().CallBloodGround();
+        var a = FindObjectOfType<SatanicC>();
+        a.CallBloodGround();
+        a.canConsume           = true;
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
         healthBar.transform.GetChild(0).gameObject.SetActive(false);

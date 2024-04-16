@@ -20,13 +20,15 @@ public class SatanicC : Interaction
     AudioSource                     audioSource;
     EnemySpawning                   enemySpawning;
     public int                      timesUsed;
+    public bool                     canConsume = true;
     protected override void Start()
     {
         base.Start();
+        canConsume    = true;
         enemySpawning = FindObjectOfType<EnemySpawning>();
-        audioSource = GetComponent<AudioSource>();
-        bloodParent = transform.Find("BloodParent");
-        gauge       = FindObjectOfType<UserInterfaceGauge>();
+        audioSource   = GetComponent<AudioSource>();
+        bloodParent   = transform.Find("BloodParent");
+        gauge         = FindObjectOfType<UserInterfaceGauge>();
     }
     protected override void InteractionPassive()
     {
@@ -46,34 +48,33 @@ public class SatanicC : Interaction
         switch (timesUsed)
         {
             case <= 1:
-                audioSource.PlayOneShot(continuationSound);
-                Debug.Log("SPAWN BOSS 1");
-                FindObjectOfType<PlayerCamera>().SetStationary();
-                enemySpawning.CanSpawn = false;
+                BossSpawning(continuationSound);
                 Instantiate(bosses[0]);
                 break;
             
             case 2:
-                audioSource.PlayOneShot(continuationSound);
-                Debug.Log("SPAWN BOSS 2");
-                FindObjectOfType<PlayerCamera>().SetStationary();
+                BossSpawning(continuationSound); 
                 Instantiate(bosses[1], centrePoint.position, quaternion.identity);
-                enemySpawning.CanSpawn = false;
                 break;
                 
             case 3:
-                Debug.Log("FINAL BOSS");
-                audioSource.PlayOneShot(finalBossSound);
-                FindObjectOfType<PlayerCamera>().SetStationary();
-                enemySpawning.CanSpawn = false;
+                BossSpawning(finalBossSound);
                 Instantiate(bosses[2]);
                 break;
             
             default:
-                Debug.Log("NO MORE BOSSES");
+                Debug.Log("ey");
                 break;
                 
         }
+    }
+    void BossSpawning(AudioClip clip)
+    {
+        FindObjectOfType<PlayerCamera>().SetStationary();
+        
+        audioSource.PlayOneShot(clip);
+        canConsume             = false;
+        enemySpawning.CanSpawn = false;
     }
     public void CallBloodGround()
     {

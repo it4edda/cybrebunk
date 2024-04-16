@@ -27,6 +27,7 @@ public class BigBossBehaviour : EnemyBehaviour
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
         FindObjectOfType<PlayerCamera>().SetFollow();
+        FindObjectOfType<SatanicC>().canConsume = true;
         healthBar.transform.GetChild(0).gameObject.SetActive(false);
         Destroy(gameObject);
     }
