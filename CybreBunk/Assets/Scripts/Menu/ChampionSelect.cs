@@ -64,7 +64,7 @@ public class ChampionSelect : MonoBehaviour
         {
             foreach (string i in leftInputKeys)  if (Input.GetKeyDown(i)) SelectL();
             foreach (string i in rightInputKeys) if (Input.GetKeyDown(i)) SelectR();
-            if (Input.GetKeyDown(continueInput)) LoadGame();
+            if (Input.GetKeyDown(continueInput) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E)) LoadGame();
         }
         else if (Input.anyKey)
         {
