@@ -106,6 +106,7 @@ public class Ability : MonoBehaviour
             if (other.gameObject.GetComponent<DamageDealer>() && other.gameObject.GetComponent<DamageDealer>().IsAllied) Destroy(other.gameObject);
             else if (other.transform.CompareTag("Enemy"))
             {
+                if (!other.GetComponent<EnemyBehaviour>().canDarkArts) return;
                 savedDarkArtsEnemies.Add(other.GetComponent<EnemyBehaviour>());
                 savedDarkArtsEnemies[^1].IsStunned = true;
             }
