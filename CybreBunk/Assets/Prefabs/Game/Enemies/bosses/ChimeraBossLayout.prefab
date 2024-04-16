@@ -118,7 +118,7 @@ MonoBehaviour:
   chargeForce: 200
   timeBetweenCharges: 1
   timeBetweenCycles: 15
-  dashClip: {fileID: 8300000, guid: 5e59705493647aa4a846082af4513fe4, type: 3}
+  dashClip: {fileID: 8300000, guid: b5babf0497009c94fb25ba963e63a14b, type: 3}
 --- !u!50 &4926539519409790812
 Rigidbody2D:
   serializedVersion: 4
