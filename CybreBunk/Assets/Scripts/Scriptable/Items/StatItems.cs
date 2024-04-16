@@ -71,7 +71,7 @@ public class StatItems : ItemData
         PlayerAttack attack = FindObjectOfType<PlayerAttack>();
         
         playerStats.MaxHealth += effect.stats.maxHealth;
-        playerStats.Health += effect.stats.health;
+        playerStats.Health = effect.stats.health;
         playerStats.Range += attack.HasSword ? attack.IncreaseMeleeRange(effect.stats.range) : effect.stats.range;
         attack.AttackSpeed *= (1 - effect.stats.attackSpeedIncrease);
         playerStats.IncreaseInBloodGain += effect.stats.increaseInBloodGain;

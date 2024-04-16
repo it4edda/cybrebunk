@@ -80,6 +80,7 @@ public class PlayerStats : MonoBehaviour
         damageParticles.Play();
         cam.CameraShake(0.3f);
         uiHealth.ModifyHealth(value);
+        Debug.Log("Took " + value + "damage");
         if (health + value <= 0) Death();
         StartCoroutine(Invincibility());
         return health += value;
