@@ -14,34 +14,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pattern:
   - bulletsToFire:
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: 0
     secondsUntilNextRowFire: 0.25
   - bulletsToFire:
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: 0
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: 10
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: -10
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: 20
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: -20
     secondsUntilNextRowFire: 2
   - bulletsToFire:
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: 0
     secondsUntilNextRowFire: 0.25
   - bulletsToFire:
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: 0
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: 10
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: -10
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: 20
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 9126186709979302352, guid: 6192c9056c53c134abba29756fbe6438, type: 3}
       angle: -20
     secondsUntilNextRowFire: 0

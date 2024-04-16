@@ -7,14 +7,16 @@ using UnityEngine.Rendering.Universal;
 
 public class ArenaBehaviour : MonoBehaviour
 {
-    [SerializeField] Vector2 centralPoint;
-    [SerializeField] float   suicideDistance;
-    float                    calculatedDistance;
-
+    [SerializeField] Vector2   centralPoint;
+    [SerializeField] float     suicideDistance;
+    [SerializeField] float     suicideDistanceWhileBossIsAlive;
+    float                      calculatedDistance;
+    public bool                bossIsAlive = false;
     [SerializeField] Transform player;
     
-    [SerializeField] Volume    volume;
-    Vignette  vignette;
+    [SerializeField] Volume volume;
+    PlayerCamera            cam;
+    Vignette                vignette;
 
     [SerializeField] Gradient dangerLevel;
     float                     timeOutsideDistance   = 0f;
@@ -22,17 +24,20 @@ public class ArenaBehaviour : MonoBehaviour
     
     void Start()
     {
+        cam = FindObjectOfType<PlayerCamera>();
         volume.profile.TryGet(out vignette);
     }
     
     void Update()
     {
+        float savedDistance = bossIsAlive ? suicideDistanceWhileBossIsAlive : suicideDistance;
+        
         float dis = Vector2.Distance(centralPoint - (Vector2) player.position, centralPoint);
-        float a   = Mathf.InverseLerp(0, suicideDistance, dis >= suicideDistance ? suicideDistance : dis);
+        float a   = Mathf.InverseLerp(0, savedDistance, dis >= savedDistance ? savedDistance : dis);
         
         vignette.color.value = dangerLevel.Evaluate(a);
         
-        if (dis > suicideDistance)
+        if (dis > savedDistance)
         {
             timeOutsideDistance += Time.deltaTime;
 
@@ -51,5 +56,8 @@ public class ArenaBehaviour : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawSphere(centralPoint, 0.5f);
         Gizmos.DrawWireSphere(centralPoint, suicideDistance);
+        
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(centralPoint, suicideDistanceWhileBossIsAlive);
     }
 }

@@ -54,7 +54,7 @@ public class DiamondBoss : EnemyBehaviour
         //base.Die();
         var a = FindObjectOfType<SatanicC>();
         a.CallBloodGround();
-        a.canConsume           = true;
+        a.BossDeath();
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
         healthBar.transform.GetChild(0).gameObject.SetActive(false);

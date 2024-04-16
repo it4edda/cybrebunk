@@ -11,6 +11,11 @@ public class BossDeathHandler : MonoBehaviour
     }
     public void Death()
     {
-        Destroy(gameObject);
+        Destroy(GetComponentInParent<EnemyBehaviour>().gameObject);
+    }
+    public void DyingIntense()
+    {
+        FindObjectOfType<PlayerCamera>().CameraShake(1);
+        particles.Play();
     }
 }

@@ -16,6 +16,7 @@ public class SatanicC : Interaction
     [SerializeField] GameObject[]   bosses;
     [SerializeField] Transform      centrePoint;
     Transform                       bloodParent;
+    ArenaBehaviour                  arena;
     UserInterfaceGauge              gauge;
     AudioSource                     audioSource;
     EnemySpawning                   enemySpawning;
@@ -24,7 +25,8 @@ public class SatanicC : Interaction
     protected override void Start()
     {
         base.Start();
-        canConsume    = true;
+        canConsume     = true;
+        arena         = FindObjectOfType<ArenaBehaviour>();
         enemySpawning = FindObjectOfType<EnemySpawning>();
         audioSource   = GetComponent<AudioSource>();
         bloodParent   = transform.Find("BloodParent");
@@ -71,10 +73,15 @@ public class SatanicC : Interaction
     void BossSpawning(AudioClip clip)
     {
         FindObjectOfType<PlayerCamera>().SetStationary();
-        
+        arena.bossIsAlive = true;
         audioSource.PlayOneShot(clip);
         canConsume             = false;
         enemySpawning.CanSpawn = false;
+    }
+    public void BossDeath()
+    {
+        canConsume        = true;
+        arena.bossIsAlive = false;
     }
     public void CallBloodGround()
     {

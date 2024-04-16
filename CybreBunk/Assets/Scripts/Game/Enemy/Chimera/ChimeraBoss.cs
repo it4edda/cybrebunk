@@ -123,7 +123,8 @@ public class ChimeraBoss : EnemyBehaviour
         stopWalking            = true;
         enemySpawning.CanSpawn = true;
         enemySpawning.StartSpawning();
-        FindObjectOfType<SatanicC>().canConsume = true;
+        
+        FindObjectOfType<SatanicC>().BossDeath();
         healthBar.transform.GetChild(0).gameObject.SetActive(false);
         FindObjectOfType<PlayerCamera>().SetFollow();
         GetComponentInChildren<Animator>().SetTrigger("Die");
