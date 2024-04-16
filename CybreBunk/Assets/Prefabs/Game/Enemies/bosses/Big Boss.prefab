@@ -344,6 +344,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand right
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: cd1bd2b662ab6c1418fd3ae3484c8b91, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: cd1bd2b662ab6c1418fd3ae3484c8b91, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1108386895
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: cd1bd2b662ab6c1418fd3ae3484c8b91, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -442,6 +450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPattern:
   - {fileID: 11400000, guid: 24147a45b61fa3f47ba648c1c33227ed, type: 2}
+  shootEverythingSimultaneously: 0
   fireContinuously: 0
   timeBetweenPatterns: 0
   firePos: {fileID: 487869595057106188}
@@ -495,6 +504,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6361360176009279930}
     m_Modifications:
+    - target: {fileID: 1947819724110328531, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947819724110328531, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1108386895
+      objectReference: {fileID: 0}
     - target: {fileID: 7488955125200296560, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: canAttack
       value: 1
@@ -580,6 +597,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GIMME HEAD
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 191ff0c98c8ead547b4ed0b531a2431d, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 191ff0c98c8ead547b4ed0b531a2431d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1108386895
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 191ff0c98c8ead547b4ed0b531a2431d, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -649,8 +674,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 6361360176009279930}
     m_Modifications:
     - target: {fileID: 1947819724110328531, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947819724110328531, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947819724110328531, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1108386895
       objectReference: {fileID: 0}
     - target: {fileID: 3235105352352550807, guid: 8433bb0a93e9d11478358f98da6b1c74, type: 3}
       propertyPath: m_Name
@@ -774,6 +807,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand left
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 0f4770d906e118c47bba4b8c467ae4d0, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: 0f4770d906e118c47bba4b8c467ae4d0, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1108386895
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: 0f4770d906e118c47bba4b8c467ae4d0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -877,6 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPattern:
   - {fileID: 11400000, guid: 24147a45b61fa3f47ba648c1c33227ed, type: 2}
+  shootEverythingSimultaneously: 0
   fireContinuously: 0
   timeBetweenPatterns: 0
   firePos: {fileID: 5442587903500543668}
