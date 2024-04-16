@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pattern:
   - bulletsToFire:
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: 0
     secondsUntilNextRowFire: 0.25
   - bulletsToFire:
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: 0
     secondsUntilNextRowFire: 0.25
   - bulletsToFire:
-    - bullet: {fileID: 641498340192126455, guid: d8baaa325b1bc144d9ac6cefbcd52501, type: 3}
+    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: 0
     secondsUntilNextRowFire: 0.25
