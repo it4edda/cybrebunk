@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Ability : MonoBehaviour
@@ -22,13 +23,14 @@ public class Ability : MonoBehaviour
     //List<Vector3>                                           darkArtsPositionPoints;
     
     [Header("AoeAttack"), SerializeField] public AoeAttackVariables aoeAttackVariables;
+    [Header("Blast"), SerializeField]     public BlastVariables     blastVariables;
 
     public enum ChosenAbility
     {
         None,
         DarkArts,
         AoeAttack,
-        C
+        Blast
     }
 
     void Start()
@@ -45,6 +47,15 @@ public class Ability : MonoBehaviour
     void Update()
     {
         Cooldown();
+    }
+    void Cooldown()
+    {
+        if (!(cooldown > 0)) return;
+        cooldown -= Time.deltaTime;
+        if (cooldown <= 0)
+        {
+            canActivateAbilities = true;
+        }
     }
 
     public void InitiateAbility(ChosenAbility chosen)
@@ -73,7 +84,13 @@ public class Ability : MonoBehaviour
 
                 break;
 
-            case ChosenAbility.C:
+            case ChosenAbility.Blast:
+                if (blastVariables.baseVariables.canUseAbility && canActivateAbilities)
+                {
+                    BlastAttack();
+                    canActivateAbilities = false;
+                }
+                
                 break;
 
             default:
@@ -141,6 +158,16 @@ public class Ability : MonoBehaviour
         public float      timeActive;
         public Animator   slasher;
         public GameObject colliderObject;
+    }
+    
+    [Serializable] public struct BlastVariables
+    {
+        public BaseVariables baseVariables;
+
+        public CustomBulletShooter shooter;
+        public CustomBulletPattern pattern;
+
+        public AudioClip blastSound;
     }
 #endregion
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
@@ -226,16 +253,16 @@ public class Ability : MonoBehaviour
     }
 
     #endregion
+#region Blast
 
-    void Cooldown()
+    void BlastAttack()
     {
-        if (!(cooldown > 0)) return;
-        cooldown -= Time.deltaTime;
-        if (cooldown <= 0)
-        {
-            canActivateAbilities = true;
-        }
+        cooldown = blastVariables.baseVariables.abilityCooldown;
+        //audioSource.PlayOneShot(blastVariables.blastSound);
+        
+        blastVariables.shooter.ChooseNewRoutine();
     }
+#endregion
 }
 
 

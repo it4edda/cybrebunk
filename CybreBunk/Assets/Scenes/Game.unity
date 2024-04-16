@@ -5810,6 +5810,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689975288}
   m_CullTransparentMesh: 1
+--- !u!1 &1733930225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1733930226}
+  m_Layer: 0
+  m_Name: Blast Ability
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1733930226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733930225}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3528347902443371521}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1748719599
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8140,6 +8171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1993243269592400808, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      propertyPath: m_Name
+      value: DarkArts Ability
+      objectReference: {fileID: 0}
     - target: {fileID: 3901097629434268975, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -8186,9 +8221,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1065259305812519490, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1733930226}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+--- !u!4 &3528347902443371521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1065259305812519490, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
+  m_PrefabInstance: {fileID: 3528347902443371520}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3528347902443371539 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8740983386382612959, guid: 8507f3a879700b946a2d64100a76c951, type: 3}
