@@ -115,7 +115,7 @@ public class EnemySpawning : MonoBehaviour
         enemiesAliveByWave[waveNumber]--;
         if (enemiesAliveByWave[waveNumber] <= 0)
         {
-            if (beginnerWaves[waveNumber].spawnItem) 
+            if (beginnerWaves.Length < waveNumber && beginnerWaves[waveNumber].spawnItem) 
                 Instantiate(itemPrefab, enemyPosition, Quaternion.identity);
             
             enemiesAliveByWave.Remove(waveNumber); 

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class CustomBulletShooter : MonoBehaviour
 {
     [Header("Bullet Pattern")]
     [SerializeField] protected List<CustomBulletPattern> bulletPattern = new();
+
+    [SerializeField] bool shootEverythingSimultaneously;
     [SerializeField] bool fireContinuously;
     [SerializeField] protected float timeBetweenPatterns; 
     [SerializeField] public Transform firePos;
@@ -31,6 +34,7 @@ public class CustomBulletShooter : MonoBehaviour
         isAttacking = false;
         if (fireContinuously && canAttack)
         {
+            
             ChooseNewRoutine();
         }
     }
@@ -39,6 +43,16 @@ public class CustomBulletShooter : MonoBehaviour
     {
         if (isAttacking || !canAttack) { return; }
         
-        StartCoroutine(Shooting(bulletPattern[Random.Range(0, bulletPattern.Count)]));
+        if (shootEverythingSimultaneously)
+        {
+            foreach (CustomBulletPattern pattern in bulletPattern)
+            {
+                StartCoroutine(Shooting(pattern));
+            }
+        }
+        else
+        {
+            StartCoroutine(Shooting(bulletPattern[Random.Range(0, bulletPattern.Count)]));
+        }
     }
 }

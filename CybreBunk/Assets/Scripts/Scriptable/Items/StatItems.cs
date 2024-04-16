@@ -22,9 +22,11 @@ public class StatItems : ItemData
     {
         public int maxHealth;
         public int health;
+        public float range;
         public int attackSpeedIncrease;
         public int damageIncrease;
         public float movementSpeedIncrease;
+        public int increaseInBloodGain;
     }
 
     
@@ -67,6 +69,8 @@ public class StatItems : ItemData
     {
         playerStats.MaxHealth += effect.stats.maxHealth;
         playerStats.Health += effect.stats.health;
+        playerStats.Range += effect.stats.range;
+        playerStats.IncreaseInBloodGain += effect.stats.increaseInBloodGain;
         playerStats.Damage += effect.stats.damageIncrease;
         playerStats.MovementSpeed += effect.stats.movementSpeedIncrease;
     }

@@ -15,7 +15,5 @@ MonoBehaviour:
   pattern:
   - bulletsToFire:
     - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
-      angle: 0
-    - bullet: {fileID: 3681758641209492185, guid: 564ae24bf3151af44b5d454568f18059, type: 3}
       angle: 180
     secondsUntilNextRowFire: 0

@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPattern:
   - {fileID: 11400000, guid: 44f81a606d584bb49bfa9b43d87d0f2b, type: 2}
+  shootEverythingSimultaneously: 1
   fireContinuously: 0
   timeBetweenPatterns: 0
   firePos: {fileID: 226870220432944716}
@@ -95,6 +96,7 @@ MonoBehaviour:
   audioSource: {fileID: 7734500547816187146}
   gunGraphics: {fileID: 1066222594241496617}
   gunSound: {fileID: 8300000, guid: 48e7bb6ba7103d7478bbed35206d2ace, type: 3}
+  addedBulletPaterns: []
   slasher: {fileID: 3232641438958291123}
   swordGraphics: {fileID: 347122410230248303}
   slashSound: {fileID: 8300000, guid: 4a28290626516154d8428af45f934145, type: 3}
@@ -112,12 +114,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   movementSpeed: 1
+  range: 0
   invincibilityTime: 1
   damageParticles: {fileID: 1336998962664405297}
   deathParticles: {fileID: 1100376975452786201}
   audioSource: {fileID: 7734500547816187146}
   deathSound: {fileID: 8300000, guid: 3bf6440358f3ee7438eab63c4a2ca7e4, type: 3}
   damageSound: {fileID: 8300000, guid: c6a633ac2c892044b86009af902474f9, type: 3}
+  increaseInBloodGain: 0
 --- !u!50 &2617274385151889471
 Rigidbody2D:
   serializedVersion: 4
@@ -226,6 +230,13 @@ MonoBehaviour:
     timeActive: 2
     slasher: {fileID: 3587702942091998687}
     colliderObject: {fileID: 1666683658797783619}
+  blastVariables:
+    baseVariables:
+      canUseAbility: 0
+      abilityCooldown: 0
+    shooter: {fileID: 0}
+    pattern: {fileID: 0}
+    blastSound: {fileID: 0}
 --- !u!114 &155344807732353690
 MonoBehaviour:
   m_ObjectHideFlags: 0

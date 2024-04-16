@@ -8,10 +8,14 @@ using UnityEngine.Serialization;
 public class PlayerStats : MonoBehaviour
 {
     //attack speed, movement speed, 
+
+    #region Variables
     [Header("values")]
     [SerializeField] int maxHealth;
     [SerializeField] float movementSpeed;
+    [SerializeField] float range;
     [SerializeField] private float invincibilityTime;
+    
     
     [Header("Particles")]
     [SerializeField] ParticleSystem damageParticles;
@@ -22,6 +26,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip deathSound;
     [SerializeField] AudioClip damageSound;
+
+    [Header("Debug")]
+    [SerializeField] int increaseInBloodGain;
 
 
     bool isDead;
@@ -34,6 +41,7 @@ public class PlayerStats : MonoBehaviour
     PlayerMovement      movement;
     PlayerAttack        attack;
     PlayerCamera        cam;
+    #endregion
     void Start()
     {
         cam         = FindObjectOfType<PlayerCamera>();
@@ -101,7 +109,12 @@ public class PlayerStats : MonoBehaviour
         get => damage;
         set => damage = damage <= 0 ? damage = 1 : damage += value;
     }
-#region MovementSpeed
+
+    public float Range { get => range; set => range = value; }
+
+    public int IncreaseInBloodGain { get => increaseInBloodGain; set => increaseInBloodGain = value; }
+
+    #region MovementSpeed
     public float MovementSpeed
     {
         get => movementSpeed;
@@ -138,6 +151,7 @@ IEnumerator Invincibility()
 
         Damage             = data.startingDamage;
         attack.AttackSpeed = data.startingAttackSpeed; //NOT UPDATED TO DAILY STANDARD
+        range = data.playerRange;
         
         UpdateMovement(data.startingMovementSpeed);
         

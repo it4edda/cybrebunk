@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : CustomBulletShooter
@@ -12,6 +13,7 @@ public class PlayerAttack : CustomBulletShooter
     [Header("Gun")]
     [SerializeField] GameObject gunGraphics;
     [SerializeField] AudioClip  gunSound;
+    public List<CustomBulletPattern> addedBulletPaterns = new();
     
     [Header("Sword")]
     [SerializeField] Animator slasher;
@@ -74,7 +76,7 @@ public class PlayerAttack : CustomBulletShooter
 
     public void ChangePattern(CustomBulletPattern newPattern)
     {
-        bulletPattern.Clear();
+        addedBulletPaterns.Add(newPattern);
         bulletPattern.Add(newPattern);
     }
     public bool HasSword

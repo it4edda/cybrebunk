@@ -8,12 +8,13 @@ public class BulletLogic : DamageDealer
 {
     [SerializeField] float speed;
     [SerializeField] float timeToLive;
+    [SerializeField] bool usePlayerRange;
     protected override void Start()
     {
-        if(isAllied)
+        if(isAllied && usePlayerRange)
         {
-            timeToLive *= PlayerManager.selectedCard.bulletLifetime;
-            speed      = PlayerManager.selectedCard.bulletSpeed;
+            timeToLive *= PlayerManager.selectedCard.playerRange;
+            speed      = PlayerManager.selectedCard.bulletSpeed * speed;
         }
         base.Start();
     }

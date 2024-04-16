@@ -27,6 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
     bool                  isStunned;
     
     protected Transform target;
+    PlayerStats playerStats;
     Transform           bloodParent;
     protected Rigidbody2D         rb;
     protected EnemySpawning       enemySpawning;
@@ -52,12 +53,13 @@ public class EnemyBehaviour : MonoBehaviour
         animator      = GetComponentInChildren<Animator>();
         target        = FindObjectOfType<PlayerMovement>().transform;
         gauge         = FindObjectOfType<UserInterfaceGauge>();
+        playerStats = FindObjectOfType<PlayerStats>();
     }
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerStats>().Health = -1;
+            playerStats.Health = -1;
             StartCoroutine(Knockback(other.transform.position));
         }
     }
@@ -101,7 +103,7 @@ public class EnemyBehaviour : MonoBehaviour
         var a = Instantiate(isBig ? bigBlood[Random.Range(0, bigBlood.Length)] : smallBlood[Random.Range(0, smallBlood.Length)] , transform.position, quaternion.identity );
         a.transform.parent = bloodParent;
         enemySpawning.DecreaseEnemyAliveNumber(belongsToWaveNumber, transform.position);
-        gauge.UpdateGaugeSlider(enemyGaugePrice);
+        gauge.UpdateGaugeSlider(enemyGaugePrice + playerStats.IncreaseInBloodGain);
         Destroy(gameObject);
     }
     protected virtual void Movement()

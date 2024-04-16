@@ -200,7 +200,7 @@ Transform:
   - {fileID: 8632857231381460191}
   - {fileID: 4845090216869016308}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4523307995910036486
 MonoBehaviour:
@@ -216,6 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPattern:
   - {fileID: 11400000, guid: acb2783bcc4644143b73eb162328124a, type: 2}
+  shootEverythingSimultaneously: 1
   fireContinuously: 0
   timeBetweenPatterns: 2
   firePos: {fileID: 4845090216869016308}
