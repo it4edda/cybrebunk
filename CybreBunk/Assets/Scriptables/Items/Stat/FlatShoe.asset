@@ -24,5 +24,5 @@ MonoBehaviour:
       range: 0
       attackSpeedIncrease: 0
       damageIncrease: 0
-      movementSpeedIncrease: 0.29
+      movementSpeedIncrease: 0.3
       increaseInBloodGain: 0

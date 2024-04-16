@@ -22,5 +22,5 @@ MonoBehaviour:
   bulletSpeed: 2
   playerRange: 1
   startingDamage: 35
-  startingMovementSpeed: 1.5
+  startingMovementSpeed: 1
   startingHealth: 5

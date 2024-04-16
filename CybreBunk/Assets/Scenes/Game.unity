@@ -8037,7 +8037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5031408145857828395, guid: c3382fb649530464eb7093c98db06611, type: 3}
       propertyPath: timer
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5031408145857828395, guid: c3382fb649530464eb7093c98db06611, type: 3}
       propertyPath: player
