@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07211ad28419a44099f24557c93ebc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 60
+  health: 45
   isBig: 0
   smallBlood: []
   bigBlood: []
@@ -303,6 +303,8 @@ MonoBehaviour:
   fireContinuously: 0
   timeBetweenPatterns: 0
   firePos: {fileID: 6640136522840931991}
+  gunSound: {fileID: 0}
+  audioSource: {fileID: 0}
   isAttacking: 0
   canAttack: 1
 --- !u!1001 &829124298164746995
