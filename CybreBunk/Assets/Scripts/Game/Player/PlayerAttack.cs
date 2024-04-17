@@ -8,7 +8,6 @@ public class PlayerAttack : CustomBulletShooter
     [Header("General")]
     [SerializeField] bool      hasSword;
     [SerializeField] Transform   weaponGraphics;
-    public bool canTurretAttack = true;
     [Header("General Values")]
     
     [Header("Gun")]

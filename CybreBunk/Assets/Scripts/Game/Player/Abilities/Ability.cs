@@ -176,7 +176,6 @@ public class Ability : MonoBehaviour
 #endregion
     IEnumerator DarkArts() //name of the item in isaac, im not THAT edgy
     {
-        playerAttack.canTurretAttack = false;
         playerAttack.canAttack = false;
         darkArtsVariables.ToggleAbility(true);
         cam.CameraShake(0.1f, 0.2f);
@@ -203,11 +202,13 @@ public class Ability : MonoBehaviour
         List<Vector2> enemyPositions = new List<Vector2>();
         foreach (var enemy in savedDarkArtsEnemies)
         {
+            if (!enemy) continue;
             enemyPositions.Add(enemy.transform.position);
         }
         
         foreach (var enemy in savedDarkArtsEnemies)
         {
+            if (!enemy) continue;
             darkArtsVariables.lineRenderer.SetPosition(0, enemyPositions[localCount]);
             darkArtsVariables.lineRenderer.SetPosition(1, enemyPositions[Math.Max(localCount - 1, 0)]);
             darkArtsVariables.lineRenderer.SetPosition(2, enemyPositions[Math.Max(localCount - 2, 0)]);
@@ -238,7 +239,6 @@ public class Ability : MonoBehaviour
         cooldown = darkArtsVariables.baseVariables.abilityCooldown;
         darkArtsVariables.ToggleAbility(false);
         playerAttack.canAttack = true;
-        playerAttack.canTurretAttack = true;
         playerStats.GodMode(false);
     }
     

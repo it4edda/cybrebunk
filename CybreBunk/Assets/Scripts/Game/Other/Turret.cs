@@ -38,7 +38,6 @@ public class Turret : CustomBulletShooter
             Destroy(gameObject);
         }
         //TODO if buggy fix this
-        if (!playerAttack.canTurretAttack) { return; }
         
         if (FindNearestEnemy())
         {
