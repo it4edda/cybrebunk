@@ -30,6 +30,13 @@ public class Turret : CustomBulletShooter
 
     void Update()
     {
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
+        {
+            //TODO object pool
+            Destroy(gameObject);
+        }
         //TODO if buggy fix this
         if (!playerAttack.canTurretAttack) { return; }
         
@@ -41,14 +48,6 @@ public class Turret : CustomBulletShooter
             firePos.rotation = Quaternion.Slerp(transform.rotation, q ,Time.deltaTime * rotationSpeed);
 
             ChooseNewRoutine();
-        }
-
-        timer -= Time.deltaTime;
-
-        if (timer <= 0)
-        {
-            //TODO object pool
-            Destroy(gameObject);
         }
     }
 
