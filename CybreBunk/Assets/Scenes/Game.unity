@@ -7782,6 +7782,14 @@ PrefabInstance:
       propertyPath: exclamation
       value: 
       objectReference: {fileID: 308737195}
+    - target: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
+      propertyPath: bosses.Array.data[0]
+      value: 
+      objectReference: {fileID: 941910579357402112, guid: 8e70f758b52904e41a79bc93dac5f490, type: 3}
+    - target: {fileID: 3448330763691491978, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
+      propertyPath: bosses.Array.data[1]
+      value: 
+      objectReference: {fileID: 3587982914350332433, guid: 55b45c5306cfb9d43bcf8788d839ee5a, type: 3}
     - target: {fileID: 7318782096941177279, guid: 183218ca496ca174b99fdf8e0835391b, type: 3}
       propertyPath: m_Name
       value: Satanic Circle
