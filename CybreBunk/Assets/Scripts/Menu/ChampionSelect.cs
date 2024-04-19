@@ -35,16 +35,17 @@ public class ChampionSelect : MonoBehaviour
     [SerializeField] Vector2   descriptionBoxPos1; //= -112.4f;
     [SerializeField] Vector2   descriptionBoxPos2;
     [SerializeField] Transform quitButton;
-    [SerializeField] Vector2   quitBoxPos1; 
+    [SerializeField] Vector2   quitBoxPos1;
     [SerializeField] Vector2   quitBoxPos2;
 
-    [Header("OtherOther")]
+     [Header("OtherOther")]
     [SerializeField] SceneTransitions transitions;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip   bloopSound;
     [SerializeField] AudioClip   acceptInput;
     [SerializeField] AudioClip   declineInput;
     bool                         anyKeyToStartTimed;
+    Camera cam;
     
     void Start()
     {
@@ -58,6 +59,7 @@ public class ChampionSelect : MonoBehaviour
 
         CardStatus(true);
     }
+    
     void Update()
     {
         if (!hideCards)
