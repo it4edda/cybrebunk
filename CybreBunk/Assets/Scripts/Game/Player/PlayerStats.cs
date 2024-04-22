@@ -88,7 +88,6 @@ public class PlayerStats : MonoBehaviour
     void Death()
     {
         if (canDie) StartCoroutine(DeathAction());
-        Debug.Log("death triggered");
     }
     IEnumerator DeathAction()
     {

@@ -43,7 +43,7 @@ public class UserInterfaceGauge : MonoBehaviour
     }
     int MaxGaugeTrigger()
     {
-        Debug.Log("MaxTrigger");
+        Debug.Log("MaxTrigger, call particle effect here");
         satanicC.ResetSatan();
         return maxValue;
     }
