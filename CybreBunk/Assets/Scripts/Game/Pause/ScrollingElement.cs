@@ -16,7 +16,7 @@ public class ScrollingElement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.down * speed;
+        transform.position += Vector3.down * speed ;
         if(transform.position.y < lowestAllowedPosition) Destroy(gameObject);
     }
 
