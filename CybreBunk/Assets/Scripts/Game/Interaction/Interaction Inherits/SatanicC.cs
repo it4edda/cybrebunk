@@ -59,16 +59,19 @@ public class SatanicC : Interaction
         {
             case <= 1:
                 BossSpawning(continuationSound);
+                popUp.CallPopUp("Chimera", true);
                 Instantiate(bosses[0]);
                 break;
             
             case 2:
                 BossSpawning(continuationSound); 
+                popUp.CallPopUp("Diamond", true);
                 Instantiate(bosses[1], centrePoint.position, quaternion.identity);
                 break;
                 
             case 3:
                 BossSpawning(finalBossSound);
+                popUp.CallPopUp("BigGuy", true);
                 Instantiate(bosses[2]);
                 break;
             
@@ -86,6 +89,11 @@ public class SatanicC : Interaction
         audioSource.PlayOneShot(clip);
         canConsume             = false;
         enemySpawning.CanSpawn = false;
+    }
+    protected override void DeniedActive()
+    {
+        popUp.CallPopUp("Fill blood gauge first", false);
+        
     }
     public void BossDeath()
     {

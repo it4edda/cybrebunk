@@ -5,9 +5,14 @@ public class Interaction : MonoBehaviour
     [SerializeField]           float    radius;
     [SerializeField] protected bool     canInteract;
     [SerializeField]           Animator interactIcon;
+    protected UserInterfacePopUp        popUp;
     Transform                           target;
     protected         bool              inRange;
-    protected virtual void              Start() { target = FindObjectOfType<PlayerMovement>().transform; }
+    protected virtual void Start()
+    {
+        popUp  = FindObjectOfType<UserInterfacePopUp>();
+        target = FindObjectOfType<PlayerMovement>().transform;
+    }
     void Update()
     {
         InteractionPassive();
@@ -15,10 +20,13 @@ public class Interaction : MonoBehaviour
         inRange = Vector2.Distance(transform.position, target.position) < radius;
         interactIcon.SetBool("Showing", inRange);
 
-        if (!canInteract || !inRange) return;
+        if (!inRange) return;
 
-        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.E)) InteractionActive();
-        //DENNIS VILLE HA E SOM INTERACT
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E))
+        {
+            if (canInteract) InteractionActive();
+            else DeniedActive();
+        }
     }
     protected virtual void InteractionPassive() { }
 
@@ -27,6 +35,10 @@ public class Interaction : MonoBehaviour
     ///     AKA; "canInteract" will turn false.
     /// </summary>
     protected virtual void InteractionActive() { canInteract = false; }
+    protected virtual void DeniedActive()
+    {
+        return;
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
