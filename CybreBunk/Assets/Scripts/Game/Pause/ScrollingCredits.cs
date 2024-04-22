@@ -12,9 +12,15 @@ public class ScrollingCredits : MonoBehaviour
     [SerializeField] RectTransform rect;
     [SerializeField] float         cd;
     float                          i;
+    
+    PauseMenu pause;
+    void Start()
+    {
+        pause = FindObjectOfType<PauseMenu>();
+    }
     void Update()
     {
-        Debug.Log(i);
+        if (!pause.IsPaused) return;
         i++;
         if (i !<= cd) return;
         i = 0;
