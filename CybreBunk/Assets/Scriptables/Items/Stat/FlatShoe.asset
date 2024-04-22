@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81fc831929aa84449ac1e150fbc5c2f, type: 3}
   m_Name: FlatShoe
   m_EditorClassIdentifier: 
-  itemName: Flat Shoe
+  itemName: Non Flat Shoe
   itemType: 0
-  itemDescription: Jonte
+  itemDescription: Even Jonte can run fast in these
   itemIcon: {fileID: 21300000, guid: 063cb4a3ac581654682cd9228fa47253, type: 3}
   itemEffects:
   - activationConditions: 0

@@ -66,7 +66,9 @@ public class ChampionSelect : MonoBehaviour
         {
             foreach (string i in leftInputKeys)  if (Input.GetKeyDown(i)) SelectL();
             foreach (string i in rightInputKeys) if (Input.GetKeyDown(i)) SelectR();
+
             if (Input.GetKeyDown(continueInput) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E)) LoadGame();
+            
         }
         else if (Input.anyKey)
         {
@@ -158,6 +160,7 @@ public class ChampionSelect : MonoBehaviour
         string tarotDescription = (tarots[selected] as TarotData)?.CurrentDescription;
         descriptionText.text = tarotDescription;
     }
+    bool canLoad = true;
     public void LoadGame()
     {
         var savedTarot = tarots[selected] as TarotData;
@@ -167,6 +170,8 @@ public class ChampionSelect : MonoBehaviour
             audioSource.PlayOneShot(declineInput);
             return;
         }
+        if (!canLoad) return;
+        canLoad = false;
         audioSource.PlayOneShot(acceptInput);
         PlayerManager.selectedCard = savedTarot;
         //SceneManager.LoadScene("Game");
