@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DamageNumberManager : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI damageNumbers;
+        Animator                         damageNumberAnimator;
+        Transform                        transformDN;
    [SerializeField] TextMeshProUGUI damageNumberPrefab;
        Transform damageNumberCanvas;
    
@@ -11,6 +14,13 @@ public class DamageNumberManager : MonoBehaviour
        {
            damageNumberCanvas = GameObject.Find("DamageNumberCanvas").GetComponent<Transform>();
        }
+       public void DamageNumbers(int numberToDisplay, Transform placeToDisplay)
+           {
+               damageNumbers.text = numberToDisplay.ToString();
+               var b = Instantiate(damageNumbers, FindObjectOfType<Camera>().WorldToScreenPoint(placeToDisplay.position), quaternion.identity, transformDN);
+               damageNumberAnimator = b.GetComponent<Animator>();
+               Destroy(b, damageNumberAnimator.GetCurrentAnimatorStateInfo(0).length);
+           }
 
        public void ShowDamageNumber(int numberToDisplay, Transform placeToDisplay)
        {

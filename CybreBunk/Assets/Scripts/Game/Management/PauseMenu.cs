@@ -18,6 +18,9 @@ public class PauseMenu : MonoBehaviour
     [Header("Settings")]
     [SerializeField] Canvas settingsCanvas;
     [SerializeField] Slider distortionSlider;
+    
+    [Header("Creds")]
+    [SerializeField] Canvas credsCanvas;
 
     [Header("Sound")]
     [SerializeField] AudioClip declineSound;
@@ -25,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     AudioSource audioSource;
     
     bool                    inSettingsMenu = false;
-    
+    private bool inCreditsMenu = false;
     float                       timeScaleAtStart = 1;
     bool                        isPaused;
 
@@ -36,20 +39,22 @@ public class PauseMenu : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         DiosBestFriend(false);
-        settingsCanvas.enabled                    = false;
+        settingsCanvas.enabled = false;
+        credsCanvas.enabled = false;
         
         currentTarot.GetComponent<Image>().sprite = PlayerManager.selectedCard?.CurrentCard;
         
     }
     public void DiosBestFriend(bool freeze)
     {
-        if (isPaused && !mainCanvas.enabled)
+        /*if (isPaused && !mainCanvas.enabled)
         {
             return;
-        }
-        if (inSettingsMenu)
+        }*/
+        if (inSettingsMenu || inCreditsMenu)
         {
             SettingsToggle(false);
+            CreditsToggle(false);
             return;
         }
         
@@ -107,6 +112,13 @@ public class PauseMenu : MonoBehaviour
         mainCanvas.enabled     = !visibility;
 
         if (!visibility) SetSettings();
+    }
+    public void CreditsToggle(bool visibility)
+    {
+        audioSource.PlayOneShot(visibility ? acceptSound : declineSound);
+        inCreditsMenu = visibility;
+        credsCanvas.enabled = visibility;
+        mainCanvas.enabled = !visibility;
     }
     void SetSettings()
     {
