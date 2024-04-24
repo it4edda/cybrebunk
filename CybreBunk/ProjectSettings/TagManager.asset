@@ -58,3 +58,6 @@ TagManager:
   - name: WorldSpaceUi
     uniqueID: 3597051471
     locked: 0
+  - name: CameraSortingLayer
+    uniqueID: 3141221123
+    locked: 0
