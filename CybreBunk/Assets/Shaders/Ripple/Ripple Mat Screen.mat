@@ -59,7 +59,7 @@ Material:
     m_Floats:
     - _DistanceFromCenter: -0.1
     - _EnableExternalAlpha: 0
-    - _Size: 0.0144
+    - _Size: 0.011
     - _Strength: -0.19
     - _XSizeRatio: 1.777
     m_Colors:
