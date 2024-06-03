@@ -38,6 +38,8 @@ public class DamageDealer : MonoBehaviour
     }
     static void OnOnHitEvent(GameObject obj)
     {
+        //this cannot be right
+        
         OnHitEvent?.Invoke(obj); 
     }
 }

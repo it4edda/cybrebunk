@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81fc831929aa84449ac1e150fbc5c2f, type: 3}
   m_Name: FastHat
   m_EditorClassIdentifier: 
-  itemName: Cringe hat
+  itemName: Dumb hat
   itemType: 0
   itemDescription: Fastest punch in the west
   itemIcon: {fileID: 21300000, guid: 2369d6f560f8d264ba19007914688a88, type: 3}
