@@ -10,11 +10,12 @@ public class TarotData : ScriptableObject
     [Header("General")]
     [SerializeField] public bool isPlayable;
     [SerializeField] public bool debugTool = false;
-    
-    
+
+
     [Header("Menu")]
     //[SerializeField] public GameObject tarotCard = default;
     //[SerializeField]        GameObject lockedCard;
+    [SerializeField] public int totalWins;
     [SerializeField]        string     tarotDescription;
     public string     CurrentDescription => isPlayable ? tarotDescription : "Locked";
 

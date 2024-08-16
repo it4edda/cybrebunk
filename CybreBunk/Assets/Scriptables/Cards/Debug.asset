@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029f19b39c695c146badede51c348d39, type: 3}
   m_Name: Debug
   m_EditorClassIdentifier: 
-  isPlayable: 0
+  isPlayable: 1
   debugTool: 1
+  totalWins: 7
   tarotDescription: debug
   unlockedCard: {fileID: 21300000, guid: f84cae6d59a778e44b3c4e0b27bf5a90, type: 3}
   lockedCard: {fileID: 21300000, guid: 7df8e09a76e33e04883bfbf36f8a9c31, type: 3}
   swordStart: 0
   startingAttackSpeed: 0
   bulletSpeed: 0.69
-  bulletLifetime: 1
+  playerRange: 1
   startingDamage: 1
   startingMovementSpeed: 1.5
   startingHealth: 30

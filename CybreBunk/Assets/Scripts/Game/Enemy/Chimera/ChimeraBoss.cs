@@ -37,11 +37,16 @@ public class ChimeraBoss : EnemyBehaviour
         healthBar.SetValues(health, 0);
         
         moveTarget = FindNearestMovementTarget();
-        StartCoroutine(BigCharge());
+        StartCoroutine(initialCharge());
     }
     #endregion
     
     #region TheBigCharge
+    IEnumerator initialCharge()
+    {
+        yield return new WaitForSeconds(1);
+        StartCoroutine(BigCharge());
+    }
     IEnumerator BigCharge()
     {
         if (stopWalking) yield break;

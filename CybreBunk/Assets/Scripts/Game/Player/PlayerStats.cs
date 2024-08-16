@@ -55,10 +55,6 @@ public class PlayerStats : MonoBehaviour
         uiHealth = FindObjectOfType<UserInterfaceHealth>();
         uiHealth.SetMaxHealth(maxHealth);
     }
-    void Update()
-    {
-        Debug.Log(canDie);
-    }
     
 #region Practical HealthRelated
     #region Health
@@ -103,6 +99,7 @@ public class PlayerStats : MonoBehaviour
         yield return new WaitForSeconds(deathParticles.main.duration + 0.5f);
         StartCoroutine(transitions.Transition("Death"));
     }
+    
     #endregion
     public int Damage
     {

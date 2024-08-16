@@ -29,6 +29,7 @@ public class BigBossBehaviour : EnemyBehaviour
         enemySpawning.StartSpawning();
         FindObjectOfType<PlayerCamera>().SetFollow();
         FindObjectOfType<SatanicC>().BossDeath();
+        FindObjectOfType<VictoryManager>().ToggleVictory(true);
         healthBar.transform.GetChild(0).gameObject.SetActive(false);
         Destroy(gameObject);
     }

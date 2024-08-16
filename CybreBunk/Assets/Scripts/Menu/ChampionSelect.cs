@@ -12,6 +12,7 @@ public class ChampionSelect : MonoBehaviour
 {
     [SerializeField] Transform[] positions;
     [SerializeField] TMP_Text    descriptionText;
+    [SerializeField] TMP_Text totalWinsText;
     //[SerializeField] TarotData  //Why didnt i just do this?
     [SerializeField] ScriptableObject[] tarots;
     [SerializeField] GameObject[]       selectedTarots;
@@ -159,6 +160,7 @@ public class ChampionSelect : MonoBehaviour
     {
         string tarotDescription = (tarots[selected] as TarotData)?.CurrentDescription;
         descriptionText.text = tarotDescription;
+        totalWinsText.text = (tarots[selected] as TarotData).totalWins.ToString();
     }
     bool canLoad = true;
     public void LoadGame()
